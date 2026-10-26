@@ -1,0 +1,275 @@
+{
+  "status": "pass",
+  "scope": "real OpenCLIP encoder + IndexFlatIP smoke test on synthetic images; not a research result",
+  "timestamp_utc": "2026-10-26T10:37:08.503303+00:00",
+  "checks": {
+    "cuda_used": true,
+    "embedding_dim_matches_config": true,
+    "all_values_finite": true,
+    "image_norm_min": 1.0,
+    "image_norm_max": 1.0,
+    "text_norm_min": 1.0,
+    "text_norm_max": 1.0,
+    "repeat_encoding_max_abs_diff": 0.00047667697072029114,
+    "faiss_topk_matches_numpy": true,
+    "faiss_numpy_max_score_diff": 1.043081283569336e-07,
+    "synthetic_top1_hits": "1/4",
+    "synthetic_expected_ranks": [
+      2,
+      2,
+      1,
+      3
+    ],
+    "synthetic_median_expected_rank": 2,
+    "visual_activation_is_quick_gelu": true
+  },
+  "environment": {
+    "python": "3.12.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.9.1+cu126",
+    "torch_cuda": "12.6",
+    "cuda_available": true,
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_memory_mib": 8187.5,
+    "open_clip": "3.3.0"
+  },
+  "encoder": {
+    "model_name": "ViT-B-32",
+    "pretrained": "openai",
+    "checkpoint_path": "C:\\Users\\25062\\.cache\\clip\\ViT-B-32.pt",
+    "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "force_quick_gelu": true,
+    "weights_only": false,
+    "version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+    "embedding_dim": 512,
+    "configured_embedding_dim": 512,
+    "visual_activation": "QuickGELU",
+    "weight_files": []
+  },
+  "gpu": {
+    "peak_memory_allocated_mib": 633.8,
+    "peak_memory_reserved_mib": 698.0
+  },
+  "index": {
+    "type": "faiss.IndexFlatIP + NumpyFlatIPIndex",
+    "gallery_items": 15,
+    "embedding_dim": 512,
+    "manifest": {
+      "index_version": "real-clip-smoke-flatip-v1",
+      "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+      "embedding_dim": 512,
+      "metric": "inner_product_on_l2_normalized_vectors",
+      "normalized": true,
+      "item_count": 15
+    },
+    "mean_search_latency_ms": 0.5388
+  },
+  "timing": {
+    "image_encode_seconds": 0.609,
+    "image_encode_per_image_seconds": 0.0406,
+    "text_encode_seconds": 0.119
+  },
+  "queries": [
+    {
+      "text": "a red circle",
+      "expected_id": "red_circle",
+      "top1": "black_circle",
+      "top1_correct": false,
+      "expected_rank": 2,
+      "numpy_faiss_same_order": true,
+      "topk": [
+        {
+          "image_id": "black_circle",
+          "score": 0.286151
+        },
+        {
+          "image_id": "red_circle",
+          "score": 0.286149
+        },
+        {
+          "image_id": "blue_circle",
+          "score": 0.279568
+        },
+        {
+          "image_id": "green_circle",
+          "score": 0.27398
+        },
+        {
+          "image_id": "red_triangle",
+          "score": 0.270008
+        },
+        {
+          "image_id": "red_square",
+          "score": 0.269113
+        },
+        {
+          "image_id": "yellow_circle",
+          "score": 0.262004
+        },
+        {
+          "image_id": "black_square",
+          "score": 0.242758
+        },
+        {
+          "image_id": "blue_square",
+          "score": 0.239785
+        },
+        {
+          "image_id": "green_triangle",
+          "score": 0.239701
+        }
+      ]
+    },
+    {
+      "text": "a blue square",
+      "expected_id": "blue_square",
+      "top1": "blue_triangle",
+      "top1_correct": false,
+      "expected_rank": 2,
+      "numpy_faiss_same_order": true,
+      "topk": [
+        {
+          "image_id": "blue_triangle",
+          "score": 0.327135
+        },
+        {
+          "image_id": "blue_square",
+          "score": 0.318369
+        },
+        {
+          "image_id": "blue_circle",
+          "score": 0.313449
+        },
+        {
+          "image_id": "green_triangle",
+          "score": 0.263243
+        },
+        {
+          "image_id": "black_triangle",
+          "score": 0.259886
+        },
+        {
+          "image_id": "red_square",
+          "score": 0.257897
+        },
+        {
+          "image_id": "black_square",
+          "score": 0.25402
+        },
+        {
+          "image_id": "yellow_triangle",
+          "score": 0.247682
+        },
+        {
+          "image_id": "black_circle",
+          "score": 0.247095
+        },
+        {
+          "image_id": "green_square",
+          "score": 0.245854
+        }
+      ]
+    },
+    {
+      "text": "a green triangle",
+      "expected_id": "green_triangle",
+      "top1": "green_triangle",
+      "top1_correct": true,
+      "expected_rank": 1,
+      "numpy_faiss_same_order": true,
+      "topk": [
+        {
+          "image_id": "green_triangle",
+          "score": 0.36251
+        },
+        {
+          "image_id": "blue_triangle",
+          "score": 0.313975
+        },
+        {
+          "image_id": "black_triangle",
+          "score": 0.308008
+        },
+        {
+          "image_id": "green_circle",
+          "score": 0.303
+        },
+        {
+          "image_id": "red_triangle",
+          "score": 0.301181
+        },
+        {
+          "image_id": "yellow_triangle",
+          "score": 0.301115
+        },
+        {
+          "image_id": "green_square",
+          "score": 0.289938
+        },
+        {
+          "image_id": "blue_square",
+          "score": 0.24664
+        },
+        {
+          "image_id": "black_square",
+          "score": 0.24637
+        },
+        {
+          "image_id": "blue_circle",
+          "score": 0.241103
+        }
+      ]
+    },
+    {
+      "text": "a yellow square",
+      "expected_id": "yellow_square",
+      "top1": "yellow_triangle",
+      "top1_correct": false,
+      "expected_rank": 3,
+      "numpy_faiss_same_order": true,
+      "topk": [
+        {
+          "image_id": "yellow_triangle",
+          "score": 0.322193
+        },
+        {
+          "image_id": "yellow_circle",
+          "score": 0.31252
+        },
+        {
+          "image_id": "yellow_square",
+          "score": 0.311553
+        },
+        {
+          "image_id": "blue_triangle",
+          "score": 0.271954
+        },
+        {
+          "image_id": "green_triangle",
+          "score": 0.267493
+        },
+        {
+          "image_id": "blue_square",
+          "score": 0.266115
+        },
+        {
+          "image_id": "black_triangle",
+          "score": 0.265725
+        },
+        {
+          "image_id": "blue_circle",
+          "score": 0.259961
+        },
+        {
+          "image_id": "black_square",
+          "score": 0.258315
+        },
+        {
+          "image_id": "red_square",
+          "score": 0.255217
+        }
+      ]
+    }
+  ]
+}

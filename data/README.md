@@ -1,0 +1,23 @@
+# 数据目录说明
+
+本目录只保存数据清单、校验值和下载说明，不提交公开数据集原图、用户反馈原文或模型权重。原图、嵌入与索引统一放在 `D:\image_data`。
+
+当前接入：
+
+- CIRR：rc2 官方公开标注与划分已就绪，原图等待官方/NLVR2 回复。
+- FashionIQ：官方标注、划分和 URL 映射已就绪；100 张下载抽测成功 96、404 失败 4，完整图库未就绪。
+- 可选 CIRCO：存在多个相关目标时使用 mAP@K。
+
+```text
+D:\image_data\
+  datasets\cirr\{captions,image_splits,img_raw}
+  datasets\fashioniq\{captions,image_splits,images}
+  downloads\
+  derived\{embeddings,indexes,rankings}
+  manifests\
+```
+
+接入任何完整数据前必须在 `manifests/` 中记录：来源链接、许可、版本、文件数量、校验值、划分方式和本地路径。CIRR 原图未获回复前不得用第三方镜像绕过申请；FashionIQ 若改用第三方完整归档，需先确认来源选择。用户反馈数据必须去标识化，并按用户或会话分组切分，避免泄漏。
+
+`scripts/validate_dataset.py` 中 `structural_ok=true` 只表示标注关系正确；只有 `ready_for_experiment=true` 才表示该划分可运行正式实验。
+

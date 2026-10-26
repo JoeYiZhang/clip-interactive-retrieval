@@ -1,0 +1,12 @@
+[data]
+root = "D:/image_data"
+cirr = "D:/image_data/datasets/cirr"
+fashioniq = "D:/image_data/datasets/fashioniq"
+
+[artifacts]
+embeddings = "D:/image_data/derived/embeddings"
+indexes = "D:/image_data/derived/indexes"
+rankings = "D:/image_data/derived/rankings"
+
+[model]
+checkpoint = "C:/Users/25062/.cache/clip/ViT-B-32.pt"

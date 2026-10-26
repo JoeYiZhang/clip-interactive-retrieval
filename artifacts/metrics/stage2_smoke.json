@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "scope": "synthetic exact-retrieval smoke test; not a research result",
+  "timestamp_utc": "2026-10-26T10:36:49.105054+00:00",
+  "seed": 20261026,
+  "gallery_items": 100,
+  "embedding_dim": 64,
+  "query_count": 4,
+  "metrics": {
+    "recall_at_1": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "latency_ms_mean": 0.12062499808962457,
+    "latency_ms_max": 0.4028999974252656
+  },
+  "manifest": {
+    "index_version": "synthetic-flatip-v1",
+    "encoder_version": "synthetic-encoder-v1",
+    "embedding_dim": 64,
+    "metric": "inner_product_on_l2_normalized_vectors",
+    "normalized": true,
+    "item_count": 100
+  }
+}

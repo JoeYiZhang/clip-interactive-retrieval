@@ -1,0 +1,47 @@
+{
+  "timestamp_utc": "2026-10-26T10:27:11.608530+00:00",
+  "categories": [
+    "dress",
+    "shirt",
+    "toptee"
+  ],
+  "splits": [
+    "val"
+  ],
+  "requested_count": 15415,
+  "mapped_count": 15415,
+  "missing_url_count": 0,
+  "missing_url_samples": [],
+  "dry_run": false,
+  "downloaded": 96,
+  "skipped": 0,
+  "failed": 4,
+  "attempted_count": 100,
+  "failures": [
+    {
+      "image_id": "B0006SCZYA",
+      "status": "failed",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "url": "http://ecx.images-amazon.com/images/I/41E0-fi4wfL._SX342_.jpg"
+    },
+    {
+      "image_id": "B0007539XS",
+      "status": "failed",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "url": "http://ecx.images-amazon.com/images/I/41dV5nuEavL._SX342_.jpg"
+    },
+    {
+      "image_id": "B000783TCQ",
+      "status": "failed",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "url": "http://ecx.images-amazon.com/images/I/418MqcdvoyL._SX342_.jpg"
+    },
+    {
+      "image_id": "B000783T2Q",
+      "status": "failed",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "url": "http://ecx.images-amazon.com/images/I/418MqcdvoyL._SX342_.jpg"
+    }
+  ],
+  "status": "partial"
+}

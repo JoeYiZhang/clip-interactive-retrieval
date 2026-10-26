@@ -1,0 +1,15 @@
+{
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 580.88",
+  "modules": {
+    "numpy": true,
+    "torch": true,
+    "open_clip": true,
+    "faiss": true,
+    "PIL": true,
+    "pytest": true
+  },
+  "stage2_core_ready": true,
+  "real_clip_faiss_ready": true
+}

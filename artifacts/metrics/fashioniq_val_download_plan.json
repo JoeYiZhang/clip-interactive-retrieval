@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-10-26T10:27:00.563451+00:00",
+  "categories": [
+    "dress",
+    "shirt",
+    "toptee"
+  ],
+  "splits": [
+    "val"
+  ],
+  "requested_count": 15415,
+  "mapped_count": 15415,
+  "missing_url_count": 0,
+  "missing_url_samples": [],
+  "dry_run": true,
+  "status": "pass"
+}

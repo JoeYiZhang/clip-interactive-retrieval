@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clip-interactive-retrieval"
+version = "0.1.0"
+description = "Reproducible baseline for composed and interactive image retrieval"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<3",
+]
+
+[project.optional-dependencies]
+ml = [
+  # 本机已验证组合：torch 2.9.1+cu126 + torchvision 0.24.1+cu126 + open-clip-torch 3.3.0。
+  # torchvision 的元数据要求 torch 精确版本（如 0.24.1 要求 ==2.9.1），二者必须成对安装。
+  "torch>=2.2,<2.10",
+  "torchvision>=0.17,<0.30",
+  "open-clip-torch>=2.26,<4",
+  "faiss-cpu>=1.8,<2",
+  "pillow>=10",
+]
+dev = [
+  "pytest>=8",
+]
+
+[project.scripts]
+cir-environment = "cir_baseline.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

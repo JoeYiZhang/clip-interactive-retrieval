@@ -1,0 +1,43 @@
+[project]
+name = "clip-interactive-retrieval"
+task_tracks = ["single_turn_cir", "multi_turn_iir"]
+
+[encoder]
+provider = "open_clip"
+model_name = "ViT-B-32"
+pretrained = "openai"
+embedding_dim = 512
+normalize = true
+version = "open_clip:ViT-B-32:openai"
+
+[fusion]
+method = "normalized_weighted_sum"
+image_weight = 0.5
+text_weight = 0.5
+
+[index]
+type = "FlatIP"
+metric = "inner_product_on_l2_normalized_vectors"
+top_n = 50
+version = "unbuilt"
+
+[ranking]
+top_k = 10
+reranker_version = "none"
+
+[feedback]
+anchor_weight = 0.35
+previous_query_weight = 1.0
+positive_weight = 0.75
+negative_weight = 0.25
+text_weight = 0.50
+update_strength = 0.50
+max_cosine_drift = 0.35
+max_rounds = 6
+
+[evaluation]
+recall_k = [1, 5, 10, 50]
+ann_recall_k = 50
+ann_recall_gate = 0.98
+random_seeds = [17, 29, 43]
+

@@ -1,0 +1,8 @@
+dataset,version,source_url,license,split,item_count,sha256,local_path,verified_at,owner,status
+CIRR,,,,train,,,,,,,pending
+CIRR,,,,validation,,,,,,,pending
+CIRR,,,,test,,,,,,,pending
+FashionIQ,,,,train,,,,,,,pending
+FashionIQ,,,,validation,,,,,,,pending
+FashionIQ,,,,test,,,,,,,pending
+
