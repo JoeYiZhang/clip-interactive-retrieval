@@ -1,0 +1,423 @@
+{
+  "status": "pass",
+  "query_count": 6016,
+  "comparisons": {
+    "dynamic_vs_previous_b3": {
+      "reference": "B3_previous_val_tuned",
+      "candidate": "A2_train_tuned_dynamic",
+      "recall@10": {
+        "reference_hits": 1389,
+        "candidate_hits": 1452,
+        "net_hits": 63,
+        "rescued": 198,
+        "regressed": 135,
+        "query_weighted_delta": 0.010472074468085124,
+        "mcnemar_exact_two_sided_p": 0.0006576370695098999,
+        "category_stratified_paired_bootstrap": {
+          "repeats": 5000,
+          "seed": 20261036,
+          "mean_delta": 0.010380357459563857,
+          "ci95_low": 0.004609564070532498,
+          "ci95_high": 0.016260767885777253
+        }
+      },
+      "recall@50": {
+        "reference_hits": 2497,
+        "candidate_hits": 2496,
+        "net_hits": -1,
+        "rescued": 186,
+        "regressed": 187,
+        "query_weighted_delta": -0.0001662234042553168,
+        "mcnemar_exact_two_sided_p": 1.0,
+        "category_stratified_paired_bootstrap": {
+          "repeats": 5000,
+          "seed": 20261076,
+          "mean_delta": -0.00021864448651203993,
+          "ci95_low": -0.006625956890060468,
+          "ci95_high": 0.006057659829387825
+        }
+      },
+      "rank_changes": {
+        "better": 1045,
+        "worse": 957,
+        "same": 4014
+      }
+    },
+    "dynamic_vs_train_global": {
+      "reference": "A0_train_tuned_global",
+      "candidate": "A2_train_tuned_dynamic",
+      "recall@10": {
+        "reference_hits": 1344,
+        "candidate_hits": 1452,
+        "net_hits": 108,
+        "rescued": 142,
+        "regressed": 34,
+        "query_weighted_delta": 0.01795212765957449,
+        "mcnemar_exact_two_sided_p": 6.789758904074646e-17,
+        "category_stratified_paired_bootstrap": {
+          "repeats": 5000,
+          "seed": 20261036,
+          "mean_delta": 0.017922539898042888,
+          "ci95_low": 0.013629995292243834,
+          "ci95_high": 0.022357430893592854
+        }
+      },
+      "recall@50": {
+        "reference_hits": 2406,
+        "candidate_hits": 2496,
+        "net_hits": 90,
+        "rescued": 127,
+        "regressed": 37,
+        "query_weighted_delta": 0.014960106382978733,
+        "mcnemar_exact_two_sided_p": 9.485274445833628e-13,
+        "category_stratified_paired_bootstrap": {
+          "repeats": 5000,
+          "seed": 20261076,
+          "mean_delta": 0.015012977313417997,
+          "ci95_low": 0.01081758337299286,
+          "ci95_high": 0.0190603253465475
+        }
+      },
+      "rank_changes": {
+        "better": 546,
+        "worse": 264,
+        "same": 5206
+      }
+    }
+  },
+  "dynamic_vs_previous_b3_top10_by_category": {
+    "dress": {
+      "rescued": 73,
+      "regressed": 62
+    },
+    "shirt": {
+      "rescued": 68,
+      "regressed": 34
+    },
+    "toptee": {
+      "rescued": 57,
+      "regressed": 39
+    }
+  },
+  "dynamic_top50_misses_by_category": {
+    "dress": 1216,
+    "shirt": 1224,
+    "toptee": 1080
+  },
+  "rescued_samples": [
+    {
+      "query_id": "toptee:val:965",
+      "category": "toptee",
+      "reference": "B008C3HJDS",
+      "target": "B0080XODS4",
+      "text": "is deeply grey and less revealing and is less feminine and more masculine",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B0049ANNTW",
+      "A0_train_tuned_global_rank": 2,
+      "A0_train_tuned_global_top1": "B00EMIV9HO",
+      "A2_train_tuned_dynamic_rank": 2,
+      "A2_train_tuned_dynamic_top1": "B00EMIV9HO"
+    },
+    {
+      "query_id": "shirt:val:929",
+      "category": "shirt",
+      "reference": "B009SNIEGW",
+      "target": "B003IRY0XA",
+      "text": "Is blue and has a smaller graphiic and has a smaller print",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B0049S6CSI",
+      "A0_train_tuned_global_rank": 3,
+      "A0_train_tuned_global_top1": "B004C84LBU",
+      "A2_train_tuned_dynamic_rank": 2,
+      "A2_train_tuned_dynamic_top1": "B004C84LBU"
+    },
+    {
+      "query_id": "shirt:val:880",
+      "category": "shirt",
+      "reference": "B00AJML1ZM",
+      "target": "B0081MAU7M",
+      "text": "has short sleeves and Has longer sleeves and a larger graphic",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B004YJVIQS",
+      "A0_train_tuned_global_rank": 16,
+      "A0_train_tuned_global_top1": "B004YJVIQS",
+      "A2_train_tuned_dynamic_rank": 3,
+      "A2_train_tuned_dynamic_top1": "B004YJVIQS"
+    },
+    {
+      "query_id": "toptee:val:784",
+      "category": "toptee",
+      "reference": "B00E4OQWQY",
+      "target": "B00FDY5AKS",
+      "text": "has no sleeves but an image and has off shoulder and is black color",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B007M850QC",
+      "A0_train_tuned_global_rank": 4,
+      "A0_train_tuned_global_top1": "B009JR23TG",
+      "A2_train_tuned_dynamic_rank": 4,
+      "A2_train_tuned_dynamic_top1": "B009JR23TG"
+    },
+    {
+      "query_id": "toptee:val:1592",
+      "category": "toptee",
+      "reference": "B00DDXH9E6",
+      "target": "B00DDXI6N4",
+      "text": "is navy blue and is mostly black",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B008ADPLAI",
+      "A0_train_tuned_global_rank": 4,
+      "A0_train_tuned_global_top1": "B008ADPLAI",
+      "A2_train_tuned_dynamic_rank": 4,
+      "A2_train_tuned_dynamic_top1": "B008ADPLAI"
+    },
+    {
+      "query_id": "shirt:val:138",
+      "category": "shirt",
+      "reference": "B009NBSZOU",
+      "target": "B00AOJHF8M",
+      "text": "Is more striped and less pocketed and has longer sleeves",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B0063TRZD2",
+      "A0_train_tuned_global_rank": 9,
+      "A0_train_tuned_global_top1": "B00BEEF04W",
+      "A2_train_tuned_dynamic_rank": 4,
+      "A2_train_tuned_dynamic_top1": "B006Y5LNRE"
+    },
+    {
+      "query_id": "shirt:val:1021",
+      "category": "shirt",
+      "reference": "B008KGWOHS",
+      "target": "B004UG6Q0S",
+      "text": "is a darker blue and larger and is darker blue",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B006UFLE9A",
+      "A0_train_tuned_global_rank": 5,
+      "A0_train_tuned_global_top1": "B00AJSWYI4",
+      "A2_train_tuned_dynamic_rank": 4,
+      "A2_train_tuned_dynamic_top1": "B00AJSWYI4"
+    },
+    {
+      "query_id": "shirt:val:1600",
+      "category": "shirt",
+      "reference": "B003ICY3OQ",
+      "target": "B007BA6MNQ",
+      "text": "is darker and has longer sleeves and is darker in color and has longer sleeves",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B00DN6JHNE",
+      "A0_train_tuned_global_rank": 13,
+      "A0_train_tuned_global_top1": "B004APGLNG",
+      "A2_train_tuned_dynamic_rank": 6,
+      "A2_train_tuned_dynamic_top1": "B004APGLNG"
+    },
+    {
+      "query_id": "shirt:val:805",
+      "category": "shirt",
+      "reference": "B004B2XMPI",
+      "target": "B005Q0B9ZY",
+      "text": "has a collar and is more preppy and is collared",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B0036SZYNQ",
+      "A0_train_tuned_global_rank": 18,
+      "A0_train_tuned_global_top1": "B0036SZYNQ",
+      "A2_train_tuned_dynamic_rank": 7,
+      "A2_train_tuned_dynamic_top1": "B0036SZYNQ"
+    },
+    {
+      "query_id": "shirt:val:263",
+      "category": "shirt",
+      "reference": "B00BT0JNWQ",
+      "target": "B007DJ2XQA",
+      "text": "is black with red and blue designs and is more faded",
+      "B3_previous_val_tuned_rank": 48,
+      "B3_previous_val_tuned_top1": "B005FR87IA",
+      "A0_train_tuned_global_rank": 4,
+      "A0_train_tuned_global_top1": "B005FR87IA",
+      "A2_train_tuned_dynamic_rank": 4,
+      "A2_train_tuned_dynamic_top1": "B005FR87IA"
+    },
+    {
+      "query_id": "shirt:val:506",
+      "category": "shirt",
+      "reference": "B0071LPNY4",
+      "target": "B000CQXJJ6",
+      "text": "has less detail and is darker and has a Ramones emblem and other doesn't",
+      "B3_previous_val_tuned_rank": 51,
+      "B3_previous_val_tuned_top1": "B002V0EUJ4",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B001GU03DC",
+      "A2_train_tuned_dynamic_rank": 8,
+      "A2_train_tuned_dynamic_top1": "B00DDXIRV0"
+    },
+    {
+      "query_id": "shirt:val:10",
+      "category": "shirt",
+      "reference": "B0073OGKDW",
+      "target": "B004PLN0DO",
+      "text": "looks faded and cheaper and is longer",
+      "B3_previous_val_tuned_rank": 46,
+      "B3_previous_val_tuned_top1": "B007771Y5O",
+      "A0_train_tuned_global_rank": 6,
+      "A0_train_tuned_global_top1": "B00BF7VCKO",
+      "A2_train_tuned_dynamic_rank": 3,
+      "A2_train_tuned_dynamic_top1": "B00BF7VCKO"
+    }
+  ],
+  "regressed_samples": [
+    {
+      "query_id": "dress:val:798",
+      "category": "dress",
+      "reference": "B00C62EUBA",
+      "target": "B009QOHBUI",
+      "text": "is a t shirt with short sleeves and is white with a collar",
+      "B3_previous_val_tuned_rank": 1,
+      "B3_previous_val_tuned_top1": "B009QOHBUI",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B008HSX5ZO",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B008HSX5ZO"
+    },
+    {
+      "query_id": "dress:val:314",
+      "category": "dress",
+      "reference": "B0045EPT8A",
+      "target": "B003ILRVZU",
+      "text": "is more revealing and shiny and gold and is more revealing and shiny",
+      "B3_previous_val_tuned_rank": 2,
+      "B3_previous_val_tuned_top1": "B0091WZCE2",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B005FUWFFS",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B005FUWFFS"
+    },
+    {
+      "query_id": "shirt:val:144",
+      "category": "shirt",
+      "reference": "B00AY2FULS",
+      "target": "B0075G2YFG",
+      "text": "is black and has a meme graphic and is black with a white face pattern",
+      "B3_previous_val_tuned_rank": 3,
+      "B3_previous_val_tuned_top1": "B004IDGHQ6",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B00CVT5U5I",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B00CVT5U5I"
+    },
+    {
+      "query_id": "shirt:val:362",
+      "category": "shirt",
+      "reference": "B00F3KMWX0",
+      "target": "B005OODLGW",
+      "text": "has not for sale written on it and has a different graphic",
+      "B3_previous_val_tuned_rank": 4,
+      "B3_previous_val_tuned_top1": "B00EKMPXMY",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B00EKMPXMY",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B00EKMPXMY"
+    },
+    {
+      "query_id": "dress:val:1345",
+      "category": "dress",
+      "reference": "B008HQKK1S",
+      "target": "B00AZE7306",
+      "text": "Has a white low cut top and blue skirt. and is more revealing with two colors and shorter in length",
+      "B3_previous_val_tuned_rank": 6,
+      "B3_previous_val_tuned_top1": "B00C7P935E",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B0082C616K",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B0082C616K"
+    },
+    {
+      "query_id": "dress:val:94",
+      "category": "dress",
+      "reference": "B002EAJ79E",
+      "target": "B002XW6XZE",
+      "text": "is green with flowers and is longer and more colorful",
+      "B3_previous_val_tuned_rank": 6,
+      "B3_previous_val_tuned_top1": "B006UCQXRG",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B006UCPPZ2",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B006UCPPZ2"
+    },
+    {
+      "query_id": "dress:val:260",
+      "category": "dress",
+      "reference": "B00CJTWWA6",
+      "target": "B00CFMLTCY",
+      "text": "has straps and small sleeves and A solid navy blue with belt",
+      "B3_previous_val_tuned_rank": 7,
+      "B3_previous_val_tuned_top1": "B003TAJUM2",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B00D6IVL6K",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B00D6IVL6K"
+    },
+    {
+      "query_id": "toptee:val:1585",
+      "category": "toptee",
+      "reference": "B004SWI1G6",
+      "target": "B0009GAOYC",
+      "text": "is black colored with red sleeves and has longer sleeves and is red and black",
+      "B3_previous_val_tuned_rank": 7,
+      "B3_previous_val_tuned_top1": "B007XD5SPE",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B007W4SK04",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B007W4SK04"
+    },
+    {
+      "query_id": "toptee:val:503",
+      "category": "toptee",
+      "reference": "B001PO54QU",
+      "target": "B0099SH8YU",
+      "text": "has floral and color is black`` and has more graphics and is darker",
+      "B3_previous_val_tuned_rank": 7,
+      "B3_previous_val_tuned_top1": "B008TQN9P0",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B0020KV02U",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B0020KV02U"
+    },
+    {
+      "query_id": "shirt:val:820",
+      "category": "shirt",
+      "reference": "B000YHF5K4",
+      "target": "B003HLWPOI",
+      "text": "has black and blue colors and it is black and has collar",
+      "B3_previous_val_tuned_rank": 9,
+      "B3_previous_val_tuned_top1": "B001QH66W2",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B001QH66W2",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B001QH66W2"
+    },
+    {
+      "query_id": "dress:val:475",
+      "category": "dress",
+      "reference": "B003TJA7YI",
+      "target": "B005278U3U",
+      "text": "Is more belted and red and is red and belted",
+      "B3_previous_val_tuned_rank": 10,
+      "B3_previous_val_tuned_top1": "B0042VII7U",
+      "A0_train_tuned_global_rank": 51,
+      "A0_train_tuned_global_top1": "B0042VII7U",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B0042VII7U"
+    },
+    {
+      "query_id": "shirt:val:997",
+      "category": "shirt",
+      "reference": "B000NZW3JI",
+      "target": "B004UR1R2Y",
+      "text": "is black with green designs and is black with green logos",
+      "B3_previous_val_tuned_rank": 10,
+      "B3_previous_val_tuned_top1": "B0085E4UWC",
+      "A0_train_tuned_global_rank": 24,
+      "A0_train_tuned_global_top1": "B0085E4UWC",
+      "A2_train_tuned_dynamic_rank": 51,
+      "A2_train_tuned_dynamic_top1": "B0043M67P8"
+    }
+  ]
+}

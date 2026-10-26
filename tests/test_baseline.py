@@ -11,6 +11,12 @@ from cir_baseline.contracts import (
     QuerySpec,
     ensure_compatible_versions,
 )
+from cir_baseline.adaptive import (
+    confidence_bands,
+    has_identity_intent,
+    quantile_thresholds,
+    select_weight_from_ranks,
+)
 from cir_baseline.feedback import FeedbackWeights, update_query
 from cir_baseline.fusion import fuse_weighted, l2_normalize
 from cir_baseline.index import FaissFlatIPIndex, NumpyFlatIPIndex
@@ -100,6 +106,31 @@ class BaselineTests(unittest.TestCase):
         )
         self.assertFalse(blocked.applied)
         self.assertTrue(np.allclose(blocked.vector, q0))
+
+    def test_identity_intent_is_specific(self) -> None:
+        self.assertTrue(has_identity_intent("is exactly the same product"))
+        self.assertTrue(has_identity_intent("looks identical"))
+        self.assertFalse(has_identity_intent("has the same color but shorter sleeves"))
+
+    def test_confidence_bands_use_train_thresholds(self) -> None:
+        thresholds = quantile_thresholds([0.0, 1.0, 2.0, 3.0])
+        bands = confidence_bands([0.0, 1.5, 3.0], thresholds)
+        self.assertEqual(bands.tolist(), [0, 1, 2])
+
+    def test_weight_selection_uses_recall_then_prior(self) -> None:
+        weights = [0.0, 0.2, 0.4]
+        ranks = np.asarray(
+            [
+                [1, 60, 60, 60],
+                [1, 2, 60, 60],
+                [1, 2, 60, 60],
+            ]
+        )
+        selected, metrics = select_weight_from_ranks(
+            weights, ranks, np.arange(4), prior_weight=0.2
+        )
+        self.assertEqual(selected, 0.2)
+        self.assertEqual(metrics["recall@10"], 0.5)
 
 
 if __name__ == "__main__":

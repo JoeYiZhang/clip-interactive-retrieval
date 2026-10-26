@@ -5,7 +5,7 @@
 当前接入：
 
 - CIRR：rc2 官方公开标注与划分已就绪，原图等待官方/NLVR2 回复。
-- FashionIQ：官方标注已就绪；用户批准的 HF 镜像归档 SHA256 已核对，train/val 图片缺失 0，验证集 B0-B3 已完成。
+- FashionIQ：官方标注已就绪；用户批准的 HF 镜像归档 SHA256 已核对，train/val 图片缺失 0，B0-B3 与 train→val 自适应门控已完成。
 - 可选 CIRCO：存在多个相关目标时使用 mAP@K。
 
 ```text

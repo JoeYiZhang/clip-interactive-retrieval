@@ -26,6 +26,7 @@ class ComposedQuery:
     dataset: str
     split: str
     category: str | None = None
+    modification_texts: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -119,6 +120,7 @@ def load_cirr(
                 subset_image_ids=tuple(str(item) for item in image_set.get("members", ())),
                 dataset="cirr",
                 split=split,
+                modification_texts=(str(row["caption"]).strip(),),
             )
         )
     return DatasetBundle(
@@ -184,16 +186,22 @@ def load_fashioniq(
                 raise ValueError(f"FashionIQ query lacks candidate: {category}/{offset}")
             target = row.get("target")
             targets = (str(target),) if target is not None else ()
+            captions = tuple(
+                str(value).strip()
+                for value in row.get("captions", ())
+                if str(value).strip()
+            )
             queries.append(
                 ComposedQuery(
                     query_id=f"{category}:{split}:{offset}",
                     reference_image_id=str(reference),
-                    modification_text=_join_fashioniq_captions(row.get("captions", ())),
+                    modification_text=_join_fashioniq_captions(captions),
                     target_image_ids=targets,
                     subset_image_ids=(),
                     dataset="fashioniq",
                     split=split,
                     category=category,
+                    modification_texts=captions,
                 )
             )
     return DatasetBundle(

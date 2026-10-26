@@ -1,0 +1,66 @@
+{
+  "status": "pass",
+  "scope": "FashionIQ caption ablation and adaptive fusion selected on train, frozen before validation reporting",
+  "protocol": {
+    "selection_split": "train",
+    "report_split": "val",
+    "train_gallery_count": 45429,
+    "train_query_count": 18000,
+    "val_gallery_count": 15415,
+    "val_query_count": 6016,
+    "weight_grid": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  },
+  "selected_model": {
+    "caption_strategy": "symmetric_join_mean",
+    "global_image_weight": 0.3,
+    "gate": "identity intent else per-category text-confidence tertile",
+    "selection_split": "train"
+  },
+  "category_mean_validation": {
+    "B3_previous_val_tuned": {
+      "recall@10": 0.23121237031051364,
+      "recall@50": 0.4154571332894285
+    },
+    "A0_train_tuned_global": {
+      "recall@10": 0.22370566934986913,
+      "recall@50": 0.40024966580541066
+    },
+    "A2_train_tuned_dynamic": {
+      "recall@10": 0.24165092261317855,
+      "recall@50": 0.41526540367189013
+    }
+  },
+  "paired_dynamic_vs_previous_b3": {
+    "recall@10_net_hits": 63,
+    "recall@10_rescued": 198,
+    "recall@10_regressed": 135,
+    "mcnemar_exact_two_sided_p": 0.0006576370695098999,
+    "category_stratified_bootstrap_delta_ci95": [0.004609564070532498, 0.016260767885777253],
+    "recall@50_net_hits": -1,
+    "recall@50_mcnemar_exact_two_sided_p": 1.0
+  },
+  "verification": {
+    "ranking_record_count": 24064,
+    "no_reference_leakage": true,
+    "no_duplicate_ranked_ids": true,
+    "all_rankings_have_top50": true,
+    "reported_metrics_recomputed_exactly": true
+  },
+  "reproducibility": {
+    "runs": [
+      "fashioniq-adaptive-train-val-v1",
+      "fashioniq-adaptive-train-val-v2"
+    ],
+    "parameters_and_metrics_identical": true,
+    "rankings_identical": true,
+    "rankings_sha256": "c2d976cbab143d3b9dd84ccd6b8443e04dc93fb5d3e536114efc49b1a099fb28",
+    "first_run_total_seconds": 591.149,
+    "cache_run_total_seconds": 91.935
+  },
+  "cache_sha256": {
+    "train_gallery": "3a04273683673fd4afa42eef36f8a1b24e112465c00975930eaae1d1a8dc62c0",
+    "train_text_ablation": "0bb55e8cfd640bce68ca7cacb6ec93cfa2437b047293195e535db4b8c43c76d8",
+    "val_text_ablation": "31615dafbe400f19480b2f361a574b8124f638d2937314e24f90af9d1a4eb846"
+  },
+  "research_boundary": "FashionIQ validation has now been consumed once for frozen reporting. Do not tune further on these validation outcomes; use train-only cross-validation for subsequent changes. Official test targets are private."
+}
