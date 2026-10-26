@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "scope": "FashionIQ official validation annotations with user-approved third-party image archive; exact FAISS baseline",
+  "dataset": {
+    "gallery_count": 15415,
+    "query_count": 6016,
+    "canonical_image_format": "png",
+    "image_archive_size_bytes": 992974388,
+    "image_archive_sha256": "7843485e9fcda214578eb4a3c3aef20d82bebf475d4aa523e43a1fde6654e218",
+    "validation_ready": true
+  },
+  "encoder": {
+    "name": "OpenCLIP ViT-B-32 OpenAI QuickGELU",
+    "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "device": "cuda"
+  },
+  "baselines_category_mean": {
+    "B0_image_only": {"recall@10": 0.05831914369444058, "recall@50": 0.1278260486867684},
+    "B1_text_only": {"recall@10": 0.1787968575049803, "recall@50": 0.35866723573516923},
+    "B2_equal": {"recall@10": 0.14664817744173522, "recall@50": 0.28996035516773905},
+    "B3_validation_tuned": {
+      "image_weight": 0.2,
+      "text_weight": 0.8,
+      "recall@10": 0.23121237031051364,
+      "recall@50": 0.4154571332894285
+    }
+  },
+  "profiled_run": {
+    "run_id": "fashioniq-val-clip-b32-v5-canonical-png",
+    "total_seconds": 134.25,
+    "gallery_encode_and_cache_seconds": 105.445,
+    "text_encode_seconds": 8.723,
+    "weight_evaluation_seconds": 11.089,
+    "peak_memory_allocated_mib": 1824.9,
+    "peak_memory_reserved_mib": 2700.0
+  },
+  "reproducibility": {
+    "runs": [
+      "fashioniq-val-clip-b32-v5-canonical-png",
+      "fashioniq-val-clip-b32-v6-canonical-png",
+      "fashioniq-val-clip-b32-v7-canonical-png"
+    ],
+    "metrics_identical": true,
+    "rankings_identical": true,
+    "rankings_sha256": "07fc0df6364be9864d845257d742eaec7bf689a9428d847a4fde61393d8262ab",
+    "embedding_cache_sha256": "17818ac16a1fe6de60ade5bf48e2b1adbca130f06d9a1f1c35b197b567393b36"
+  },
+  "artifact_verification": {
+    "ranking_record_count": 24064,
+    "no_reference_leakage": true,
+    "no_duplicate_ranked_ids": true,
+    "all_rankings_have_top50": true,
+    "reported_metrics_recomputed_exactly": true
+  },
+  "research_boundary": "B3 weight was selected and reported on the same validation split; treat it as exploratory, not independent test performance."
+}

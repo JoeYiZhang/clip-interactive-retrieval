@@ -13,7 +13,7 @@ from cir_baseline.contracts import (
 )
 from cir_baseline.feedback import FeedbackWeights, update_query
 from cir_baseline.fusion import fuse_weighted, l2_normalize
-from cir_baseline.index import NumpyFlatIPIndex
+from cir_baseline.index import FaissFlatIPIndex, NumpyFlatIPIndex
 from cir_baseline.metrics import ann_recall_at_k, recall_at_k
 
 
@@ -68,6 +68,13 @@ class BaselineTests(unittest.TestCase):
         invalid = QuerySpec("ref", "text", "other", "test-index-v1")
         with self.assertRaises(ValueError):
             ensure_compatible_versions(invalid, self.manifest)
+
+    def test_faiss_batch_search_matches_single_search(self) -> None:
+        index = FaissFlatIPIndex(self.ids, self.embeddings, self.manifest)
+        queries = np.asarray([[0.9, 0.1, 0], [0, 0.2, 0.8]], dtype=np.float32)
+        batched = index.search_many(queries, 2)
+        singles = [index.search(query, 2) for query in queries]
+        self.assertEqual(batched, singles)
 
     def test_feedback_drift_guard(self) -> None:
         q0 = np.asarray([1, 0, 0], dtype=np.float32)

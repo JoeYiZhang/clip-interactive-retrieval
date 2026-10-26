@@ -73,7 +73,9 @@ def _find_image(base: Path, image_id: str, relative: str | None = None) -> Path:
         cleaned = relative.replace("\\", "/").removeprefix("./")
         candidates.extend((base / "img_raw" / cleaned, base / cleaned))
     for image_dir in (base / "images", base / "img_raw", base):
-        for suffix in (".jpg", ".jpeg", ".png", ".webp"):
+        # FashionIQ complete mirrors conventionally use PNG. Prefer it over
+        # URL-probe JPEGs so one run never silently mixes two image versions.
+        for suffix in (".png", ".jpg", ".jpeg", ".webp"):
             candidates.append(image_dir / f"{image_id}{suffix}")
     for candidate in candidates:
         if candidate.is_file():

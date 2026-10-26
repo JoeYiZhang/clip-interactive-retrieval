@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "dataset": "fashioniq",
+  "split": "val",
+  "baseline_count": 4,
+  "query_count": 6016,
+  "ranking_record_count": 24064,
+  "expected_ranking_record_count": 24064,
+  "checks": {
+    "no_reference_leakage": true,
+    "no_duplicate_ranked_ids": true,
+    "all_rankings_have_top50": true,
+    "record_count_matches": true,
+    "reported_metrics_recomputed_exactly": true
+  },
+  "recomputed_metrics": {
+    "B0_image_only": {
+      "recall@10": 0.05834441489361702,
+      "recall@50": 0.1278257978723404
+    },
+    "B1_text_only": {
+      "recall@10": 0.17869015957446807,
+      "recall@50": 0.3582114361702128
+    },
+    "B2_equal": {
+      "recall@10": 0.14644281914893617,
+      "recall@50": 0.28972739361702127
+    },
+    "B3_validation_tuned": {
+      "recall@10": 0.2308843085106383,
+      "recall@50": 0.4150598404255319
+    }
+  },
+  "errors": []
+}

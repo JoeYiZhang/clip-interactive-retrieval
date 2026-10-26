@@ -91,7 +91,8 @@ class FaissFlatIPIndex:
             import faiss
         except ImportError as exc:
             raise RuntimeError(
-                "faiss is missing. Install the project with the 'ml' extra."
+                "faiss is unavailable or its native DLL failed to load. "
+                "Install the 'ml' extra and verify the Windows runtime."
             ) from exc
         self._faiss = faiss
         self.image_ids = [str(value) for value in image_ids]
@@ -126,5 +127,31 @@ class FaissFlatIPIndex:
             for rank, (score, idx) in enumerate(
                 zip(scores[0], indices[0], strict=True), start=1
             )
+        ]
+
+    def search_many(
+        self, queries: np.ndarray, top_k: int
+    ) -> list[list[SearchResult]]:
+        if top_k <= 0:
+            raise ValueError("top_k must be positive")
+        matrix = l2_normalize_rows(queries)
+        if matrix.shape[1] != self.embeddings.shape[1]:
+            raise ValueError("query dimension does not match index")
+        count = min(top_k, len(self.image_ids))
+        scores, indices = self.index.search(
+            np.ascontiguousarray(matrix, dtype=np.float32), count
+        )
+        return [
+            [
+                SearchResult(
+                    image_id=self.image_ids[int(item_index)],
+                    score=float(score),
+                    rank=rank,
+                )
+                for rank, (score, item_index) in enumerate(
+                    zip(row_scores, row_indices, strict=True), start=1
+                )
+            ]
+            for row_scores, row_indices in zip(scores, indices, strict=True)
         ]
 

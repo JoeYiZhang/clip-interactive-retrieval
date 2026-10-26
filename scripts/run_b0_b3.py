@@ -7,6 +7,7 @@ import hashlib
 import json
 import platform
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -26,7 +27,7 @@ from cir_baseline.datasets import (  # noqa: E402
     validate_bundle,
 )
 from cir_baseline.encoders import OpenCLIPEncoder  # noqa: E402
-from cir_baseline.fusion import fuse_weighted  # noqa: E402
+from cir_baseline.fusion import l2_normalize_rows  # noqa: E402
 from cir_baseline.index import FaissFlatIPIndex  # noqa: E402
 from cir_baseline.metrics import recall_at_k  # noqa: E402
 
@@ -63,8 +64,16 @@ def _gallery_embeddings(
 
     encoded: list[np.ndarray] = []
     paths = [item.path for item in bundle.gallery]
-    for batch in _batched(paths, batch_size):
+    total_batches = (len(paths) + batch_size - 1) // batch_size
+    started = time.perf_counter()
+    for batch_index, batch in enumerate(_batched(paths, batch_size), start=1):
         encoded.append(encoder.encode_images(batch))
+        if batch_index % 10 == 0 or batch_index == total_batches:
+            print(
+                f"image_encoding={batch_index}/{total_batches} "
+                f"elapsed_s={time.perf_counter() - started:.1f}",
+                flush=True,
+            )
     vectors = np.concatenate(encoded, axis=0).astype(np.float32)
     np.savez_compressed(
         cache_path,
@@ -80,7 +89,12 @@ def _text_embeddings(
     bundle: DatasetBundle, encoder: OpenCLIPEncoder, batch_size: int
 ) -> np.ndarray:
     texts = [query.modification_text for query in bundle.queries]
-    encoded = [encoder.encode_texts(batch) for batch in _batched(texts, batch_size)]
+    batches = list(_batched(texts, batch_size))
+    encoded = []
+    for batch_index, batch in enumerate(batches, start=1):
+        encoded.append(encoder.encode_texts(batch))
+        if batch_index % 10 == 0 or batch_index == len(batches):
+            print(f"text_encoding={batch_index}/{len(batches)}", flush=True)
     return np.concatenate(encoded, axis=0).astype(np.float32)
 
 
@@ -163,26 +177,31 @@ def _run_weight(
         indices[category] = FaissFlatIPIndex(ids, vectors, manifest)
         local_ids[category] = ids
 
-    rankings: list[list[str]] = []
+    reference_vectors = gallery_vectors[
+        [id_to_index[query.reference_image_id] for query in bundle.queries]
+    ]
+    query_vectors = l2_normalize_rows(
+        image_weight * reference_vectors + (1.0 - image_weight) * text_vectors
+    )
+    rankings: list[list[str] | None] = [None] * len(bundle.queries)
+    for category, category_index in indices.items():
+        positions = [
+            position
+            for position, query in enumerate(bundle.queries)
+            if ("all" if bundle.dataset == "cirr" else str(query.category))
+            == category
+        ]
+        top_k = min(51, len(local_ids[category]))
+        category_hits = category_index.search_many(query_vectors[positions], top_k)
+        for position, hits in zip(positions, category_hits, strict=True):
+            reference_id = bundle.queries[position].reference_image_id
+            rankings[position] = [
+                hit.image_id for hit in hits if hit.image_id != reference_id
+            ][:50]
+
+    final_rankings = [ranking if ranking is not None else [] for ranking in rankings]
     subset_rankings: list[list[str]] = []
     for query_index, query in enumerate(bundle.queries):
-        reference_vector = gallery_vectors[id_to_index[query.reference_image_id]]
-        vector = fuse_weighted(
-            reference_vector,
-            text_vectors[query_index],
-            image_weight=image_weight,
-            text_weight=1.0 - image_weight,
-        )
-        category = "all" if bundle.dataset == "cirr" else str(query.category)
-        top_k = min(51, len(local_ids[category]))
-        hits = indices[category].search(vector, top_k=top_k)
-        filtered = [
-            hit.image_id
-            for hit in hits
-            if hit.image_id != query.reference_image_id
-        ][:50]
-        rankings.append(filtered)
-
         if query.subset_image_ids:
             subset_ids = [
                 image_id
@@ -192,15 +211,20 @@ def _run_weight(
             subset_vectors = gallery_vectors[
                 [id_to_index[image_id] for image_id in subset_ids]
             ]
-            scores = subset_vectors @ vector
+            scores = subset_vectors @ query_vectors[query_index]
             order = np.argsort(-scores, kind="stable")
             subset_rankings.append([subset_ids[int(index)] for index in order])
         else:
-            subset_rankings.append(filtered)
-    return _evaluate(bundle, rankings, subset_rankings), rankings, subset_rankings
+            subset_rankings.append(final_rankings[query_index])
+    return (
+        _evaluate(bundle, final_rankings, subset_rankings),
+        final_rankings,
+        subset_rankings,
+    )
 
 
 def main() -> int:
+    run_started = time.perf_counter()
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=("cirr", "fashioniq"), required=True)
     parser.add_argument("--data-root", type=Path, required=True)
@@ -242,6 +266,7 @@ def main() -> int:
     if not all(0.0 <= value <= 1.0 for value in args.weight_grid):
         raise SystemExit("all image weights must be in [0, 1]")
 
+    encoder_started = time.perf_counter()
     encoder = OpenCLIPEncoder(
         model_name=args.model,
         checkpoint_path=args.checkpoint,
@@ -249,6 +274,11 @@ def main() -> int:
         force_quick_gelu=True,
         weights_only=False,
     )
+    encoder_seconds = time.perf_counter() - encoder_started
+    torch_module = encoder._torch
+    if encoder.device.startswith("cuda"):
+        torch_module.cuda.reset_peak_memory_stats()
+    gallery_started = time.perf_counter()
     gallery_ids, gallery_vectors, cache_path, cache_hit = _gallery_embeddings(
         bundle,
         encoder,
@@ -256,15 +286,29 @@ def main() -> int:
         args.image_batch_size,
         args.refresh_cache,
     )
+    gallery_seconds = time.perf_counter() - gallery_started
+    text_started = time.perf_counter()
     text_vectors = _text_embeddings(bundle, encoder, args.text_batch_size)
+    text_seconds = time.perf_counter() - text_started
 
     named_weights = {"B0_image_only": 1.0, "B1_text_only": 0.0, "B2_equal": 0.5}
-    named_results: dict[str, dict] = {}
-    saved_rankings: dict[str, tuple[list[list[str]], list[list[str]]]] = {}
-    for name, weight in named_weights.items():
+    all_weights = sorted(set(named_weights.values()) | set(args.weight_grid))
+    weight_results: dict[
+        float, tuple[dict, list[list[str]], list[list[str]]]
+    ] = {}
+    evaluation_started = time.perf_counter()
+    for weight in all_weights:
+        print(f"evaluating_image_weight={weight:.3f}", flush=True)
         metrics, ranking, subset = _run_weight(
             bundle, gallery_ids, gallery_vectors, text_vectors, weight, encoder.version
         )
+        weight_results[weight] = (metrics, ranking, subset)
+    evaluation_seconds = time.perf_counter() - evaluation_started
+
+    named_results: dict[str, dict] = {}
+    saved_rankings: dict[str, tuple[list[list[str]], list[list[str]]]] = {}
+    for name, weight in named_weights.items():
+        metrics, ranking, subset = weight_results[weight]
         named_results[name] = {"image_weight": weight, "metrics": metrics}
         saved_rankings[name] = (ranking, subset)
 
@@ -272,9 +316,7 @@ def main() -> int:
     sweep_rankings: dict[float, tuple[list[list[str]], list[list[str]]]] = {}
     objective = "recall@10"
     for weight in sorted(set(args.weight_grid)):
-        metrics, ranking, subset = _run_weight(
-            bundle, gallery_ids, gallery_vectors, text_vectors, weight, encoder.version
-        )
+        metrics, ranking, subset = weight_results[weight]
         sweep.append({"image_weight": weight, "metrics": metrics})
         sweep_rankings[weight] = (ranking, subset)
     best = max(
@@ -318,6 +360,25 @@ def main() -> int:
             "numpy": np.__version__,
         },
         "cache": {"path": str(cache_path.resolve()), "hit": cache_hit},
+        "timing": {
+            "encoder_load_seconds": round(encoder_seconds, 3),
+            "gallery_cache_or_encode_seconds": round(gallery_seconds, 3),
+            "text_encode_seconds": round(text_seconds, 3),
+            "weight_evaluation_seconds": round(evaluation_seconds, 3),
+            "total_seconds": round(time.perf_counter() - run_started, 3),
+        },
+        "gpu": {
+            "peak_memory_allocated_mib": (
+                round(torch_module.cuda.max_memory_allocated() / 1024**2, 1)
+                if encoder.device.startswith("cuda")
+                else None
+            ),
+            "peak_memory_reserved_mib": (
+                round(torch_module.cuda.max_memory_reserved() / 1024**2, 1)
+                if encoder.device.startswith("cuda")
+                else None
+            ),
+        },
         "baselines": named_results,
         "B3_weight_sweep": sweep,
     }

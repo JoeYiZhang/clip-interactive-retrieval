@@ -37,4 +37,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+# Windows 上 pytest 的 faulthandler/stdio 捕获会让 faiss 1.15.1 的 SWIG DLL
+# 间歇性初始化失败；unittest 与普通 Python 进程均不受影响。
+addopts = "-p no:faulthandler --capture=no"
 
