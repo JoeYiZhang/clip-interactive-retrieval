@@ -1,17 +1,17 @@
 # 基于 CLIP 与多轮交互反馈的组合图像检索系统
 
-> 最新交接状态（2026-10-26）：FashionIQ 已完成 train→val 的 caption 消融与动态门控，冻结方案 Mean R@10/R@50 为 24.17%/41.53%；CIRR 原图仍等待官方回复。最新指标与边界见 `docs/12_FashionIQ自适应融合实验报告_2026-10-26.md`。
+> 最新交接状态（2026-10-26）：FashionIQ 已完成 train→val 的 caption 消融与动态门控，冻结方案 Mean R@10/R@50 为 24.17%/41.53%；第三阶段多轮会话状态机已通过工程验收；CIRR 原图仍等待官方回复。见 `docs/12` 和 `docs/13`。
 
 本仓库是项目第二阶段的可复现工程基线。当前已经实现精确内积检索、向量归一化、图文加权融合、查询漂移保护、版本契约、评测指标、可选 OpenCLIP 和 FAISS 适配层以及自动化烟雾测试。
 
 ## 当前状态
 
 - 第一阶段文献、需求、架构、数据和实验规范已经固化在 `docs/`。
-- 第二阶段参考链路与 CIRR/FashionIQ 数据适配器共 14 项测试已通过。
+- 第二阶段参考链路、FashionIQ 自适应融合和第三阶段会话核心共 19 项测试已通过。
 - 真实 CLIP 环境已在 RTX 4060 上跑通（torch 2.9.1+cu126、open-clip-torch 3.3.0、faiss-cpu 1.15.1），编码冒烟结果为 512 维、单位范数、峰值显存 634 MiB；证据见 `docs/09_环境搭建与验证报告_2026-10-26.md`。
 - FashionIQ 用户批准的 HF 图片归档已通过 SHA256，train/val 图片完整；仅用 train 选择的动态门控在 val 上类别平均 R@10/R@50 为 24.17%/41.53%，排名复跑完全一致。
 - CIRR 公开标注已接入，但原图仍等待官方/NLVR2 回复，因此 CIRR 指标尚未运行。
-- 第三阶段在线交互、第四阶段 MLP 重排序和第五阶段综合实验尚未开始。
+- 第三阶段会话状态机已完成，HTTP API、SQLite 持久化和界面待实现；第四阶段 MLP 重排序和第五阶段综合实验尚未开始。
 
 ## 快速验证
 
@@ -22,6 +22,7 @@ $env:PYTHONPATH = "$PWD\src"
 $py = "C:\Users\25062\venvs\cir-clip\Scripts\python.exe"
 & $py -m unittest discover -s tests -v
 & $py scripts\run_stage2_smoke.py
+& $py scripts\run_interactive_smoke.py
 & $py scripts\check_environment.py
 & $py scripts\validate_dataset.py --dataset cirr --root "D:\image_data\datasets\cirr" --split val --allow-missing-images
 & $py scripts\validate_dataset.py --dataset fashioniq --root "D:\image_data\datasets\fashioniq" --split val --allow-missing-images
@@ -81,7 +82,7 @@ print(encoder.version, encoder.weights_sha256)
 
 1. 等待 CIRR 官方原图授权；到位后做完整性校验和 CIRR B0-B3。
 2. FashionIQ 冻结当前 A2 动态方案，不再依据 val 结果调参；新改动只在 train 内交叉验证。
-3. 等待 CIRR 期间，可实现轻量门控的 train 内交叉验证，或进入第三阶段在线交互状态机。
+3. 第三阶段下一步实现 API Schema、SQLite 事件存储和 FastAPI 薄适配层。
 4. 两个数据集基线稳定后再比较 HNSW/IVF，并完成多轮交互评测。
 
 ## 目录

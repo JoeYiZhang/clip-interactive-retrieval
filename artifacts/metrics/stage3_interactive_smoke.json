@@ -1,0 +1,93 @@
+{
+  "status": "pass",
+  "scope": "synthetic multi-turn state-machine smoke test; not a research result",
+  "timestamp_utc": "2026-10-26T12:12:55.894706+00:00",
+  "checks": {
+    "reference_excluded_from_every_exposure": true,
+    "rounds_incremented_monotonically": true,
+    "idempotent_retry_did_not_add_round": true,
+    "explicit_negative_retained": true,
+    "latest_positive_labels_retained": true,
+    "max_rounds_closed_session": true,
+    "current_query_is_unit_normalized": true
+  },
+  "rounds": [
+    {
+      "shown": [
+        "candidate-a",
+        "candidate-b",
+        "candidate-c"
+      ],
+      "transition": {
+        "event_id": "smoke-event-1",
+        "round_before": 0,
+        "round_after": 1,
+        "update_applied": true,
+        "proposed_cosine_drift": 0.004038810729980469,
+        "reason": "feedback update accepted",
+        "accepted_ids": [
+          "candidate-b"
+        ],
+        "rejected_ids": [
+          "candidate-c"
+        ],
+        "cumulative_positive_ids": [
+          "candidate-b"
+        ],
+        "cumulative_negative_ids": [
+          "candidate-c"
+        ],
+        "status": "active"
+      },
+      "idempotent_retry_equal": true
+    },
+    {
+      "shown": [
+        "candidate-a",
+        "candidate-b",
+        "candidate-c"
+      ],
+      "transition": {
+        "event_id": "smoke-event-2",
+        "round_before": 1,
+        "round_after": 2,
+        "update_applied": true,
+        "proposed_cosine_drift": 0.0006105899810791016,
+        "reason": "feedback update accepted",
+        "accepted_ids": [
+          "candidate-a"
+        ],
+        "rejected_ids": [],
+        "cumulative_positive_ids": [
+          "candidate-a",
+          "candidate-b"
+        ],
+        "cumulative_negative_ids": [
+          "candidate-c"
+        ],
+        "status": "completed"
+      }
+    }
+  ],
+  "final_snapshot": {
+    "session_id": "anon-smoke-session",
+    "round_id": 2,
+    "reference_image_id": "reference",
+    "encoder_version": "interactive-smoke-encoder-v1",
+    "index_version": "interactive-smoke-flatip-v1",
+    "reranker_version": "none",
+    "prompt_version": "none",
+    "positive_image_ids": [
+      "candidate-a",
+      "candidate-b"
+    ],
+    "negative_image_ids": [
+      "candidate-c"
+    ],
+    "last_shown_image_ids": [],
+    "processed_event_count": 2,
+    "max_rounds": 2,
+    "status": "completed",
+    "close_reason": "max_rounds_reached"
+  }
+}

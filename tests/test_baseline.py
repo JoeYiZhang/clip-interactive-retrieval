@@ -20,6 +20,7 @@ from cir_baseline.adaptive import (
 from cir_baseline.feedback import FeedbackWeights, update_query
 from cir_baseline.fusion import fuse_weighted, l2_normalize
 from cir_baseline.index import FaissFlatIPIndex, NumpyFlatIPIndex
+from cir_baseline.interactive import InteractiveSession
 from cir_baseline.metrics import ann_recall_at_k, recall_at_k
 
 
@@ -131,6 +132,122 @@ class BaselineTests(unittest.TestCase):
         )
         self.assertEqual(selected, 0.2)
         self.assertEqual(metrics["recall@10"], 0.5)
+
+    def _interactive_session(
+        self,
+        *,
+        max_rounds: int = 3,
+        weights: FeedbackWeights = FeedbackWeights(),
+    ) -> InteractiveSession:
+        index = NumpyFlatIPIndex(self.ids, self.embeddings, self.manifest)
+        embedding_by_id = dict(zip(self.ids, self.embeddings, strict=True))
+        return InteractiveSession(
+            session_id="anon-session-1",
+            reference_image_id="x",
+            initial_query=np.asarray([0.8, 0.6, 0], dtype=np.float32),
+            encoder_version="test-encoder-v1",
+            index=index,
+            embedding_by_id=embedding_by_id,
+            max_rounds=max_rounds,
+            weights=weights,
+        )
+
+    def test_interactive_round_and_explicit_feedback(self) -> None:
+        session = self._interactive_session()
+        shown = session.retrieve(top_k=2)
+        shown_ids = tuple(item.image_id for item in shown)
+        self.assertNotIn("x", shown_ids)
+        transition = session.submit_feedback(
+            event_id="event-1",
+            shown_image_ids=shown_ids,
+            accepted_ids=("y",),
+            rejected_ids=("z",),
+        )
+        self.assertEqual(transition.round_after, 1)
+        self.assertEqual(transition.cumulative_positive_ids, ("y",))
+        self.assertEqual(transition.cumulative_negative_ids, ("z",))
+        self.assertEqual(session.snapshot().status, "active")
+
+    def test_interactive_requires_recorded_exposure(self) -> None:
+        session = self._interactive_session()
+        with self.assertRaises(RuntimeError):
+            session.submit_feedback(event_id="event-1", shown_image_ids=("y",))
+        shown_ids = tuple(item.image_id for item in session.retrieve(top_k=2))
+        with self.assertRaises(ValueError):
+            session.submit_feedback(
+                event_id="event-2",
+                shown_image_ids=shown_ids,
+                accepted_ids=("not-shown",),
+            )
+        with self.assertRaises(ValueError):
+            session.submit_feedback(
+                event_id="event-3",
+                shown_image_ids=shown_ids,
+                accepted_ids=(shown_ids[0],),
+                rejected_ids=(shown_ids[0],),
+            )
+
+    def test_interactive_event_id_is_idempotent(self) -> None:
+        session = self._interactive_session()
+        shown_ids = tuple(item.image_id for item in session.retrieve(top_k=2))
+        first = session.submit_feedback(
+            event_id="event-1",
+            shown_image_ids=shown_ids,
+            accepted_ids=(shown_ids[0],),
+        )
+        repeated = session.submit_feedback(
+            event_id="event-1",
+            shown_image_ids=shown_ids,
+            accepted_ids=(shown_ids[0],),
+        )
+        self.assertEqual(first, repeated)
+        self.assertEqual(session.snapshot().round_id, 1)
+        with self.assertRaises(ValueError):
+            session.submit_feedback(
+                event_id="event-1",
+                shown_image_ids=shown_ids,
+                rejected_ids=(shown_ids[0],),
+            )
+
+    def test_interactive_max_rounds_and_close(self) -> None:
+        session = self._interactive_session(max_rounds=1)
+        shown_ids = tuple(item.image_id for item in session.retrieve(top_k=2))
+        transition = session.submit_feedback(
+            event_id="event-1",
+            shown_image_ids=shown_ids,
+            accepted_ids=(shown_ids[0],),
+        )
+        self.assertEqual(transition.status, "completed")
+        with self.assertRaises(RuntimeError):
+            session.submit_feedback(
+                event_id="event-2",
+                shown_image_ids=shown_ids,
+                accepted_ids=(shown_ids[0],),
+            )
+        snapshot = session.close()
+        self.assertEqual(snapshot.status, "completed")
+
+    def test_interactive_drift_guard_rolls_back(self) -> None:
+        session = self._interactive_session(
+            weights=FeedbackWeights(
+                anchor_weight=0,
+                previous_weight=0,
+                positive_weight=0,
+                negative_weight=0,
+                text_weight=1,
+                update_strength=1,
+                max_cosine_drift=0.01,
+            )
+        )
+        before = session.current_query
+        shown_ids = tuple(item.image_id for item in session.retrieve(top_k=2))
+        transition = session.submit_feedback(
+            event_id="event-1",
+            shown_image_ids=shown_ids,
+            feedback_text_embedding=-before,
+        )
+        self.assertFalse(transition.update_applied)
+        self.assertTrue(np.allclose(session.current_query, before))
 
 
 if __name__ == "__main__":
