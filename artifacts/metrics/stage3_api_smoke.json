@@ -1,0 +1,40 @@
+{
+  "status": "pass",
+  "scope": "local FastAPI + SQLite integration smoke; not a research result",
+  "timestamp_utc": "2026-10-26T13:43:41.440314+00:00",
+  "checks": {
+    "health": true,
+    "create_session": true,
+    "retrieve_and_reference_filter": true,
+    "feedback": true,
+    "http_idempotency": true,
+    "restart_recovery": true,
+    "close": true,
+    "version_conflict_http_409": true,
+    "openapi_route_present": true
+  },
+  "evidence": {
+    "first_transition": {
+      "event_id": "api-smoke-event-1",
+      "round_before": 0,
+      "round_after": 1,
+      "update_applied": true,
+      "proposed_cosine_drift": 0.004038810729980469,
+      "reason": "feedback update accepted",
+      "accepted_ids": [
+        "candidate-b"
+      ],
+      "rejected_ids": [
+        "candidate-c"
+      ],
+      "cumulative_positive_ids": [
+        "candidate-b"
+      ],
+      "cumulative_negative_ids": [
+        "candidate-c"
+      ],
+      "status": "active"
+    }
+  },
+  "openapi": "artifacts/api/openapi.json"
+}

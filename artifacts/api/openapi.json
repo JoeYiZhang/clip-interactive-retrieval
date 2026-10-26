@@ -1,0 +1,695 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CLIP Interactive Retrieval API",
+    "description": "Versioned multi-turn retrieval session API.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions": {
+      "post": {
+        "summary": "Create Session",
+        "operationId": "create_session_v1_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions/{session_id}": {
+      "get": {
+        "summary": "Get Session",
+        "operationId": "get_session_v1_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions/{session_id}/retrieve": {
+      "post": {
+        "summary": "Retrieve",
+        "operationId": "retrieve_v1_sessions__session_id__retrieve_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrieveBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrievalResponseModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions/{session_id}/feedback": {
+      "post": {
+        "summary": "Feedback",
+        "operationId": "feedback_v1_sessions__session_id__feedback_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackResponseModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions/{session_id}/close": {
+      "post": {
+        "summary": "Close",
+        "operationId": "close_v1_sessions__session_id__close_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CloseBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CloseBody": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Reason",
+            "default": "user_closed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "CloseBody"
+      },
+      "CreateSessionBody": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Session Id"
+          },
+          "reference_image_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reference Image Id"
+          },
+          "initial_query": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Initial Query"
+          },
+          "expected_encoder_version": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Expected Encoder Version"
+          },
+          "expected_index_version": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Expected Index Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "session_id",
+          "reference_image_id",
+          "initial_query",
+          "expected_encoder_version",
+          "expected_index_version"
+        ],
+        "title": "CreateSessionBody"
+      },
+      "FeedbackBody": {
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Event Id"
+          },
+          "shown_image_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Shown Image Ids"
+          },
+          "accepted_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Accepted Ids"
+          },
+          "rejected_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Rejected Ids"
+          },
+          "feedback_text_embedding": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Feedback Text Embedding"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event_id",
+          "shown_image_ids"
+        ],
+        "title": "FeedbackBody"
+      },
+      "FeedbackResponseModel": {
+        "properties": {
+          "session": {
+            "$ref": "#/components/schemas/SessionModel"
+          },
+          "transition": {
+            "$ref": "#/components/schemas/TransitionModel"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "session",
+          "transition"
+        ],
+        "title": "FeedbackResponseModel"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthModel": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "encoder_version": {
+            "type": "string",
+            "title": "Encoder Version"
+          },
+          "index_version": {
+            "type": "string",
+            "title": "Index Version"
+          },
+          "item_count": {
+            "type": "integer",
+            "title": "Item Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "encoder_version",
+          "index_version",
+          "item_count"
+        ],
+        "title": "HealthModel"
+      },
+      "RetrievalResponseModel": {
+        "properties": {
+          "session": {
+            "$ref": "#/components/schemas/SessionModel"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/SearchResultModel"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "session",
+          "results"
+        ],
+        "title": "RetrievalResponseModel"
+      },
+      "RetrieveBody": {
+        "properties": {
+          "top_k": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "Top K",
+            "default": 10
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "RetrieveBody"
+      },
+      "SearchResultModel": {
+        "properties": {
+          "image_id": {
+            "type": "string",
+            "title": "Image Id"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "image_id",
+          "score",
+          "rank"
+        ],
+        "title": "SearchResultModel"
+      },
+      "SessionModel": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "round_id": {
+            "type": "integer",
+            "title": "Round Id"
+          },
+          "reference_image_id": {
+            "type": "string",
+            "title": "Reference Image Id"
+          },
+          "encoder_version": {
+            "type": "string",
+            "title": "Encoder Version"
+          },
+          "index_version": {
+            "type": "string",
+            "title": "Index Version"
+          },
+          "reranker_version": {
+            "type": "string",
+            "title": "Reranker Version"
+          },
+          "prompt_version": {
+            "type": "string",
+            "title": "Prompt Version"
+          },
+          "positive_image_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Positive Image Ids"
+          },
+          "negative_image_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Negative Image Ids"
+          },
+          "last_shown_image_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Last Shown Image Ids"
+          },
+          "processed_event_count": {
+            "type": "integer",
+            "title": "Processed Event Count"
+          },
+          "max_rounds": {
+            "type": "integer",
+            "title": "Max Rounds"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "close_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Close Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "session_id",
+          "round_id",
+          "reference_image_id",
+          "encoder_version",
+          "index_version",
+          "reranker_version",
+          "prompt_version",
+          "positive_image_ids",
+          "negative_image_ids",
+          "last_shown_image_ids",
+          "processed_event_count",
+          "max_rounds",
+          "status",
+          "close_reason"
+        ],
+        "title": "SessionModel"
+      },
+      "TransitionModel": {
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "title": "Event Id"
+          },
+          "round_before": {
+            "type": "integer",
+            "title": "Round Before"
+          },
+          "round_after": {
+            "type": "integer",
+            "title": "Round After"
+          },
+          "update_applied": {
+            "type": "boolean",
+            "title": "Update Applied"
+          },
+          "proposed_cosine_drift": {
+            "type": "number",
+            "title": "Proposed Cosine Drift"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "accepted_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Accepted Ids"
+          },
+          "rejected_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Rejected Ids"
+          },
+          "cumulative_positive_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cumulative Positive Ids"
+          },
+          "cumulative_negative_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cumulative Negative Ids"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event_id",
+          "round_before",
+          "round_after",
+          "update_applied",
+          "proposed_cosine_drift",
+          "reason",
+          "accepted_ids",
+          "rejected_ids",
+          "cumulative_positive_ids",
+          "cumulative_negative_ids",
+          "status"
+        ],
+        "title": "TransitionModel"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

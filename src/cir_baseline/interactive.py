@@ -118,6 +118,10 @@ class InteractiveSession:
         self._close_reason: str | None = None
 
     @property
+    def initial_query(self) -> np.ndarray:
+        return self._initial_query.copy()
+
+    @property
     def current_query(self) -> np.ndarray:
         return self._current_query.copy()
 

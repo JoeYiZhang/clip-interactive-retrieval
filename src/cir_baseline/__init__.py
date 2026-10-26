@@ -1,5 +1,13 @@
 """Core building blocks for reproducible retrieval and multi-turn interaction."""
 
+from .api_models import (
+    CloseSessionRequest,
+    CreateSessionRequest,
+    FeedbackRequest,
+    FeedbackResponse,
+    RetrievalResponse,
+    RetrieveRequest,
+)
 from .contracts import IndexManifest, QuerySpec, SearchResult, ensure_compatible_versions
 from .datasets import (
     ComposedQuery,
@@ -15,21 +23,31 @@ from .fusion import fuse_weighted, l2_normalize, l2_normalize_rows
 from .index import NumpyFlatIPIndex
 from .interactive import InteractiveSession, SessionSnapshot, SessionTransition
 from .metrics import ann_recall_at_k, recall_at_k
+from .session_service import SessionService
+from .session_store import SQLiteSessionStore
 
 __all__ = [
-    "FeedbackWeights",
+    "CloseSessionRequest",
     "ComposedQuery",
+    "CreateSessionRequest",
     "DatasetBundle",
     "DatasetValidation",
+    "FeedbackRequest",
+    "FeedbackResponse",
+    "FeedbackWeights",
     "GalleryItem",
     "IndexManifest",
     "InteractiveSession",
     "NumpyFlatIPIndex",
     "QuerySpec",
     "QueryUpdate",
+    "RetrievalResponse",
+    "RetrieveRequest",
     "SearchResult",
     "SessionSnapshot",
+    "SessionService",
     "SessionTransition",
+    "SQLiteSessionStore",
     "ann_recall_at_k",
     "ensure_compatible_versions",
     "fuse_weighted",
