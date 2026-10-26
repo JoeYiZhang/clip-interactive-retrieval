@@ -1,6 +1,6 @@
 experiment_id,date,owner,task,dataset,split,encoder,fusion,index,reranker,seed,code_version,data_version,primary_metric,result_path,status,notes
-smoke-20261026,2026-10-26,张祖毅,exact-retrieval-smoke,synthetic,generated,synthetic-encoder-v1,none,NumpyFlatIP,none,20261026,workspace-initial,synthetic-v1,Recall@1=1.0,artifacts/metrics/stage2_smoke.json,passed,仅验证工程链路不是科研结果
-real-clip-smoke-20261026,2026-10-26,张祖毅,real-encoder-faiss-smoke,synthetic-images,generated,OpenCLIP-ViT-B-32-openai-40d365,none,FAISS-IndexFlatIP,none,20261026,workspace-pre-git,synthetic-shapes-v1,engineering-pass,artifacts/metrics/real_clip_smoke.json,passed,CUDA真实编码和NumPy对拍；不是科研指标
-cirr-b0b3-val,2026-10-26,待分配,composed-image-retrieval,cirr,val,OpenCLIP-ViT-B-32-openai-40d365,B0-B3,FAISS-IndexFlatIP,none,20261026,pending-git,rc2,R@10,D:/image_data/derived/rankings,blocked_waiting_license,公开标注结构通过；等待官方/NLVR2原图授权
-fashioniq-b0b3-val,2026-10-26,待分配,composed-image-retrieval,fashioniq,val,OpenCLIP-ViT-B-32-openai-40d365,B0-B3,FAISS-IndexFlatIP,none,20261026,pending-git,official,R@10,D:/image_data/derived/rankings,blocked_incomplete_images,官方URL抽测有404；需确认完整图像来源
+smoke-20261026,2026-10-26,张祖毅,exact-retrieval-smoke,synthetic,generated,synthetic-encoder-v1,none,NumpyFlatIP,none,20261026,561f73d,synthetic-v1,Recall@1=1.0,artifacts/metrics/stage2_smoke.json,passed,仅验证工程链路不是科研结果
+real-clip-smoke-20261026,2026-10-26,张祖毅,real-encoder-faiss-smoke,synthetic-images,generated,OpenCLIP-ViT-B-32-openai-40d365,none,FAISS-IndexFlatIP,none,20261026,561f73d,synthetic-shapes-v1,engineering-pass,artifacts/metrics/real_clip_smoke.json,passed,CUDA真实编码和NumPy对拍；不是科研指标
+cirr-b0b3-val,2026-10-26,待分配,composed-image-retrieval,cirr,val,OpenCLIP-ViT-B-32-openai-40d365,B0-B3,FAISS-IndexFlatIP,none,20261026,561f73d,rc2,R@10,D:/image_data/derived/rankings,blocked_waiting_license,公开标注结构通过；等待官方/NLVR2原图授权
+fashioniq-b0b3-val,2026-10-26,待分配,composed-image-retrieval,fashioniq,val,OpenCLIP-ViT-B-32-openai-40d365,B0-B3,FAISS-IndexFlatIP,none,20261026,561f73d,official,R@10,D:/image_data/derived/rankings,blocked_incomplete_images,官方URL抽测有404；需确认完整图像来源
 
