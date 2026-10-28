@@ -1,0 +1,273 @@
+{
+  "sampling": "first 10 query IDs, same success/failure direction in all seeds",
+  "counts": {
+    "consistent_rescues_at_10": 170,
+    "consistent_regressions_at_10": 200
+  },
+  "examples": {
+    "consistent_rescues_at_10": [
+      {
+        "query_id": "dress:train:1048",
+        "category": "dress",
+        "text": "has white buttons and has cap sleeves and white embellishments",
+        "reference": "B00CLDANDI",
+        "target": "B009KM5EQO",
+        "A2_rank": 23,
+        "candidate_ranks_by_seed": {
+          "17": 1,
+          "29": 1,
+          "43": 1
+        }
+      },
+      {
+        "query_id": "dress:train:1258",
+        "category": "dress",
+        "text": "is purple with long sleeves and has longer sleeves and is bluer",
+        "reference": "B007JLQFEI",
+        "target": "B00AAUXG74",
+        "A2_rank": 51,
+        "candidate_ranks_by_seed": {
+          "17": 6,
+          "29": 5,
+          "43": 8
+        }
+      },
+      {
+        "query_id": "dress:train:1332",
+        "category": "dress",
+        "text": "is maggy london and is a word maggy london",
+        "reference": "B007RLXE1C",
+        "target": "B00967K04O",
+        "A2_rank": 51,
+        "candidate_ranks_by_seed": {
+          "17": 10,
+          "29": 10,
+          "43": 10
+        }
+      },
+      {
+        "query_id": "dress:train:1426",
+        "category": "dress",
+        "text": "Is lighter blue. and light blue",
+        "reference": "B002HGDVCE",
+        "target": "B002ECOKNA",
+        "A2_rank": 18,
+        "candidate_ranks_by_seed": {
+          "17": 2,
+          "29": 4,
+          "43": 8
+        }
+      },
+      {
+        "query_id": "dress:train:1629",
+        "category": "dress",
+        "text": "has a higher neck and has designs and is darker",
+        "reference": "B00FLNS92C",
+        "target": "B00DGP0NIK",
+        "A2_rank": 51,
+        "candidate_ranks_by_seed": {
+          "17": 2,
+          "29": 3,
+          "43": 4
+        }
+      },
+      {
+        "query_id": "dress:train:1662",
+        "category": "dress",
+        "text": "floral and More red and less glossy",
+        "reference": "B00AB2M9IS",
+        "target": "B009817LQI",
+        "A2_rank": 51,
+        "candidate_ranks_by_seed": {
+          "17": 4,
+          "29": 5,
+          "43": 10
+        }
+      },
+      {
+        "query_id": "dress:train:1748",
+        "category": "dress",
+        "text": "Is more plain and cute and is solid black with sleeves",
+        "reference": "B00CY93TEY",
+        "target": "B009UZLR26",
+        "A2_rank": 18,
+        "candidate_ranks_by_seed": {
+          "17": 10,
+          "29": 3,
+          "43": 7
+        }
+      },
+      {
+        "query_id": "dress:train:2399",
+        "category": "dress",
+        "text": "is less tighter and is orange and more playful",
+        "reference": "B007JLOBZS",
+        "target": "B00DIARI7W",
+        "A2_rank": 51,
+        "candidate_ranks_by_seed": {
+          "17": 4,
+          "29": 10,
+          "43": 10
+        }
+      },
+      {
+        "query_id": "dress:train:2457",
+        "category": "dress",
+        "text": "is white and blue and longer and is longer and has longer sleeves",
+        "reference": "B0098B824S",
+        "target": "B0087DQDG2",
+        "A2_rank": 18,
+        "candidate_ranks_by_seed": {
+          "17": 4,
+          "29": 5,
+          "43": 2
+        }
+      },
+      {
+        "query_id": "dress:train:2643",
+        "category": "dress",
+        "text": "is more shiny and fashionable and is cream with a black belt and short sleeves",
+        "reference": "B00DDJN54S",
+        "target": "B00E9LDV5M",
+        "A2_rank": 35,
+        "candidate_ranks_by_seed": {
+          "17": 7,
+          "29": 2,
+          "43": 3
+        }
+      }
+    ],
+    "consistent_regressions_at_10": [
+      {
+        "query_id": "dress:train:1358",
+        "category": "dress",
+        "text": "has stripes and is less frilly and Is more patterned",
+        "reference": "B004RDQD0M",
+        "target": "B004U88XR0",
+        "A2_rank": 4,
+        "candidate_ranks_by_seed": {
+          "17": 51,
+          "29": 51,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:1389",
+        "category": "dress",
+        "text": "is longer and peach colored and is solid salmon color",
+        "reference": "B00EQ849NG",
+        "target": "B00FSFB4KM",
+        "A2_rank": 4,
+        "candidate_ranks_by_seed": {
+          "17": 51,
+          "29": 51,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:1418",
+        "category": "dress",
+        "text": "has a white top and pink skirt and not fitted",
+        "reference": "B008DS1LTA",
+        "target": "B008FY9G0I",
+        "A2_rank": 8,
+        "candidate_ranks_by_seed": {
+          "17": 51,
+          "29": 51,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:2064",
+        "category": "dress",
+        "text": "Is a short white dress with a ruffle hem. and is white with imprints",
+        "reference": "B00CW68LA6",
+        "target": "B009IO0L1W",
+        "A2_rank": 8,
+        "candidate_ranks_by_seed": {
+          "17": 17,
+          "29": 36,
+          "43": 23
+        }
+      },
+      {
+        "query_id": "dress:train:2173",
+        "category": "dress",
+        "text": "Is more fitted and chic and is shorter",
+        "reference": "B007EECFR6",
+        "target": "B0093UNBXQ",
+        "A2_rank": 3,
+        "candidate_ranks_by_seed": {
+          "17": 51,
+          "29": 51,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:2270",
+        "category": "dress",
+        "text": "is dark colored and not a dress and is polka dot and belted",
+        "reference": "B0081P9SEA",
+        "target": "B0096NI7YS",
+        "A2_rank": 4,
+        "candidate_ranks_by_seed": {
+          "17": 32,
+          "29": 39,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:2350",
+        "category": "dress",
+        "text": "is strapless and light green and yellow and blue",
+        "reference": "B009S3H7OW",
+        "target": "B009S3I7FU",
+        "A2_rank": 5,
+        "candidate_ranks_by_seed": {
+          "17": 15,
+          "29": 51,
+          "43": 49
+        }
+      },
+      {
+        "query_id": "dress:train:2377",
+        "category": "dress",
+        "text": "is more fitting and is solid red",
+        "reference": "B007WATZQG",
+        "target": "B00A7H7YO6",
+        "A2_rank": 9,
+        "candidate_ranks_by_seed": {
+          "17": 51,
+          "29": 51,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:2598",
+        "category": "dress",
+        "text": "is blue colored and more revealing and is strapless and a brighter color",
+        "reference": "B00AKEBVRC",
+        "target": "B004PU28KQ",
+        "A2_rank": 3,
+        "candidate_ranks_by_seed": {
+          "17": 51,
+          "29": 51,
+          "43": 51
+        }
+      },
+      {
+        "query_id": "dress:train:2798",
+        "category": "dress",
+        "text": "is a dark printed sheer maxi dress and is sleeveless and has no solid black top.",
+        "reference": "B004GCJ61C",
+        "target": "B004HIMKCW",
+        "A2_rank": 6,
+        "candidate_ranks_by_seed": {
+          "17": 23,
+          "29": 41,
+          "43": 24
+        }
+      }
+    ]
+  }
+}

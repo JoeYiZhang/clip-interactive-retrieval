@@ -1,0 +1,58 @@
+{
+  "status": "pass",
+  "scope": "FashionIQ train-only image-disjoint internal holdout; not official val/test",
+  "checks": {
+    "input_cache_hashes": true,
+    "split_manifest_hash": true,
+    "split_recomputed": true,
+    "zero_supervised_image_overlap": true,
+    "selection_hash": true,
+    "selection_matches_summary": true,
+    "variant_chosen_from_dev": true,
+    "checkpoints_and_epoch_selection": true,
+    "rankings_hash": true,
+    "rankings_complete_and_valid": true,
+    "metrics_recomputed": true,
+    "three_seed_mean_and_sd": true,
+    "checkpoint_and_baseline_rankings_replayed": true
+  },
+  "ranking_records": 29040,
+  "replay": {
+    "B0_image_only": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "B1_text_only": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "B2_equal": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "A0_refit_global": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "A2_refit_dynamic": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "residual_fusion-seed17": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "residual_fusion-seed29": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    },
+    "residual_fusion-seed43": {
+      "matching_queries": 3630,
+      "expected_queries": 3630
+    }
+  },
+  "cases": {
+    "consistent_rescues_at_10": 170,
+    "consistent_regressions_at_10": 200
+  }
+}

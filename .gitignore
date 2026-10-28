@@ -10,6 +10,7 @@ data/processed/
 models/
 indexes/
 artifacts/cache/
+artifacts/fusion-runs/
 *.pt
 *.pth
 *.bin
