@@ -15,6 +15,7 @@ artifacts/cache/
 *.bin
 *.faiss
 *.npz
+*.sqlite3
 .env
 pip-build-env-*/
 pip-build-tracker-*/

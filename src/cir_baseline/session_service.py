@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict
+from threading import RLock
 from typing import Mapping
 
 import numpy as np
@@ -49,6 +50,7 @@ class SessionService:
         self.store = store
         self.weights = weights
         self.max_rounds = max_rounds
+        self._lock = RLock()
 
     def _load(self, session_id: str) -> InteractiveSession:
         try:
@@ -87,9 +89,10 @@ class SessionService:
     def retrieve(
         self, session_id: str, request: RetrieveRequest
     ) -> RetrievalResponse:
-        session = self._load(session_id)
-        results = session.retrieve(request.top_k)
-        self.store.record_exposure(session)
+        with self._lock:
+            session = self._load(session_id)
+            results = session.retrieve(request.top_k)
+            self.store.record_exposure(session)
         return RetrievalResponse(
             session=session.snapshot().to_dict(),
             results=tuple(asdict(result) for result in results),
@@ -98,34 +101,44 @@ class SessionService:
     def submit_feedback(
         self, session_id: str, request: FeedbackRequest
     ) -> FeedbackResponse:
-        session = self._load(session_id)
-        feedback_vector = (
-            None
-            if request.feedback_text_embedding is None
-            else np.asarray(request.feedback_text_embedding, dtype=np.float32)
-        )
-        transition = session.submit_feedback(
-            event_id=request.event_id,
-            shown_image_ids=request.shown_image_ids,
-            accepted_ids=request.accepted_ids,
-            rejected_ids=request.rejected_ids,
-            feedback_text_embedding=feedback_vector,
-        )
-        self.store.record_feedback(
-            session,
-            shown_image_ids=request.shown_image_ids,
-            accepted_ids=request.accepted_ids,
-            rejected_ids=request.rejected_ids,
-            feedback_text_embedding=feedback_vector,
-            transition=transition,
-        )
+        with self._lock:
+            session = self._load(session_id)
+            if (
+                request.expected_round_id is not None
+                and request.expected_round_id != session.snapshot().round_id
+                and not session.has_event(request.event_id)
+            ):
+                raise SessionVersionConflict(
+                    "session round changed; retrieve the latest state before feedback"
+                )
+            feedback_vector = (
+                None
+                if request.feedback_text_embedding is None
+                else np.asarray(request.feedback_text_embedding, dtype=np.float32)
+            )
+            transition = session.submit_feedback(
+                event_id=request.event_id,
+                shown_image_ids=request.shown_image_ids,
+                accepted_ids=request.accepted_ids,
+                rejected_ids=request.rejected_ids,
+                feedback_text_embedding=feedback_vector,
+            )
+            self.store.record_feedback(
+                session,
+                shown_image_ids=request.shown_image_ids,
+                accepted_ids=request.accepted_ids,
+                rejected_ids=request.rejected_ids,
+                feedback_text_embedding=feedback_vector,
+                transition=transition,
+            )
         return FeedbackResponse(
             session=session.snapshot().to_dict(),
             transition=transition.to_dict(),
         )
 
     def close_session(self, session_id: str, request: CloseSessionRequest) -> dict:
-        session = self._load(session_id)
-        snapshot = session.close(request.reason)
-        self.store.record_close(session)
+        with self._lock:
+            session = self._load(session_id)
+            snapshot = session.close(request.reason)
+            self.store.record_close(session)
         return snapshot.to_dict()

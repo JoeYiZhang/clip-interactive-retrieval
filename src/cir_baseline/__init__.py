@@ -18,9 +18,15 @@ from .datasets import (
     load_fashioniq,
     validate_bundle,
 )
+from .demo_service import (
+    FashionIQQueryComposer,
+    LazyTextEncoder,
+    MultiIndexSessionService,
+)
 from .feedback import FeedbackWeights, QueryUpdate, update_query
 from .fusion import fuse_weighted, l2_normalize, l2_normalize_rows
 from .index import NumpyFlatIPIndex
+from .index_registry import IndexRegistry, RegisteredIndex
 from .interactive import InteractiveSession, SessionSnapshot, SessionTransition
 from .metrics import ann_recall_at_k, recall_at_k
 from .session_service import SessionService
@@ -35,12 +41,17 @@ __all__ = [
     "FeedbackRequest",
     "FeedbackResponse",
     "FeedbackWeights",
+    "FashionIQQueryComposer",
     "GalleryItem",
     "IndexManifest",
+    "IndexRegistry",
     "InteractiveSession",
+    "LazyTextEncoder",
+    "MultiIndexSessionService",
     "NumpyFlatIPIndex",
     "QuerySpec",
     "QueryUpdate",
+    "RegisteredIndex",
     "RetrievalResponse",
     "RetrieveRequest",
     "SearchResult",

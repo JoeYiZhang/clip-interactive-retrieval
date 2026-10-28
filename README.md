@@ -1,17 +1,17 @@
 # 基于 CLIP 与多轮交互反馈的组合图像检索系统
 
-> 最新交接状态（2026-10-26）：FashionIQ 冻结方案 Mean R@10/R@50 为 24.17%/41.53%；第三阶段会话状态机、SQLite 恢复和 FastAPI 已通过工程验收；CIRR 原图仍等待官方回复。见 `docs/12`—`docs/14`。
+> 最新交接状态（2026-10-28）：FashionIQ 冻结方案 Mean R@10/R@50 为 24.17%/41.53%；第三阶段已交付真实索引注册、SQLite 恢复、FastAPI 和本地交互页面；CIRR 原图仍等待官方回复。见 `docs/12`—`docs/15`。
 
 本仓库是项目第二阶段的可复现工程基线。当前已经实现精确内积检索、向量归一化、图文加权融合、查询漂移保护、版本契约、评测指标、可选 OpenCLIP 和 FAISS 适配层以及自动化烟雾测试。
 
 ## 当前状态
 
 - 第一阶段文献、需求、架构、数据和实验规范已经固化在 `docs/`。
-- 第二阶段参考链路、FashionIQ 自适应融合和第三阶段 API/SQLite 共 25 项测试已通过。
+- 第二阶段参考链路、FashionIQ 自适应融合和第三阶段在线链路共 29 项测试已通过。
 - 真实 CLIP 环境已在 RTX 4060 上跑通（torch 2.9.1+cu126、open-clip-torch 3.3.0、faiss-cpu 1.15.1），编码冒烟结果为 512 维、单位范数、峰值显存 634 MiB；证据见 `docs/09_环境搭建与验证报告_2026-10-26.md`。
 - FashionIQ 用户批准的 HF 图片归档已通过 SHA256，train/val 图片完整；仅用 train 选择的动态门控在 val 上类别平均 R@10/R@50 为 24.17%/41.53%，排名复跑完全一致。
 - CIRR 公开标注已接入，但原图仍等待官方/NLVR2 回复，因此 CIRR 指标尚未运行。
-- 第三阶段会话状态机、HTTP API、SQLite 持久化和 OpenAPI 已完成，真实索引启动器、并发控制和界面待实现；第四阶段 MLP 重排序和第五阶段综合实验尚未开始。
+- 第三阶段会话状态机、HTTP API、SQLite 持久化、真实 FashionIQ 索引注册、本地交互页面、单进程乐观轮次控制和延迟埋点已完成；多进程并发、鉴权限流和真实用户研究仍待实现。
 
 ## 快速验证
 
@@ -24,12 +24,25 @@ $py = "C:\Users\25062\venvs\cir-clip\Scripts\python.exe"
 & $py scripts\run_stage2_smoke.py
 & $py scripts\run_interactive_smoke.py
 & $py scripts\run_api_smoke.py
+& $py scripts\run_fashioniq_demo_smoke.py --device cuda
 & $py scripts\check_environment.py
 & $py scripts\validate_dataset.py --dataset cirr --root "D:\image_data\datasets\cirr" --split val --allow-missing-images
 & $py scripts\validate_dataset.py --dataset fashioniq --root "D:\image_data\datasets\fashioniq" --split val --allow-missing-images
 ```
 
 烟雾测试结果写入 `artifacts/metrics/stage2_smoke.json`。它只验证代码和数据契约，不代表 CIRR 或 FashionIQ 上的模型效果。
+
+## 启动本地真实索引演示
+
+以下命令仅监听本机回环地址，不会开放公网端口：
+
+```powershell
+$py = "C:\Users\25062\venvs\cir-clip\Scripts\python.exe"
+& $py scripts\run_fashioniq_demo.py --device cuda
+# 浏览器访问 http://127.0.0.1:8000/
+```
+
+服务直接读取 `D:\image_data` 中已登记的 FashionIQ val 嵌入与图片。首次提交文本时按需加载本地 OpenCLIP 权重；原始自由文本不写入 SQLite。A2 参数基于英文 FashionIQ 描述冻结，演示时应优先输入英文。该页面是工程验收界面，不是新的 FashionIQ/CIRR 指标。
 
 ## 安装真实模型依赖
 
@@ -83,7 +96,7 @@ print(encoder.version, encoder.weights_sha256)
 
 1. 等待 CIRR 官方原图授权；到位后做完整性校验和 CIRR B0-B3。
 2. FashionIQ 冻结当前 A2 动态方案，不再依据 val 结果调参；新改动只在 train 内交叉验证。
-3. 第三阶段下一步实现索引注册表、本地演示页面、乐观并发控制和延迟埋点。
+3. 第三阶段真实索引、页面、单进程轮次冲突控制和延迟埋点已完成；下一步做多进程并发、鉴权限流与用户研究协议。
 4. 两个数据集基线稳定后再比较 HNSW/IVF，并完成多轮交互评测。
 
 ## 目录

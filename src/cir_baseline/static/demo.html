@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FashionIQ 多轮交互检索</title>
+  <link rel="stylesheet" href="/assets/demo.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">LOCAL ENGINEERING DEMO</p>
+      <h1>FashionIQ 多轮交互检索</h1>
+      <p class="subtitle">真实 OpenCLIP 图库索引 · 显式正负反馈 · SQLite 会话恢复</p>
+    </div>
+    <div id="health" class="status-pill">正在连接…</div>
+  </header>
+
+  <main>
+    <section class="panel setup-panel">
+      <div class="section-heading">
+        <div><span class="step">01</span><h2>选择参考图</h2></div>
+        <div class="toolbar">
+          <select id="index-select" aria-label="FashionIQ 类别"></select>
+          <button id="more-references" class="ghost">换一批</button>
+        </div>
+      </div>
+      <div id="reference-grid" class="image-grid reference-grid"></div>
+      <div class="query-row">
+        <label for="query-text">你希望怎样修改这件商品？</label>
+        <div class="query-controls">
+          <input id="query-text" maxlength="1000" placeholder="例如：shorter sleeves, dark blue, keep the round neck">
+          <button id="start-session" class="primary" disabled>开始检索</button>
+        </div>
+        <p class="hint">A2 参数在英文 FashionIQ 描述上冻结，建议输入英文；文本为空时执行纯图像相似检索。原文不会写入 SQLite。</p>
+      </div>
+    </section>
+
+    <section class="panel results-panel">
+      <div class="section-heading">
+        <div><span class="step">02</span><h2>结果与反馈</h2></div>
+        <div id="round-label" class="round-label">尚未创建会话</div>
+      </div>
+      <div id="result-empty" class="empty-state">
+        选择参考图并开始检索后，结果会显示在这里。
+      </div>
+      <div id="result-grid" class="image-grid result-grid"></div>
+      <div id="feedback-panel" class="feedback-panel hidden">
+        <label for="feedback-text">可选：补充一条新的文本反馈</label>
+        <input id="feedback-text" maxlength="1000" placeholder="例如：the color is right, but use a lighter fabric">
+        <div class="feedback-actions">
+          <p><span class="accept-dot"></span>喜欢 <b id="accepted-count">0</b>　<span class="reject-dot"></span>排除 <b id="rejected-count">0</b></p>
+          <div>
+            <button id="close-session" class="ghost">结束会话</button>
+            <button id="submit-feedback" class="primary">提交反馈并继续</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel evidence-panel">
+      <div class="section-heading">
+        <div><span class="step">03</span><h2>运行证据</h2></div>
+        <button id="refresh-metrics" class="ghost">刷新延迟</button>
+      </div>
+      <div id="composition" class="evidence-card">尚无查询组合信息。</div>
+      <pre id="metrics">尚无请求统计。</pre>
+      <p class="warning">本页面用于本地工程验收，不产生新的 FashionIQ 或 CIRR 科研指标。</p>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="/assets/demo.js" defer></script>
+</body>
+</html>

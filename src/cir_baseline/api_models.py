@@ -77,9 +77,14 @@ class FeedbackRequest:
     accepted_ids: tuple[str, ...] = ()
     rejected_ids: tuple[str, ...] = ()
     feedback_text_embedding: tuple[float, ...] | None = None
+    expected_round_id: int | None = None
 
     @classmethod
     def from_dict(cls, payload: Mapping[str, Any]) -> "FeedbackRequest":
+        raw_round = payload.get("expected_round_id")
+        expected_round = None if raw_round is None else int(raw_round)
+        if expected_round is not None and expected_round < 0:
+            raise ValueError("expected_round_id must be non-negative")
         return cls(
             event_id=_required_text(payload, "event_id"),
             shown_image_ids=_string_tuple(
@@ -92,6 +97,7 @@ class FeedbackRequest:
                 "feedback_text_embedding",
                 optional=True,
             ),
+            expected_round_id=expected_round,
         )
 
 

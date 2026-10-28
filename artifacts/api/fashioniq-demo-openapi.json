@@ -1,0 +1,576 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FashionIQ Interactive Retrieval Demo",
+    "description": "Local-only real-index demo. It is an engineering acceptance surface, not a new FashionIQ or CIRR benchmark result.",
+    "version": "0.2.0"
+  },
+  "paths": {
+    "/v1/demo/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_v1_demo_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Health V1 Demo Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/catalog": {
+      "get": {
+        "summary": "Catalog",
+        "operationId": "catalog_v1_demo_catalog_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Catalog V1 Demo Catalog Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/indexes/{index_key}/references": {
+      "get": {
+        "summary": "References",
+        "operationId": "references_v1_demo_indexes__index_key__references_get",
+        "parameters": [
+          {
+            "name": "index_key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Index Key"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 24,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response References V1 Demo Indexes  Index Key  References Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/images/{index_key}/{image_id}": {
+      "get": {
+        "summary": "Image",
+        "operationId": "image_v1_demo_images__index_key___image_id__get",
+        "parameters": [
+          {
+            "name": "index_key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Index Key"
+            }
+          },
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Image Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/sessions": {
+      "post": {
+        "summary": "Create Session",
+        "operationId": "create_session_v1_demo_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoCreateBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Create Session V1 Demo Sessions Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/sessions/{session_id}": {
+      "get": {
+        "summary": "Get Session",
+        "operationId": "get_session_v1_demo_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Session V1 Demo Sessions  Session Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/sessions/{session_id}/retrieve": {
+      "post": {
+        "summary": "Retrieve",
+        "operationId": "retrieve_v1_demo_sessions__session_id__retrieve_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoRetrieveBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Retrieve V1 Demo Sessions  Session Id  Retrieve Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/sessions/{session_id}/feedback": {
+      "post": {
+        "summary": "Feedback",
+        "operationId": "feedback_v1_demo_sessions__session_id__feedback_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoFeedbackBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Feedback V1 Demo Sessions  Session Id  Feedback Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/sessions/{session_id}/close": {
+      "post": {
+        "summary": "Close",
+        "operationId": "close_v1_demo_sessions__session_id__close_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoCloseBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Close V1 Demo Sessions  Session Id  Close Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/demo/metrics": {
+      "get": {
+        "summary": "Latency Metrics",
+        "operationId": "latency_metrics_v1_demo_metrics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Latency Metrics V1 Demo Metrics Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DemoCloseBody": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Reason",
+            "default": "user_closed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "DemoCloseBody"
+      },
+      "DemoCreateBody": {
+        "properties": {
+          "index_key": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Index Key"
+          },
+          "reference_image_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Reference Image Id"
+          },
+          "modification_text": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Modification Text",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "index_key",
+          "reference_image_id"
+        ],
+        "title": "DemoCreateBody"
+      },
+      "DemoFeedbackBody": {
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Event Id"
+          },
+          "expected_round_id": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Round Id"
+          },
+          "shown_image_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Shown Image Ids"
+          },
+          "accepted_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Accepted Ids"
+          },
+          "rejected_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Rejected Ids"
+          },
+          "feedback_text": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Feedback Text",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event_id",
+          "expected_round_id",
+          "shown_image_ids"
+        ],
+        "title": "DemoFeedbackBody"
+      },
+      "DemoRetrieveBody": {
+        "properties": {
+          "top_k": {
+            "type": "integer",
+            "maximum": 50.0,
+            "minimum": 1.0,
+            "title": "Top K",
+            "default": 12
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "DemoRetrieveBody"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

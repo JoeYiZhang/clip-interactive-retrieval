@@ -351,6 +351,18 @@
               }
             ],
             "title": "Feedback Text Embedding"
+          },
+          "expected_round_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Round Id"
           }
         },
         "additionalProperties": false,

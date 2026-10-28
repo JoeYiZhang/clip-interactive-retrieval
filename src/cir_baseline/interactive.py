@@ -125,6 +125,9 @@ class InteractiveSession:
     def current_query(self) -> np.ndarray:
         return self._current_query.copy()
 
+    def has_event(self, event_id: str) -> bool:
+        return str(event_id) in self._events
+
     def snapshot(self) -> SessionSnapshot:
         return SessionSnapshot(
             session_id=self.session_id,

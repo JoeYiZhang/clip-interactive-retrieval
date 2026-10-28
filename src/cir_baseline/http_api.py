@@ -42,6 +42,7 @@ class FeedbackBody(StrictModel):
     accepted_ids: list[str] = Field(default_factory=list)
     rejected_ids: list[str] = Field(default_factory=list)
     feedback_text_embedding: list[float] | None = None
+    expected_round_id: int | None = Field(default=None, ge=0)
 
 
 class CloseBody(StrictModel):

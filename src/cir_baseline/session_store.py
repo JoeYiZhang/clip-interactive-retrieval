@@ -338,3 +338,13 @@ class SQLiteSessionStore:
                 (session_id,),
             ).fetchone()
         return int(row["count"])
+
+    def session_index_version(self, session_id: str) -> str:
+        with closing(self._connect()) as connection, connection:
+            row = connection.execute(
+                "SELECT index_version FROM sessions WHERE session_id = ?",
+                (session_id,),
+            ).fetchone()
+        if row is None:
+            raise StoredSessionNotFound(session_id)
+        return str(row["index_version"])

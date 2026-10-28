@@ -1,0 +1,82 @@
+{
+  "status": "pass",
+  "scope": "real FashionIQ index and local HTTP engineering acceptance; not a benchmark metric",
+  "timestamp_utc": "2026-10-28T11:45:39.571886+00:00",
+  "registry": [
+    {
+      "key": "fashioniq:val:dress",
+      "dataset": "fashioniq",
+      "split": "val",
+      "category": "dress",
+      "item_count": 3817,
+      "embedding_dim": 512,
+      "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+      "index_version": "fashioniq-val-dress-flatip-17818ac16a1f",
+      "cache_path": "D:\\image_data\\derived\\embeddings\\fashioniq_val_official_9f33a448cbb3.npz",
+      "cache_sha256": "17818ac16a1fe6de60ade5bf48e2b1adbca130f06d9a1f1c35b197b567393b36"
+    },
+    {
+      "key": "fashioniq:val:shirt",
+      "dataset": "fashioniq",
+      "split": "val",
+      "category": "shirt",
+      "item_count": 6346,
+      "embedding_dim": 512,
+      "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+      "index_version": "fashioniq-val-shirt-flatip-17818ac16a1f",
+      "cache_path": "D:\\image_data\\derived\\embeddings\\fashioniq_val_official_9f33a448cbb3.npz",
+      "cache_sha256": "17818ac16a1fe6de60ade5bf48e2b1adbca130f06d9a1f1c35b197b567393b36"
+    },
+    {
+      "key": "fashioniq:val:toptee",
+      "dataset": "fashioniq",
+      "split": "val",
+      "category": "toptee",
+      "item_count": 5373,
+      "embedding_dim": 512,
+      "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+      "index_version": "fashioniq-val-toptee-flatip-17818ac16a1f",
+      "cache_path": "D:\\image_data\\derived\\embeddings\\fashioniq_val_official_9f33a448cbb3.npz",
+      "cache_sha256": "17818ac16a1fe6de60ade5bf48e2b1adbca130f06d9a1f1c35b197b567393b36"
+    }
+  ],
+  "encoder": {
+    "version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+    "checkpoint": "C:\\Users\\25062\\.cache\\clip\\ViT-B-32.pt",
+    "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "loaded": true
+  },
+  "query": {
+    "query_id": "dress:val:0",
+    "category": "dress",
+    "reference_image_id": "B005X4PL1G"
+  },
+  "checks": {
+    "page": true,
+    "openapi": true,
+    "three_real_indexes": true,
+    "create": true,
+    "warm_create": true,
+    "warm_close": true,
+    "retrieve": true,
+    "reference_filtered": true,
+    "image_delivery": true,
+    "feedback": true,
+    "idempotent_retry": true,
+    "stale_round_rejected": true,
+    "restart_restore": true,
+    "retrieve_after_restart": true,
+    "latency_metrics": true,
+    "close": true
+  },
+  "latency": {
+    "registry_load_ms": 7915.406,
+    "first_text_session_ms": 10829.29,
+    "warm_text_session_ms": 19.578,
+    "retrieve_ms": 8.926
+  },
+  "openapi": {
+    "path": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\api\\fashioniq-demo-openapi.json",
+    "sha256": "58b621fea563b0e9f11f49cab50d95ad9a27ee93bd316f54c55ad3ee86c3e096"
+  }
+}
