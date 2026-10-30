@@ -1,0 +1,113 @@
+{
+  "scope": "full image coverage and annotation audit; no model quality claim",
+  "datasets": {
+    "circo": {
+      "ready_for_full_evaluation": false,
+      "archives_crc_verified": false,
+      "splits": {
+        "val": {
+          "audit": {
+            "status": "pass",
+            "queries": 220,
+            "usable_queries": 220,
+            "query_ids_unique": true,
+            "invalid": []
+          },
+          "required_images": 1121,
+          "missing_images": 1079,
+          "missing_examples": [
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000000050.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000001603.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000001691.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000001703.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000002010.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000002192.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000002407.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000002837.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000003828.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000003944.jpg"
+          ]
+        },
+        "test": {
+          "audit": {
+            "queries": 800,
+            "query_ids_unique": true,
+            "invalid": []
+          },
+          "required_images": 798,
+          "missing_images": 796,
+          "missing_examples": [
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000001710.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000002505.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000002705.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000003318.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000003744.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000003970.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000004374.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000005518.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000005645.jpg",
+            "D:\\image_data\\datasets\\coco\\unlabeled2017\\000000007731.jpg"
+          ]
+        }
+      }
+    },
+    "lasco": {
+      "ready_for_full_evaluation": false,
+      "archives_crc_verified": false,
+      "splits": {
+        "val": {
+          "audit": {
+            "status": "quarantine_required",
+            "queries": 30037,
+            "usable_queries": 30031,
+            "query_ids_unique": true,
+            "invalid": [
+              {
+                "query_id": "172856002",
+                "reason": "empty text"
+              },
+              {
+                "query_id": "13061003",
+                "reason": "empty text"
+              },
+              {
+                "query_id": "-194331000",
+                "reason": "empty text"
+              },
+              {
+                "query_id": "-73256002",
+                "reason": "empty text"
+              },
+              {
+                "query_id": "-393212002",
+                "reason": "empty text"
+              },
+              {
+                "query_id": "-362434000",
+                "reason": "empty text"
+              }
+            ]
+          },
+          "required_images": 39761,
+          "missing_images": 39747,
+          "missing_examples": [
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000042.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000073.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000074.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000133.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000136.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000139.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000143.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000164.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000192.jpg",
+            "D:\\image_data\\datasets\\coco\\val2014\\COCO_val2014_000000000196.jpg"
+          ]
+        },
+        "train": {
+          "status": "annotations_pending"
+        }
+      }
+    }
+  },
+  "status": "pending_download"
+}
