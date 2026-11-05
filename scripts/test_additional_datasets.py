@@ -43,12 +43,12 @@ def download(url, path):
                 raise
             time.sleep(2)
 
-def audit(rows, kind):
+def audit(rows, kind, allow_repeated_qids=False):
     query_ids = [str(row["id" if kind == "circo" else "qid"]) for row in rows]
-    if len(query_ids) != len(set(query_ids)):
+    if len(query_ids) != len(set(query_ids)) and not allow_repeated_qids:
         raise ValueError("duplicate query IDs")
     invalid = []
-    for query_id, row in zip(query_ids, rows):
+    for row_index, (query_id, row) in enumerate(zip(query_ids, rows)):
         reason = None
         if kind == "circo":
             if not row["relative_caption"].strip() or not row["shared_concept"].strip():
@@ -67,9 +67,13 @@ def audit(rows, kind):
                 if path.is_absolute() or ".." in path.parts:
                     raise ValueError("unsafe image path")
         if reason:
-            invalid.append({"query_id": query_id, "reason": reason})
+            item = {"query_id": query_id, "reason": reason}
+            if allow_repeated_qids:
+                item["row_index"] = row_index
+            invalid.append(item)
     return {"status": "pass" if not invalid else "quarantine_required", "queries": len(rows),
-            "usable_queries": len(rows)-len(invalid), "query_ids_unique": True, "invalid": invalid}
+            "usable_queries": len(rows)-len(invalid), "query_ids_unique": len(query_ids) == len(set(query_ids)),
+            "extra_repeated_qids": len(query_ids)-len(set(query_ids)), "invalid": invalid}
 
 def main():
     parser = argparse.ArgumentParser()

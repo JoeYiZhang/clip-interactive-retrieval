@@ -23,6 +23,14 @@ class AdditionalDataTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             module.audit([self.row(), self.row()], "lasco")
 
+    def test_explicit_source_qid_reuse_preserves_row_identity(self):
+        invalid = self.row()
+        invalid["query-text"] = ""
+        result = module.audit([self.row(), invalid], "lasco", allow_repeated_qids=True)
+        self.assertEqual(result["extra_repeated_qids"], 1)
+        self.assertEqual(result["usable_queries"], 1)
+        self.assertEqual(result["invalid"][0]["row_index"], 1)
+
     def test_image_path_cannot_escape_data_root(self):
         row = self.row()
         row["target-image"][1] = "../private.jpg"

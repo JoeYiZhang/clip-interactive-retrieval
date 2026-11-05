@@ -1,0 +1,592 @@
+{
+  "scope": "annotation audit only; images and full CIRCO gallery still require verification",
+  "splits": {
+    "train": {
+      "annotation_sha256": "77ab90f10b7658ba1002661e99a816756f4785f96416a1716bafe86386e25a9c",
+      "audit": {
+        "status": "quarantine_required",
+        "queries": 359268,
+        "usable_queries": 359167,
+        "query_ids_unique": false,
+        "extra_repeated_qids": 16,
+        "invalid": [
+          {
+            "query_id": "269109002",
+            "reason": "empty text",
+            "row_index": 8923
+          },
+          {
+            "query_id": "253915002",
+            "reason": "empty text",
+            "row_index": 9226
+          },
+          {
+            "query_id": "162741002",
+            "reason": "empty text",
+            "row_index": 21036
+          },
+          {
+            "query_id": "233137000",
+            "reason": "empty text",
+            "row_index": 24488
+          },
+          {
+            "query_id": "432522001",
+            "reason": "empty text",
+            "row_index": 29270
+          },
+          {
+            "query_id": "108210001",
+            "reason": "empty text",
+            "row_index": 38292
+          },
+          {
+            "query_id": "511562007",
+            "reason": "empty text",
+            "row_index": 39239
+          },
+          {
+            "query_id": "136346001",
+            "reason": "empty text",
+            "row_index": 40611
+          },
+          {
+            "query_id": "457146001",
+            "reason": "empty text",
+            "row_index": 44357
+          },
+          {
+            "query_id": "319315005",
+            "reason": "empty text",
+            "row_index": 44946
+          },
+          {
+            "query_id": "144538002",
+            "reason": "empty text",
+            "row_index": 45361
+          },
+          {
+            "query_id": "488657002",
+            "reason": "empty text",
+            "row_index": 46281
+          },
+          {
+            "query_id": "502588001",
+            "reason": "empty text",
+            "row_index": 56255
+          },
+          {
+            "query_id": "420442007",
+            "reason": "empty text",
+            "row_index": 57064
+          },
+          {
+            "query_id": "81201001",
+            "reason": "empty text",
+            "row_index": 57540
+          },
+          {
+            "query_id": "32116003",
+            "reason": "empty text",
+            "row_index": 61593
+          },
+          {
+            "query_id": "258642003",
+            "reason": "empty text",
+            "row_index": 73331
+          },
+          {
+            "query_id": "146249003",
+            "reason": "empty text",
+            "row_index": 86701
+          },
+          {
+            "query_id": "403773001",
+            "reason": "empty text",
+            "row_index": 94820
+          },
+          {
+            "query_id": "336333002",
+            "reason": "empty text",
+            "row_index": 95150
+          },
+          {
+            "query_id": "227456001",
+            "reason": "empty text",
+            "row_index": 95748
+          },
+          {
+            "query_id": "359379002",
+            "reason": "empty text",
+            "row_index": 96973
+          },
+          {
+            "query_id": "490496001",
+            "reason": "empty text",
+            "row_index": 98799
+          },
+          {
+            "query_id": "357684011",
+            "reason": "empty text",
+            "row_index": 107446
+          },
+          {
+            "query_id": "568471000",
+            "reason": "empty text",
+            "row_index": 107501
+          },
+          {
+            "query_id": "198600002",
+            "reason": "empty text",
+            "row_index": 110708
+          },
+          {
+            "query_id": "293946000",
+            "reason": "empty text",
+            "row_index": 114328
+          },
+          {
+            "query_id": "548564001",
+            "reason": "empty text",
+            "row_index": 116842
+          },
+          {
+            "query_id": "144574001",
+            "reason": "empty text",
+            "row_index": 116991
+          },
+          {
+            "query_id": "332724001",
+            "reason": "empty text",
+            "row_index": 123404
+          },
+          {
+            "query_id": "455881004",
+            "reason": "empty text",
+            "row_index": 125566
+          },
+          {
+            "query_id": "507540002",
+            "reason": "empty text",
+            "row_index": 127778
+          },
+          {
+            "query_id": "499719000",
+            "reason": "empty text",
+            "row_index": 133861
+          },
+          {
+            "query_id": "216963002",
+            "reason": "empty text",
+            "row_index": 138169
+          },
+          {
+            "query_id": "579095002",
+            "reason": "empty text",
+            "row_index": 141716
+          },
+          {
+            "query_id": "91288000",
+            "reason": "empty text",
+            "row_index": 144626
+          },
+          {
+            "query_id": "335855000",
+            "reason": "empty text",
+            "row_index": 147119
+          },
+          {
+            "query_id": "529055001",
+            "reason": "empty text",
+            "row_index": 151637
+          },
+          {
+            "query_id": "562664000",
+            "reason": "empty text",
+            "row_index": 157305
+          },
+          {
+            "query_id": "527446004",
+            "reason": "empty text",
+            "row_index": 159327
+          },
+          {
+            "query_id": "378344000",
+            "reason": "empty text",
+            "row_index": 162283
+          },
+          {
+            "query_id": "483692001",
+            "reason": "empty text",
+            "row_index": 162653
+          },
+          {
+            "query_id": "102073008",
+            "reason": "empty text",
+            "row_index": 163179
+          },
+          {
+            "query_id": "71714005",
+            "reason": "empty text",
+            "row_index": 164457
+          },
+          {
+            "query_id": "543855002",
+            "reason": "empty text",
+            "row_index": 169904
+          },
+          {
+            "query_id": "568116000",
+            "reason": "empty text",
+            "row_index": 173197
+          },
+          {
+            "query_id": "42196002",
+            "reason": "empty text",
+            "row_index": 175124
+          },
+          {
+            "query_id": "-14764001",
+            "reason": "empty text",
+            "row_index": 184057
+          },
+          {
+            "query_id": "-323813001",
+            "reason": "empty text",
+            "row_index": 190282
+          },
+          {
+            "query_id": "-384049001",
+            "reason": "empty text",
+            "row_index": 190570
+          },
+          {
+            "query_id": "-391481003",
+            "reason": "empty text",
+            "row_index": 191184
+          },
+          {
+            "query_id": "-282706001",
+            "reason": "empty text",
+            "row_index": 195062
+          },
+          {
+            "query_id": "-520027001",
+            "reason": "empty text",
+            "row_index": 196048
+          },
+          {
+            "query_id": "-368440001",
+            "reason": "empty text",
+            "row_index": 196314
+          },
+          {
+            "query_id": "-100638002",
+            "reason": "empty text",
+            "row_index": 208269
+          },
+          {
+            "query_id": "-516490002",
+            "reason": "empty text",
+            "row_index": 213911
+          },
+          {
+            "query_id": "-118404002",
+            "reason": "empty text",
+            "row_index": 217149
+          },
+          {
+            "query_id": "-299623006",
+            "reason": "empty text",
+            "row_index": 220680
+          },
+          {
+            "query_id": "-309494002",
+            "reason": "empty text",
+            "row_index": 221475
+          },
+          {
+            "query_id": "-260576002",
+            "reason": "empty text",
+            "row_index": 224583
+          },
+          {
+            "query_id": "-398407002",
+            "reason": "empty text",
+            "row_index": 228752
+          },
+          {
+            "query_id": "-436370003",
+            "reason": "empty text",
+            "row_index": 244620
+          },
+          {
+            "query_id": "-501204002",
+            "reason": "empty text",
+            "row_index": 250759
+          },
+          {
+            "query_id": "-117336002",
+            "reason": "empty text",
+            "row_index": 255214
+          },
+          {
+            "query_id": "-379093006",
+            "reason": "empty text",
+            "row_index": 255241
+          },
+          {
+            "query_id": "-104349001",
+            "reason": "empty text",
+            "row_index": 256451
+          },
+          {
+            "query_id": "-227242001",
+            "reason": "empty text",
+            "row_index": 258448
+          },
+          {
+            "query_id": "-412661000",
+            "reason": "empty text",
+            "row_index": 259323
+          },
+          {
+            "query_id": "-447292001",
+            "reason": "empty text",
+            "row_index": 268474
+          },
+          {
+            "query_id": "-465200000",
+            "reason": "empty text",
+            "row_index": 269315
+          },
+          {
+            "query_id": "-95867000",
+            "reason": "empty text",
+            "row_index": 278018
+          },
+          {
+            "query_id": "-435814000",
+            "reason": "empty text",
+            "row_index": 278833
+          },
+          {
+            "query_id": "-158614003",
+            "reason": "empty text",
+            "row_index": 282672
+          },
+          {
+            "query_id": "-393489009",
+            "reason": "empty text",
+            "row_index": 288640
+          },
+          {
+            "query_id": "-42156002",
+            "reason": "empty text",
+            "row_index": 289120
+          },
+          {
+            "query_id": "-21212003",
+            "reason": "empty text",
+            "row_index": 289877
+          },
+          {
+            "query_id": "-249922007",
+            "reason": "empty text",
+            "row_index": 290006
+          },
+          {
+            "query_id": "-429207003",
+            "reason": "empty text",
+            "row_index": 290249
+          },
+          {
+            "query_id": "-260826003",
+            "reason": "empty text",
+            "row_index": 290593
+          },
+          {
+            "query_id": "-365645000",
+            "reason": "empty text",
+            "row_index": 291427
+          },
+          {
+            "query_id": "-277729003",
+            "reason": "empty text",
+            "row_index": 292794
+          },
+          {
+            "query_id": "-479916001",
+            "reason": "empty text",
+            "row_index": 298269
+          },
+          {
+            "query_id": "-391739002",
+            "reason": "empty text",
+            "row_index": 298518
+          },
+          {
+            "query_id": "-102899000",
+            "reason": "empty text",
+            "row_index": 301396
+          },
+          {
+            "query_id": "-203359005",
+            "reason": "empty text",
+            "row_index": 302070
+          },
+          {
+            "query_id": "-324852000",
+            "reason": "empty text",
+            "row_index": 305967
+          },
+          {
+            "query_id": "-538167006",
+            "reason": "empty text",
+            "row_index": 307152
+          },
+          {
+            "query_id": "-201374001",
+            "reason": "empty text",
+            "row_index": 310908
+          },
+          {
+            "query_id": "-389935000",
+            "reason": "empty text",
+            "row_index": 319289
+          },
+          {
+            "query_id": "-120108002",
+            "reason": "empty text",
+            "row_index": 327822
+          },
+          {
+            "query_id": "-518755002",
+            "reason": "empty text",
+            "row_index": 328513
+          },
+          {
+            "query_id": "-295970001",
+            "reason": "empty text",
+            "row_index": 334023
+          },
+          {
+            "query_id": "-174774001",
+            "reason": "empty text",
+            "row_index": 336223
+          },
+          {
+            "query_id": "-77100004",
+            "reason": "empty text",
+            "row_index": 344201
+          },
+          {
+            "query_id": "-499932002",
+            "reason": "empty text",
+            "row_index": 345134
+          },
+          {
+            "query_id": "-189598003",
+            "reason": "empty text",
+            "row_index": 346021
+          },
+          {
+            "query_id": "-260435001",
+            "reason": "empty text",
+            "row_index": 346243
+          },
+          {
+            "query_id": "-173695001",
+            "reason": "empty text",
+            "row_index": 348797
+          },
+          {
+            "query_id": "-574130001",
+            "reason": "empty text",
+            "row_index": 349627
+          },
+          {
+            "query_id": "-110203002",
+            "reason": "empty text",
+            "row_index": 349689
+          },
+          {
+            "query_id": "-529570001",
+            "reason": "empty text",
+            "row_index": 354825
+          }
+        ]
+      },
+      "unique_usable_images": 81652,
+      "unique_usable_ordered_pairs": 330215,
+      "extra_queries_sharing_an_ordered_pair": 28952,
+      "image_folders": {
+        "train2014": 718334
+      }
+    },
+    "val": {
+      "annotation_sha256": "7d25c8bd296ac463da3754f2737b2a713a94657c0efb50599a9191732ff3bf86",
+      "audit": {
+        "status": "quarantine_required",
+        "queries": 30037,
+        "usable_queries": 30031,
+        "query_ids_unique": true,
+        "extra_repeated_qids": 0,
+        "invalid": [
+          {
+            "query_id": "172856002",
+            "reason": "empty text",
+            "row_index": 7466
+          },
+          {
+            "query_id": "13061003",
+            "reason": "empty text",
+            "row_index": 18822
+          },
+          {
+            "query_id": "-194331000",
+            "reason": "empty text",
+            "row_index": 20957
+          },
+          {
+            "query_id": "-73256002",
+            "reason": "empty text",
+            "row_index": 23857
+          },
+          {
+            "query_id": "-393212002",
+            "reason": "empty text",
+            "row_index": 24323
+          },
+          {
+            "query_id": "-362434000",
+            "reason": "empty text",
+            "row_index": 28806
+          }
+        ]
+      },
+      "unique_usable_images": 39755,
+      "unique_usable_ordered_pairs": 29942,
+      "extra_queries_sharing_an_ordered_pair": 89,
+      "image_folders": {
+        "val2014": 60062
+      }
+    }
+  },
+  "train_val_image_overlap": 0,
+  "overlap_examples": [],
+  "train_val_ordered_pair_overlap": 0,
+  "circo_public_query_image_id_overlap": {
+    "train": 0,
+    "val": 0
+  },
+  "circo_overlap_scope": "public references/validation positives only, not the full gallery or decoded-image duplicate audit",
+  "training_notes": [
+    "Quarantine invalid rows with query IDs; preserve originals.",
+    "Source qid is not a unique example key; use split plus row index and retain original qid.",
+    "Shared image pairs may have multiple valid texts; do not count them as independent image pairs.",
+    "Deduplicate candidate image IDs and mask known valid positives in hard-negative mining.",
+    "Use official train for gradient updates; val for preregistered selection only; reserve CIRCO for frozen external evaluation."
+  ],
+  "status": "annotation_gate_pass_with_quarantine"
+}

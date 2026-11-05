@@ -22,7 +22,7 @@ def main():
                 ids = [str(row["id"]) for row in rows]
                 inspection = {"queries": len(rows), "query_ids_unique": len(ids) == len(set(ids)), "invalid": []}
             else:
-                inspection = audit(rows, kind)
+                inspection = audit(rows, kind, allow_repeated_qids=(kind == "lasco" and split == "train"))
             needed = set()
             for row in rows:
                 if kind == "circo":
