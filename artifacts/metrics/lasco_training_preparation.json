@@ -1,0 +1,563 @@
+{
+  "train": {
+    "examples": 359167,
+    "source_sha256": "77ab90f10b7658ba1002661e99a816756f4785f96416a1716bafe86386e25a9c",
+    "manifest": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\training-data\\lasco-v1\\train.jsonl.gz",
+    "manifest_sha256": "0c3277d94b915fdb07ec8f7fb0e631b51e57e70462a68d4afc9af05b778bdb8c",
+    "multi_target_query_conditions": 1121,
+    "quarantine": [
+      {
+        "example_id": "lasco:train:8923",
+        "source_qid": 269109002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:9226",
+        "source_qid": 253915002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:21036",
+        "source_qid": 162741002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:24488",
+        "source_qid": 233137000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:29270",
+        "source_qid": 432522001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:38292",
+        "source_qid": 108210001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:39239",
+        "source_qid": 511562007,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:40611",
+        "source_qid": 136346001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:44357",
+        "source_qid": 457146001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:44946",
+        "source_qid": 319315005,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:45361",
+        "source_qid": 144538002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:46281",
+        "source_qid": 488657002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:56255",
+        "source_qid": 502588001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:57064",
+        "source_qid": 420442007,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:57540",
+        "source_qid": 81201001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:61593",
+        "source_qid": 32116003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:73331",
+        "source_qid": 258642003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:86701",
+        "source_qid": 146249003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:94820",
+        "source_qid": 403773001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:95150",
+        "source_qid": 336333002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:95748",
+        "source_qid": 227456001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:96973",
+        "source_qid": 359379002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:98799",
+        "source_qid": 490496001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:107446",
+        "source_qid": 357684011,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:107501",
+        "source_qid": 568471000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:110708",
+        "source_qid": 198600002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:114328",
+        "source_qid": 293946000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:116842",
+        "source_qid": 548564001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:116991",
+        "source_qid": 144574001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:123404",
+        "source_qid": 332724001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:125566",
+        "source_qid": 455881004,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:127778",
+        "source_qid": 507540002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:133861",
+        "source_qid": 499719000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:138169",
+        "source_qid": 216963002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:141716",
+        "source_qid": 579095002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:144626",
+        "source_qid": 91288000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:147119",
+        "source_qid": 335855000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:151637",
+        "source_qid": 529055001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:157305",
+        "source_qid": 562664000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:159327",
+        "source_qid": 527446004,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:162283",
+        "source_qid": 378344000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:162653",
+        "source_qid": 483692001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:163179",
+        "source_qid": 102073008,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:164457",
+        "source_qid": 71714005,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:169904",
+        "source_qid": 543855002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:173197",
+        "source_qid": 568116000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:175124",
+        "source_qid": 42196002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:184057",
+        "source_qid": -14764001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:190282",
+        "source_qid": -323813001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:190570",
+        "source_qid": -384049001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:191184",
+        "source_qid": -391481003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:195062",
+        "source_qid": -282706001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:196048",
+        "source_qid": -520027001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:196314",
+        "source_qid": -368440001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:208269",
+        "source_qid": -100638002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:213911",
+        "source_qid": -516490002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:217149",
+        "source_qid": -118404002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:220680",
+        "source_qid": -299623006,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:221475",
+        "source_qid": -309494002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:224583",
+        "source_qid": -260576002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:228752",
+        "source_qid": -398407002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:244620",
+        "source_qid": -436370003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:250759",
+        "source_qid": -501204002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:255214",
+        "source_qid": -117336002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:255241",
+        "source_qid": -379093006,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:256451",
+        "source_qid": -104349001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:258448",
+        "source_qid": -227242001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:259323",
+        "source_qid": -412661000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:268474",
+        "source_qid": -447292001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:269315",
+        "source_qid": -465200000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:278018",
+        "source_qid": -95867000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:278833",
+        "source_qid": -435814000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:282672",
+        "source_qid": -158614003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:288640",
+        "source_qid": -393489009,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:289120",
+        "source_qid": -42156002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:289877",
+        "source_qid": -21212003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:290006",
+        "source_qid": -249922007,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:290249",
+        "source_qid": -429207003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:290593",
+        "source_qid": -260826003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:291427",
+        "source_qid": -365645000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:292794",
+        "source_qid": -277729003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:298269",
+        "source_qid": -479916001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:298518",
+        "source_qid": -391739002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:301396",
+        "source_qid": -102899000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:302070",
+        "source_qid": -203359005,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:305967",
+        "source_qid": -324852000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:307152",
+        "source_qid": -538167006,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:310908",
+        "source_qid": -201374001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:319289",
+        "source_qid": -389935000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:327822",
+        "source_qid": -120108002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:328513",
+        "source_qid": -518755002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:334023",
+        "source_qid": -295970001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:336223",
+        "source_qid": -174774001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:344201",
+        "source_qid": -77100004,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:345134",
+        "source_qid": -499932002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:346021",
+        "source_qid": -189598003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:346243",
+        "source_qid": -260435001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:348797",
+        "source_qid": -173695001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:349627",
+        "source_qid": -574130001,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:349689",
+        "source_qid": -110203002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:train:354825",
+        "source_qid": -529570001,
+        "reason": "empty text"
+      }
+    ]
+  },
+  "smoke": {
+    "status": "pass",
+    "queries": 8,
+    "loss": 0.975507915019989,
+    "parameters_updated": true,
+    "scope": "optimizer engineering check only; not model quality"
+  },
+  "val": {
+    "examples": 30031,
+    "source_sha256": "7d25c8bd296ac463da3754f2737b2a713a94657c0efb50599a9191732ff3bf86",
+    "manifest": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\training-data\\lasco-v1\\val.jsonl.gz",
+    "manifest_sha256": "15d7df5a71314bc495de49c28094619200cb645e44d091448433912f6746bad3",
+    "multi_target_query_conditions": 6,
+    "quarantine": [
+      {
+        "example_id": "lasco:val:7466",
+        "source_qid": 172856002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:val:18822",
+        "source_qid": 13061003,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:val:20957",
+        "source_qid": -194331000,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:val:23857",
+        "source_qid": -73256002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:val:24323",
+        "source_qid": -393212002,
+        "reason": "empty text"
+      },
+      {
+        "example_id": "lasco:val:28806",
+        "source_qid": -362434000,
+        "reason": "empty text"
+      }
+    ]
+  },
+  "train_val_image_overlap": 0
+}

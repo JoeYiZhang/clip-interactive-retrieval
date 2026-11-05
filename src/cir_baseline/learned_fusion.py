@@ -91,6 +91,20 @@ class LearnedFusion(nn.Module):
         return F.normalize(query, dim=-1)
 
 
+def masked_multi_positive_loss(queries, candidates, positive_mask, valid_mask, temperature=.07):
+    """Contrastive objective with explicit known positives and excluded references."""
+    if temperature <= 0 or queries.ndim != 2 or candidates.ndim != 2 or queries.shape[1] != candidates.shape[1]:
+        raise ValueError("invalid temperature or embedding matrices")
+    shape = (len(queries), len(candidates))
+    if positive_mask.shape != shape or valid_mask.shape != shape or positive_mask.dtype != torch.bool or valid_mask.dtype != torch.bool:
+        raise ValueError("boolean masks must align with query/candidate matrices")
+    if bool((positive_mask & ~valid_mask).any()) or not bool(positive_mask.any(dim=1).all()):
+        raise ValueError("each query requires a valid positive")
+    logits = F.normalize(queries, dim=-1) @ F.normalize(candidates, dim=-1).T / temperature
+    return (torch.logsumexp(logits.masked_fill(~valid_mask, -torch.inf), 1)
+            - torch.logsumexp(logits.masked_fill(~positive_mask, -torch.inf), 1)).mean()
+
+
 def multi_positive_contrastive_loss(
     queries: torch.Tensor, candidates: torch.Tensor,
     target_ids: torch.Tensor, candidate_ids: torch.Tensor,

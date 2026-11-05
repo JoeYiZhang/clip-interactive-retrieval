@@ -11,6 +11,7 @@ models/
 indexes/
 artifacts/cache/
 artifacts/fusion-runs/
+artifacts/training-data/
 artifacts/metrics/*download*.log
 artifacts/metrics/*annotations_error.log
 artifacts/metrics/coco_download_error.log
