@@ -1,0 +1,176 @@
+{
+  "status": "pass",
+  "checked_at_local": "2026-11-05T16:01:05.574111+08:00",
+  "scope": "engineering verification only; full training and full-gallery model evaluation NOT executed",
+  "checks": [
+    {
+      "name": "explicit engineering scopes",
+      "status": "pass"
+    },
+    {
+      "name": "fixed sample inventory",
+      "status": "pass"
+    },
+    {
+      "name": "committed shard retained after continuation",
+      "status": "pass"
+    },
+    {
+      "name": "exact resumed training history",
+      "status": "pass"
+    },
+    {
+      "name": "exact resumed model tensors",
+      "status": "pass"
+    },
+    {
+      "name": "identical saved weight files",
+      "status": "pass"
+    },
+    {
+      "name": "training updated parameters without dev selection",
+      "status": "pass"
+    },
+    {
+      "name": "CIRCO small-gallery scope",
+      "status": "pass"
+    },
+    {
+      "name": "image_only: all 32 query/model rankings cover 41 non-reference images",
+      "status": "pass"
+    },
+    {
+      "name": "image_only: descending score/rank alignment",
+      "status": "pass"
+    },
+    {
+      "name": "image_only: recomputed exported ranking metrics",
+      "status": "pass"
+    },
+    {
+      "name": "text_only: all 32 query/model rankings cover 41 non-reference images",
+      "status": "pass"
+    },
+    {
+      "name": "text_only: descending score/rank alignment",
+      "status": "pass"
+    },
+    {
+      "name": "text_only: recomputed exported ranking metrics",
+      "status": "pass"
+    },
+    {
+      "name": "fixed_0.3: all 32 query/model rankings cover 41 non-reference images",
+      "status": "pass"
+    },
+    {
+      "name": "fixed_0.3: descending score/rank alignment",
+      "status": "pass"
+    },
+    {
+      "name": "fixed_0.3: recomputed exported ranking metrics",
+      "status": "pass"
+    },
+    {
+      "name": "fashioniq_low_lr_seed17: all 32 query/model rankings cover 41 non-reference images",
+      "status": "pass"
+    },
+    {
+      "name": "fashioniq_low_lr_seed17: descending score/rank alignment",
+      "status": "pass"
+    },
+    {
+      "name": "fashioniq_low_lr_seed17: recomputed exported ranking metrics",
+      "status": "pass"
+    },
+    {
+      "name": "official metric parity certificate",
+      "status": "pass"
+    },
+    {
+      "name": "regression suite",
+      "status": "pass"
+    }
+  ],
+  "check_count": 22,
+  "unit_tests": 67,
+  "lasco": {
+    "images": 14,
+    "queries": 8,
+    "cache_sha256": "c0f8a68e584a3061966f3d17d63884dbd1d7658ece73631367732978ee3c6d03",
+    "seed": 17,
+    "epochs": 3,
+    "first_shard_sha256": "f4e89b13a55749cf91a4dfe97f1d4ed482417dc9da7de2eb3116fdc40a3dfd91",
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.538913369178772,
+        "training_samples": 8,
+        "dev": null
+      },
+      {
+        "epoch": 2,
+        "loss": 0.4287753701210022,
+        "training_samples": 8,
+        "dev": null
+      },
+      {
+        "epoch": 3,
+        "loss": 0.38057655096054077,
+        "training_samples": 8,
+        "dev": null
+      }
+    ],
+    "checkpoint_sha256": "cf9fcc21b668cc6561a52365dff9d7d5a62d7bf59f0b2c2d04cf57ab95480b8c"
+  },
+  "circo": {
+    "images": 42,
+    "queries": 8,
+    "cache_sha256": "09a6f14b989f84265c1154739a021ed32e9e5942edecf5f94254035740cc6e20",
+    "models": {
+      "image_only": {
+        "predictions_sha256": "d5fc52f6fd6e8fc4e67786b9e0b77690b0340edcc2dad392f7083b69c4d1323f",
+        "query_count": 8,
+        "ranks_per_query": 41
+      },
+      "text_only": {
+        "predictions_sha256": "19d712e869bfbe0a9998bbaba0869665b81cfe751c8095b11b7ef28f2ab0956d",
+        "query_count": 8,
+        "ranks_per_query": 41
+      },
+      "fixed_0.3": {
+        "predictions_sha256": "5ec6299ca83d808f957261d59cf2a92ef05c073d44d0f0999dfb061b423a81c4",
+        "query_count": 8,
+        "ranks_per_query": 41
+      },
+      "fashioniq_low_lr_seed17": {
+        "predictions_sha256": "cc1b5248cb6da03588966f1bdf7fc181afd165785d6d7759d862d44a169fecc8",
+        "query_count": 8,
+        "ranks_per_query": 41
+      }
+    },
+    "official_metric_checks": 17,
+    "official_metric_max_error": 8.673617379884035e-19,
+    "official_inventory_count": 123403
+  },
+  "full_data_gates": {
+    "lasco/train": {
+      "status": "blocked_waiting_verified_archive",
+      "reason": "full gallery blocked: verified train2014 archive not available"
+    },
+    "lasco/val": {
+      "status": "blocked_waiting_verified_archive",
+      "reason": "full gallery blocked: verified val2014 archive not available"
+    },
+    "circo/val": {
+      "status": "blocked_waiting_verified_archive",
+      "reason": "full gallery blocked: verified unlabeled2017 archive not available"
+    }
+  },
+  "download_snapshot": {
+    "archive": "unlabeled2017",
+    "verified_completed_chunk_bytes": 3867148288,
+    "total_bytes": 20126613414,
+    "percent": 19.21410327934269
+  }
+}

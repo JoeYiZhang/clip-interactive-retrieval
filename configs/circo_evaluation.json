@@ -1,0 +1,15 @@
+{
+  "experiment_id": "circo-frozen-fusion-confirmation-v1",
+  "models": ["image_only", "text_only", "fixed_0.3", "fashioniq_low_lr_seed17"],
+  "image_weight": 0.3,
+  "ks": [5, 10, 25, 50],
+  "text_policy": "shared-concept-space-relative-caption-v1",
+  "candidate_manifest": "artifacts/metrics/fashioniq_regularization_candidate_manifest.json",
+  "candidate_checkpoint_sha256": "977d546ebce7733864b9e4ae0a43c0b29a902222be8f709719718e1397b9759e",
+  "official_inventory_sha256": "659476821f469b90e8e47f44e95aee7afe7d59961bdb8d61418556a31ac5a11d",
+  "full_query_counts": {"val": 220, "test": 800},
+  "selection_policy": "none: all frozen models reported; do not tune using CIRCO confirmation results",
+  "engineering_policy": "fixed first8 queries and their known image union; chain verification only; not benchmark results",
+  "metric_policy": "mAP uses every known positive; target Recall uses designated target; references excluded; official K=5/10/25/50",
+  "test_policy": "local submission files only; no ground truth scoring and no automatic upload"
+}

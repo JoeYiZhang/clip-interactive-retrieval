@@ -1,0 +1,91 @@
+{
+  "status": "pass",
+  "scope": "official external prediction fixture; NOT project model performance",
+  "query_count": 220,
+  "gallery_inventory_count": 123403,
+  "checks": [
+    {
+      "metric": "mAP@5",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "mAP@10",
+      "absolute_error": 8.673617379884035e-19
+    },
+    {
+      "metric": "mAP@25",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "mAP@50",
+      "absolute_error": 8.673617379884035e-19
+    },
+    {
+      "metric": "target_recall@5",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "target_recall@10",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "target_recall@25",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "target_recall@50",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/cardinality",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/addition",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/negation",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/direct_addressing",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/compare_change",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/comparative_statement",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/statement_with_conjunction",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/spatial_relations_background",
+      "absolute_error": 0.0
+    },
+    {
+      "metric": "semantic_mAP@10/viewpoint",
+      "absolute_error": 0.0
+    }
+  ],
+  "official_repository_commit": "ba9a9346a8840513bc5d0beccdaf6dd0f5c3c6fa",
+  "official_metric_source_sha256": "bd9441d88ad4dcf56f6c49bd748a6cd201dc8b76380ee4a36210d04be4eb192a",
+  "official_annotations_sha256": "b38e464e1ce522b2788bd183a34fd0e16f1c8a012bd7ce58de67824c43f55efe",
+  "official_predictions_sha256": "e16ea45ac14358816ae5d964842777bb9509cf42426a85ff278cf7ed72f74d63",
+  "official_inventory_sha256": "659476821f469b90e8e47f44e95aee7afe7d59961bdb8d61418556a31ac5a11d",
+  "fixture_adjustments": [
+    {
+      "query_id": "189",
+      "removed_reference_id": 550727,
+      "appended_nonpositive_id": 533083
+    }
+  ],
+  "compared_prediction_content_sha256": "ec64c1e3f90bd2549217e91ce10497445b2b0574ee1c742352b53989d9d4afdd",
+  "project_metric_source_sha256": "3d271ddd9532c1e265388beef8f404500c9f046961ee16480c156e43c4322b2e",
+  "official_source": "https://github.com/miccunifi/CIRCO/blob/main/src/evaluation.py"
+}

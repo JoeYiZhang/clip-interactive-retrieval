@@ -1,0 +1,10 @@
+{
+  "mode": "full", "seeds": [17, 29, 43], "epochs": 6,
+  "batch_size": 256, "hidden_dim": 128, "dropout": 0.1,
+  "learning_rate": 0.0003, "weight_decay": 0.0001,
+  "temperature": 0.07, "anchor_penalty": 0.02,
+  "initial_image_weight": 0.3, "residual_scale": 0.2,
+  "objective": "known-multi-positive-in-batch; unique target candidates; reference excluded",
+  "selection": "LaSCo val designated-target R10 then R50, earliest tie",
+  "scope": "project training protocol over full certified COCO2014 galleries; no CIRCO/CIRR tuning or automatic deployment"
+}

@@ -20,6 +20,7 @@ ml = [
   "open-clip-torch>=2.26,<4",
   "faiss-cpu>=1.8,<2",
   "pillow>=10",
+  "filelock>=3.13",
 ]
 dev = [
   "pytest>=8",

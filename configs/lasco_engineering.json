@@ -1,0 +1,10 @@
+{
+  "mode": "engineering", "seeds": [17], "epochs": 3,
+  "batch_size": 4, "hidden_dim": 128, "dropout": 0.1,
+  "learning_rate": 0.0003, "weight_decay": 0.0001,
+  "temperature": 0.07, "anchor_penalty": 0.02,
+  "initial_image_weight": 0.3, "residual_scale": 0.2,
+  "objective": "known-multi-positive-in-batch; unique target candidates; reference excluded",
+  "selection": "none: final weights for optimizer engineering verification only",
+  "scope": "fixed first 8 valid train examples; not a retrieval quality experiment"
+}
