@@ -1,0 +1,1128 @@
+{
+  "status": "pass",
+  "scope": "fit/dev development only; no independent confirmation",
+  "config": {
+    "experiment_id": "fashioniq-regularization-dev-v1",
+    "registered_date": "2026-11-05",
+    "base_config": "configs/fashioniq_hard_negatives.json",
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "variants": {
+      "control": {
+        "learning_rate": 0.001,
+        "dropout": 0.1
+      },
+      "low_lr": {
+        "learning_rate": 0.0003,
+        "dropout": 0.1
+      },
+      "high_dropout": {
+        "learning_rate": 0.001,
+        "dropout": 0.3
+      },
+      "low_lr_high_dropout": {
+        "learning_rate": 0.0003,
+        "dropout": 0.3
+      }
+    },
+    "epochs": 12,
+    "evaluate_every": 2,
+    "training_arm": "in_batch",
+    "design": "2x2 learning-rate/dropout factorial; same seeds, initial parameters, batch order, candidate masks, optimizer family and epoch budget",
+    "unchanged": "frozen CLIP; symmetric_join_mean; component split seed20261028; batch256; hidden128; weight_decay0.0001; temperature0.07; anchor0.02; residual_scale0.2",
+    "checkpoint_selection": "dev category mean Recall@10 then Recall@50; earliest tie",
+    "variant_selection": "three-seed mean selected-dev Recall@10 then Recall@50; config order resolves ties",
+    "candidate_screen": {
+      "minimum_mean_R10_delta": 0.005,
+      "all_paired_seeds_R10_improve": true,
+      "mean_R50_not_worse": true
+    },
+    "evaluation_policy": "fit/dev only; no new holdout scoring or official val access; report all 12 runs, category differences and fit/dev gaps",
+    "decision_policy": "screen only prioritizes a development candidate; never promotes or replaces deployed A2",
+    "budget_policy": "12 epochs for every arm; do not extend after inspecting results; flag best-at-budget-boundary cases",
+    "limitation": "dev is reused for development; these results are not independent confirmation; dropout is the only regularization factor changed"
+  },
+  "protocol_sha256": "e8d682d6eff735f255a75fdaa0f6d3fe8d7b243339e3f341be55c61cb9a4187b",
+  "split_audit": {
+    "fit": {
+      "query_count": 10666,
+      "component_count": 4441,
+      "supervised_image_count": 14916,
+      "categories": {
+        "dress": 3670,
+        "shirt": 3454,
+        "toptee": 3542
+      }
+    },
+    "dev": {
+      "query_count": 3704,
+      "component_count": 1576,
+      "supervised_image_count": 5208,
+      "categories": {
+        "dress": 1253,
+        "shirt": 1280,
+        "toptee": 1171
+      }
+    },
+    "holdout": {
+      "query_count": 3630,
+      "component_count": 1451,
+      "supervised_image_count": 5012,
+      "categories": {
+        "dress": 1062,
+        "shirt": 1254,
+        "toptee": 1314
+      }
+    },
+    "supervised_image_overlap": {
+      "fit:dev": 0,
+      "fit:holdout": 0,
+      "dev:holdout": 0
+    }
+  },
+  "supervision_audit": {
+    "query_count": 10666,
+    "multi_positive_queries": 106,
+    "same_category_fit_pool_sizes": {
+      "dress": 4766,
+      "shirt": 5202,
+      "toptee": 5124
+    },
+    "supervision_sha256": "762fa0d9ea44828b0b5b1c1d322896c7c3a2d5e5d5e8612adf316949e36602e4",
+    "extra_negatives": 0,
+    "source": "fit annotations only"
+  },
+  "prior_control_reproduction": {
+    "17": {
+      "trace_exact": true,
+      "selected_metrics_exact": true,
+      "checkpoint_state_exact": true
+    },
+    "29": {
+      "trace_exact": true,
+      "selected_metrics_exact": true,
+      "checkpoint_state_exact": true
+    },
+    "43": {
+      "trace_exact": true,
+      "selected_metrics_exact": true,
+      "checkpoint_state_exact": true
+    }
+  },
+  "pairing_audit": {
+    "17": {
+      "batch_orders_identical": true,
+      "candidate_counts_identical": true
+    },
+    "29": {
+      "batch_orders_identical": true,
+      "candidate_counts_identical": true
+    },
+    "43": {
+      "batch_orders_identical": true,
+      "candidate_counts_identical": true
+    }
+  },
+  "A2_fit_only_baseline": {
+    "fit": {
+      "query_count": 10666,
+      "by_category": {
+        "dress": {
+          "recall@10": 0.1553133514986376,
+          "recall@50": 0.29727520435967303
+        },
+        "shirt": {
+          "recall@10": 0.2235089751013318,
+          "recall@50": 0.35495078170237404
+        },
+        "toptee": {
+          "recall@10": 0.20609824957651043,
+          "recall@50": 0.3455674760022586
+        }
+      },
+      "category_mean_recall@10": 0.19497352539215995,
+      "category_mean_recall@50": 0.3325978206881019
+    },
+    "dev": {
+      "query_count": 3704,
+      "by_category": {
+        "dress": {
+          "recall@10": 0.1556264964086193,
+          "recall@50": 0.2928970470869912
+        },
+        "shirt": {
+          "recall@10": 0.20390625,
+          "recall@50": 0.33828125
+        },
+        "toptee": {
+          "recall@10": 0.19214346712211786,
+          "recall@50": 0.33561058923996584
+        }
+      },
+      "category_mean_recall@10": 0.1838920711769124,
+      "category_mean_recall@50": 0.3222629621089857
+    }
+  },
+  "runs": [
+    {
+      "arm": "in_batch",
+      "seed": 17,
+      "best_epoch": 2,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14924181963288108,
+            "recall@50": 0.3056664006384677
+          },
+          "shirt": {
+            "recall@10": 0.215625,
+            "recall@50": 0.3765625
+          },
+          "toptee": {
+            "recall@10": 0.20324508966695132,
+            "recall@50": 0.38001707941929974
+          }
+        },
+        "category_mean_recall@10": 0.18937063643327745,
+        "category_mean_recall@50": 0.3540819933525891
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\control\\in_batch-seed17.pt",
+      "checkpoint_sha256": "b62e95f5f974c2ad38c9e05be79a77a6ffcea28982e8a496b1e65842f5dfa9ac",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283835
+      },
+      "regularization_variant": "control",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.001,
+        "dataset_split": "train",
+        "dropout": 0.1,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "control"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "0bf9eed3e8e1c32997c0e73682c365052f0bab0ebd22771624dbe4c09d4c950b"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 29,
+      "best_epoch": 4,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13966480446927373,
+            "recall@50": 0.3128491620111732
+          },
+          "shirt": {
+            "recall@10": 0.2,
+            "recall@50": 0.37578125
+          },
+          "toptee": {
+            "recall@10": 0.2058070025619129,
+            "recall@50": 0.38684884713919726
+          }
+        },
+        "category_mean_recall@10": 0.1818239356770622,
+        "category_mean_recall@50": 0.35849308638345684
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\control\\in_batch-seed29.pt",
+      "checkpoint_sha256": "fce53d40f344f23edcbb93c8e69a773ec7f5b73c900223cbf93b8f79e1d8fc14",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283736
+      },
+      "regularization_variant": "control",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.001,
+        "dataset_split": "train",
+        "dropout": 0.1,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "control"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "acaee59293f720ebe255b5d1a139d56ac3abfed21b80470c6a33b5c3cfbd398d"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 43,
+      "best_epoch": 6,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1524341580207502,
+            "recall@50": 0.33679169992019153
+          },
+          "shirt": {
+            "recall@10": 0.20625,
+            "recall@50": 0.3828125
+          },
+          "toptee": {
+            "recall@10": 0.20666097352690008,
+            "recall@50": 0.3936806148590948
+          }
+        },
+        "category_mean_recall@10": 0.18844837718255006,
+        "category_mean_recall@50": 0.37109493825976214
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\control\\in_batch-seed43.pt",
+      "checkpoint_sha256": "835106c75ced6bd3fabec02c06ca47156ed8a0b44cbbc9987060657ccf3bbf45",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283671
+      },
+      "regularization_variant": "control",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.001,
+        "dataset_split": "train",
+        "dropout": 0.1,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "control"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "381ce2fd05f341699730dd9174a44474051a5b8a0a299ba6ae7e498a71bb2b87"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 17,
+      "best_epoch": 6,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.16121308858739025,
+            "recall@50": 0.33359936153232245
+          },
+          "shirt": {
+            "recall@10": 0.2234375,
+            "recall@50": 0.390625
+          },
+          "toptee": {
+            "recall@10": 0.21947053800170793,
+            "recall@50": 0.38770281810418444
+          }
+        },
+        "category_mean_recall@10": 0.20137370886303274,
+        "category_mean_recall@50": 0.37064239321216896
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr\\in_batch-seed17.pt",
+      "checkpoint_sha256": "977d546ebce7733864b9e4ae0a43c0b29a902222be8f709719718e1397b9759e",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283835
+      },
+      "regularization_variant": "low_lr",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.0003,
+        "dataset_split": "train",
+        "dropout": 0.1,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "low_lr"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "281044d522df001fb1c247b6f0dc953040be07fd7caf59bf1dff02c3eb9c95b6"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 29,
+      "best_epoch": 8,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.16440542697525937,
+            "recall@50": 0.3320031923383879
+          },
+          "shirt": {
+            "recall@10": 0.2109375,
+            "recall@50": 0.38125
+          },
+          "toptee": {
+            "recall@10": 0.215200683176772,
+            "recall@50": 0.3859948761742101
+          }
+        },
+        "category_mean_recall@10": 0.19684787005067714,
+        "category_mean_recall@50": 0.3664160228375326
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr\\in_batch-seed29.pt",
+      "checkpoint_sha256": "8ac84d33e67057a72ec85ec66ec7df784d1d6865736eeda933989e533a2691f7",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283736
+      },
+      "regularization_variant": "low_lr",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.0003,
+        "dataset_split": "train",
+        "dropout": 0.1,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "low_lr"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "43ea9877cf763a1031028f5a921dc6f6de3e7de385da2ab843d966f7cd3ec7c9"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 43,
+      "best_epoch": 8,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15881883479648842,
+            "recall@50": 0.3304070231444533
+          },
+          "shirt": {
+            "recall@10": 0.22578125,
+            "recall@50": 0.39453125
+          },
+          "toptee": {
+            "recall@10": 0.23057216054654142,
+            "recall@50": 0.4039282664389411
+          }
+        },
+        "category_mean_recall@10": 0.20505741511434328,
+        "category_mean_recall@50": 0.3762888465277981
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr\\in_batch-seed43.pt",
+      "checkpoint_sha256": "a65f2cd6b5dd4ac7869434a282280ed9d986290c76d0ba807d3addeead5deeab",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283671
+      },
+      "regularization_variant": "low_lr",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.0003,
+        "dataset_split": "train",
+        "dropout": 0.1,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "low_lr"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "fead793dc05aed887d074a9b80d03a135eef36fbbba921e1fa0c3ce655fbb8ca"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 17,
+      "best_epoch": 2,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15083798882681565,
+            "recall@50": 0.3024740622505986
+          },
+          "shirt": {
+            "recall@10": 0.2140625,
+            "recall@50": 0.36953125
+          },
+          "toptee": {
+            "recall@10": 0.19726729291204098,
+            "recall@50": 0.38343296327924853
+          }
+        },
+        "category_mean_recall@10": 0.18738926057961888,
+        "category_mean_recall@50": 0.35181275850994903
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\high_dropout\\in_batch-seed17.pt",
+      "checkpoint_sha256": "9078fde779b45691250d214c27791c44a8500d5e3e03705ad7388dfc42a2a764",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283835
+      },
+      "regularization_variant": "high_dropout",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.001,
+        "dataset_split": "train",
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "high_dropout"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "0cba59ddb254afff676dbe29a3cbb97068831d2dbd482ee326f0d95ad85e2cff"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 29,
+      "best_epoch": 4,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1420590582601756,
+            "recall@50": 0.30726256983240224
+          },
+          "shirt": {
+            "recall@10": 0.2078125,
+            "recall@50": 0.3765625
+          },
+          "toptee": {
+            "recall@10": 0.21007685738684884,
+            "recall@50": 0.3731853116994022
+          }
+        },
+        "category_mean_recall@10": 0.1866494718823415,
+        "category_mean_recall@50": 0.3523367938439348
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\high_dropout\\in_batch-seed29.pt",
+      "checkpoint_sha256": "05812d49d1004ea8b2bf205b747b2af10155a97eedbf53bed4fd32395e753493",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283736
+      },
+      "regularization_variant": "high_dropout",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.001,
+        "dataset_split": "train",
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "high_dropout"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "dff001aacd0dc6e2b74872423e8474691f09a44c7731a463e7c68d95963ed83d"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 43,
+      "best_epoch": 4,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15403032721468476,
+            "recall@50": 0.32641660015961693
+          },
+          "shirt": {
+            "recall@10": 0.20546875,
+            "recall@50": 0.38125
+          },
+          "toptee": {
+            "recall@10": 0.19897523484201537,
+            "recall@50": 0.3808710503842869
+          }
+        },
+        "category_mean_recall@10": 0.18615810401890007,
+        "category_mean_recall@50": 0.3628458835146346
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\high_dropout\\in_batch-seed43.pt",
+      "checkpoint_sha256": "5377d3839d3aae83568e424284a50cba9f50f72cf81ea76e2944933411d5b7e0",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283671
+      },
+      "regularization_variant": "high_dropout",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.001,
+        "dataset_split": "train",
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "high_dropout"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "de5f35c910ea0d8238dd47b0439182a8b1a6edfae91165e57a038008dab2226b"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 17,
+      "best_epoch": 10,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15881883479648842,
+            "recall@50": 0.32482043096568236
+          },
+          "shirt": {
+            "recall@10": 0.22421875,
+            "recall@50": 0.3890625
+          },
+          "toptee": {
+            "recall@10": 0.21776259607173357,
+            "recall@50": 0.39538855678906915
+          }
+        },
+        "category_mean_recall@10": 0.20026672695607398,
+        "category_mean_recall@50": 0.36975716258491714
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr_high_dropout\\in_batch-seed17.pt",
+      "checkpoint_sha256": "6f0325cededaab652ca6f9f5ffcddd06dd626f6d3c3c6a0781fe0f693c0ec10f",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283835
+      },
+      "regularization_variant": "low_lr_high_dropout",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.0003,
+        "dataset_split": "train",
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "low_lr_high_dropout"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "39ed7a0a54b03937b14de9ff42367e28f5f37555f9651de442020ae784fdf05e"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 29,
+      "best_epoch": 12,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15323224261771748,
+            "recall@50": 0.3216280925778133
+          },
+          "shirt": {
+            "recall@10": 0.20859375,
+            "recall@50": 0.38046875
+          },
+          "toptee": {
+            "recall@10": 0.22544833475661827,
+            "recall@50": 0.39453458582408196
+          }
+        },
+        "category_mean_recall@10": 0.19575810912477856,
+        "category_mean_recall@50": 0.3655438094672984
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr_high_dropout\\in_batch-seed29.pt",
+      "checkpoint_sha256": "0ed0cbda999155a1699bc0b7e82f89f870be31c79864fc46e41e8f39649fb32a",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283736
+      },
+      "regularization_variant": "low_lr_high_dropout",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.0003,
+        "dataset_split": "train",
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "low_lr_high_dropout"
+      },
+      "best_epoch_at_budget_boundary": true,
+      "trace_sha256": "6a20f3aa8af41baf6d18e0e7819d8e1de52b7216298ddeef9afd895082dd0ce0"
+    },
+    {
+      "arm": "in_batch",
+      "seed": 43,
+      "best_epoch": 6,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1596169193934557,
+            "recall@50": 0.3280127693535515
+          },
+          "shirt": {
+            "recall@10": 0.22421875,
+            "recall@50": 0.38359375
+          },
+          "toptee": {
+            "recall@10": 0.21007685738684884,
+            "recall@50": 0.38770281810418444
+          }
+        },
+        "category_mean_recall@10": 0.1979708422601015,
+        "category_mean_recall@50": 0.3664364458192453
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr_high_dropout\\in_batch-seed43.pt",
+      "checkpoint_sha256": "9cf1b5002d2de61499dc0047d36a0770cb4bd03771c9da32750e0fed397f768a",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283671
+      },
+      "regularization_variant": "low_lr_high_dropout",
+      "effective_config": {
+        "text_strategy": "symmetric_join_mean",
+        "evaluate_every": 2,
+        "epochs": 12,
+        "batch_size": 256,
+        "temperature": 0.07,
+        "residual_scale": 0.2,
+        "initial_image_weight": 0.3,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "split_seed": 20261028,
+        "anchor_penalty": 0.02,
+        "learning_rate": 0.0003,
+        "dataset_split": "train",
+        "dropout": 0.3,
+        "weight_decay": 0.0001,
+        "hidden_dim": 128,
+        "experiment_id": "fashioniq-regularization-dev-v1",
+        "regularization_variant": "low_lr_high_dropout"
+      },
+      "best_epoch_at_budget_boundary": false,
+      "trace_sha256": "3196942e16f10b59c41e945e27356a3dbd8fbd4fc90eb3fb5805ef43edef6667"
+    }
+  ],
+  "dev_three_seed_summary": {
+    "control": {
+      "mean_R10": 0.18654764976429658,
+      "sd_R10": 0.004116764095116499,
+      "mean_R50": 0.361223339331936,
+      "sd_R50": 0.008828974146277455
+    },
+    "low_lr": {
+      "mean_R10": 0.20109299800935107,
+      "sd_R10": 0.004111965038229569,
+      "mean_R50": 0.37111575419249987,
+      "sd_R50": 0.004953404371545064
+    },
+    "high_dropout": {
+      "mean_R10": 0.1867322788269535,
+      "sd_R10": 0.0006197413668678457,
+      "mean_R50": 0.35566514528950616,
+      "sd_R50": 0.006224219176023777
+    },
+    "low_lr_high_dropout": {
+      "mean_R10": 0.19799855944698466,
+      "sd_R10": 0.002254436707695578,
+      "mean_R50": 0.36724580595715367,
+      "sd_R50": 0.002220221610124336
+    }
+  },
+  "selected_variant": "low_lr",
+  "contrasts_vs_control": {
+    "control": {
+      "paired_seed_R10_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_R10_delta": 0.0,
+      "mean_R50_delta": 0.0,
+      "development_screen": {
+        "mean_R10_delta_at_least_0_005": false,
+        "all_paired_seeds_R10_improve": false,
+        "mean_R50_not_worse": true
+      },
+      "screen_pass": false
+    },
+    "low_lr": {
+      "paired_seed_R10_deltas": [
+        0.01200307242975529,
+        0.015023934373614933,
+        0.01660903793179322
+      ],
+      "mean_R10_delta": 0.01454534824505449,
+      "mean_R50_delta": 0.009892414860563858,
+      "development_screen": {
+        "mean_R10_delta_at_least_0_005": true,
+        "all_paired_seeds_R10_improve": true,
+        "mean_R50_not_worse": true
+      },
+      "screen_pass": true
+    },
+    "high_dropout": {
+      "paired_seed_R10_deltas": [
+        -0.001981375853658568,
+        0.004825536205279285,
+        -0.002290273163649992
+      ],
+      "mean_R10_delta": 0.0001846290626569269,
+      "mean_R50_delta": -0.005558194042429854,
+      "development_screen": {
+        "mean_R10_delta_at_least_0_005": false,
+        "all_paired_seeds_R10_improve": false,
+        "mean_R50_not_worse": false
+      },
+      "screen_pass": false
+    },
+    "low_lr_high_dropout": {
+      "paired_seed_R10_deltas": [
+        0.010896090522796525,
+        0.013934173447716358,
+        0.009522465077551445
+      ],
+      "mean_R10_delta": 0.011450909682688082,
+      "mean_R50_delta": 0.0060224666252176595,
+      "development_screen": {
+        "mean_R10_delta_at_least_0_005": true,
+        "all_paired_seeds_R10_improve": true,
+        "mean_R50_not_worse": true
+      },
+      "screen_pass": true
+    }
+  },
+  "decision": "development_candidate_requires_independent_confirmation",
+  "deployed_model_changed": false,
+  "timestamp_utc": "2026-11-05T06:35:10.826156+00:00",
+  "elapsed_seconds_this_invocation": 386.923
+}

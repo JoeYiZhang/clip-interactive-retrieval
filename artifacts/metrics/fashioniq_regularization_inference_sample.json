@@ -1,0 +1,78 @@
+{
+  "scope": "research model inference; online A2 remains unchanged",
+  "dataset_split": "train",
+  "reference_image_id": "B003FGW7MK",
+  "category": "dress",
+  "captions": [
+    "is solid black with no sleeves",
+    "is black with straps"
+  ],
+  "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr\\in_batch-seed17.pt",
+  "variant": "in_batch",
+  "seed": 17,
+  "epoch": 6,
+  "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+  "query_norm": 1.0,
+  "results": [
+    {
+      "rank": 1,
+      "image_id": "B008622KSO",
+      "score": 0.42708438634872437,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B008622KSO.png"
+    },
+    {
+      "rank": 2,
+      "image_id": "B00B1TODH0",
+      "score": 0.42291077971458435,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B00B1TODH0.png"
+    },
+    {
+      "rank": 3,
+      "image_id": "B0056G05YE",
+      "score": 0.4100359082221985,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B0056G05YE.png"
+    },
+    {
+      "rank": 4,
+      "image_id": "B005G0TSRU",
+      "score": 0.4099111557006836,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B005G0TSRU.png"
+    },
+    {
+      "rank": 5,
+      "image_id": "B008RCMB46",
+      "score": 0.40618494153022766,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B008RCMB46.png"
+    },
+    {
+      "rank": 6,
+      "image_id": "B0089Y8R68",
+      "score": 0.40442752838134766,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B0089Y8R68.png"
+    },
+    {
+      "rank": 7,
+      "image_id": "B00CJ5O9K6",
+      "score": 0.4032908082008362,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B00CJ5O9K6.png"
+    },
+    {
+      "rank": 8,
+      "image_id": "B00AKTTYFI",
+      "score": 0.4032908082008362,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B00AKTTYFI.png"
+    },
+    {
+      "rank": 9,
+      "image_id": "B00BQ7XLPM",
+      "score": 0.4032908082008362,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B00BQ7XLPM.png"
+    },
+    {
+      "rank": 10,
+      "image_id": "B00BQZB0G6",
+      "score": 0.4032908082008362,
+      "image_path": "D:\\image_data\\datasets\\fashioniq\\images\\B00BQZB0G6.png"
+    }
+  ]
+}

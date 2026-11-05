@@ -1,0 +1,20 @@
+{
+  "status": "fail",
+  "checks": {
+    "checkpoint_hash": true,
+    "fixed_seed_and_epoch": true,
+    "encoder_version": true,
+    "unit_query": true,
+    "ten_unique_nonreference_hits": true,
+    "scores_finite_descending": true,
+    "raw_text_top10_matches_cache": false,
+    "raw_text_scores_match_cache": true,
+    "images_exist": true
+  },
+  "check_count": 9,
+  "max_score_absolute_delta": 1.7881393432617188e-07,
+  "score_tolerance": 1e-05,
+  "query_id": "dress:train:0",
+  "scope": "fixed engineering query only; not additional scientific evaluation",
+  "sample_sha256": "1c3d8243a21650c778b70cd1e679d520de3a1d8e7747a9aad2a1a4c90ed2fdaa"
+}

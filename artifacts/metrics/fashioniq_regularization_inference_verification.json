@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "exact_id_order_equal": false,
+  "reordered_positions": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "max_score_absolute_delta": 1.7881393432617188e-07,
+  "score_tolerance": 1e-05,
+  "checks": {
+    "unique_candidates": true,
+    "same_topk_image_set": true,
+    "order_difference_only_at_identical_vectors": true,
+    "finite_descending_scores": true,
+    "score_agreement": true,
+    "checkpoint_hash": true,
+    "seed_epoch_encoder": true,
+    "fixed_query_reference": true,
+    "unit_query": true,
+    "ten_nonreference_images": true,
+    "image_paths_exist": true
+  },
+  "check_count": 11,
+  "query_id": "dress:train:0",
+  "sample_sha256": "1c3d8243a21650c778b70cd1e679d520de3a1d8e7747a9aad2a1a4c90ed2fdaa",
+  "gallery_cache_sha256": "3a04273683673fd4afa42eef36f8a1b24e112465c00975930eaae1d1a8dc62c0",
+  "verification_source_sha256": "28824a79e9bcba2a26d5d2b89b02e179f0112591a9e039a8a4175549eea75ec9",
+  "scope": "fixed engineering query only; exact Top-10 membership, score agreement and strictly identical-vector tie equivalence; no scientific metric changes"
+}

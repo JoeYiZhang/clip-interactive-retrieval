@@ -1,0 +1,14 @@
+{
+  "status": "research_only",
+  "regularization_variant": "low_lr",
+  "selection_source": "three-seed dev means; seed17 fixed for engineering inference, not best-seed selection",
+  "development_screen_pass": true,
+  "inference_seed": 17,
+  "epoch": 6,
+  "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-regularization-dev-v1\\low_lr\\in_batch-seed17.pt",
+  "checkpoint_sha256": "977d546ebce7733864b9e4ae0a43c0b29a902222be8f709719718e1397b9759e",
+  "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+  "text_strategy": "symmetric_join_mean",
+  "summary_sha256": "b30800e5660580b7316c9285ce468a0af83bc810b40cd564683fef526ce5df84",
+  "deployed_model_changed": false
+}

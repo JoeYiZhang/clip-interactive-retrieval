@@ -1,0 +1,24 @@
+{
+  "experiment_id": "fashioniq-regularization-dev-v1",
+  "registered_date": "2026-11-05",
+  "base_config": "configs/fashioniq_hard_negatives.json",
+  "seeds": [17, 29, 43],
+  "variants": {
+    "control": {"learning_rate": 0.001, "dropout": 0.1},
+    "low_lr": {"learning_rate": 0.0003, "dropout": 0.1},
+    "high_dropout": {"learning_rate": 0.001, "dropout": 0.3},
+    "low_lr_high_dropout": {"learning_rate": 0.0003, "dropout": 0.3}
+  },
+  "epochs": 12,
+  "evaluate_every": 2,
+  "training_arm": "in_batch",
+  "design": "2x2 learning-rate/dropout factorial; same seeds, initial parameters, batch order, candidate masks, optimizer family and epoch budget",
+  "unchanged": "frozen CLIP; symmetric_join_mean; component split seed20261028; batch256; hidden128; weight_decay0.0001; temperature0.07; anchor0.02; residual_scale0.2",
+  "checkpoint_selection": "dev category mean Recall@10 then Recall@50; earliest tie",
+  "variant_selection": "three-seed mean selected-dev Recall@10 then Recall@50; config order resolves ties",
+  "candidate_screen": {"minimum_mean_R10_delta": 0.005, "all_paired_seeds_R10_improve": true, "mean_R50_not_worse": true},
+  "evaluation_policy": "fit/dev only; no new holdout scoring or official val access; report all 12 runs, category differences and fit/dev gaps",
+  "decision_policy": "screen only prioritizes a development candidate; never promotes or replaces deployed A2",
+  "budget_policy": "12 epochs for every arm; do not extend after inspecting results; flag best-at-budget-boundary cases",
+  "limitation": "dev is reused for development; these results are not independent confirmation; dropout is the only regularization factor changed"
+}
