@@ -1,0 +1,590 @@
+{
+  "status": "pass",
+  "scope": "development evidence only; no new holdout/official val evaluation",
+  "protocol_sha256": "3a4be2cbd7c4213334f06116a6590336fb56427c6477b03e0aeafb2b84c2acc9",
+  "config": {
+    "experiment_id": "fashioniq-hard-negatives-dev-v1",
+    "registered_date": "2026-11-05",
+    "dataset_split": "train",
+    "text_strategy": "symmetric_join_mean",
+    "split_seed": 20261028,
+    "arms": [
+      "in_batch",
+      "random_16",
+      "hard_16"
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "epochs": 12,
+    "evaluate_every": 2,
+    "batch_size": 256,
+    "hidden_dim": 128,
+    "dropout": 0.1,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "temperature": 0.07,
+    "residual_scale": 0.2,
+    "anchor_penalty": 0.02,
+    "initial_image_weight": 0.3,
+    "extra_negatives": 16,
+    "bank_width": 512,
+    "negative_seed": 20261105,
+    "mining": "fixed initial 0.3 image + 0.7 text cosine; same-category fit-supervised images only",
+    "candidate_policy": "unique batch targets plus all known fit positives; exclude own reference; add exactly 16 distinct per-query extras excluding batch targets and known positives; mask other queries' extras",
+    "positive_key": "reference ID plus sorted whitespace-normalized captions, case preserved",
+    "checkpoint_selection": "dev category mean Recall@10 then Recall@50; earliest tie",
+    "comparison": "paired same seeds, initialization, batch order, optimizer and selection for all arms; hard versus random isolates hardness at equal candidate counts",
+    "evaluation_policy": "fit and dev only; full train category gallery for retrieval; no holdout metrics or official val annotations",
+    "decision_policy": "report all arms and seed variance; dev-only exploratory evidence cannot promote or replace deployed A2",
+    "known_limitation": "unannotated valid matches may still be sampled as negatives; dev has already been used for model development"
+  },
+  "split_audit": {
+    "fit": {
+      "query_count": 10666,
+      "component_count": 4441,
+      "supervised_image_count": 14916,
+      "categories": {
+        "dress": 3670,
+        "shirt": 3454,
+        "toptee": 3542
+      }
+    },
+    "dev": {
+      "query_count": 3704,
+      "component_count": 1576,
+      "supervised_image_count": 5208,
+      "categories": {
+        "dress": 1253,
+        "shirt": 1280,
+        "toptee": 1171
+      }
+    },
+    "holdout": {
+      "query_count": 3630,
+      "component_count": 1451,
+      "supervised_image_count": 5012,
+      "categories": {
+        "dress": 1062,
+        "shirt": 1254,
+        "toptee": 1314
+      }
+    },
+    "supervised_image_overlap": {
+      "fit:dev": 0,
+      "fit:holdout": 0,
+      "dev:holdout": 0
+    }
+  },
+  "negative_source_audit": {
+    "source": "same-category fit reference/target images only",
+    "pools": {
+      "dress": {
+        "image_count": 4766,
+        "query_count": 3670,
+        "image_ids_sha256": "ea6f782104e38c15eb7fb2071777debbab970279553403769ac2fe0b979f8c5d"
+      },
+      "shirt": {
+        "image_count": 5202,
+        "query_count": 3454,
+        "image_ids_sha256": "1b75dc89f3fbf4dbe7f8792e247ac8e698a6c0e410a6acfa70d34cd06723e950"
+      },
+      "toptee": {
+        "image_count": 5124,
+        "query_count": 3542,
+        "image_ids_sha256": "607eb5cf1233d075cc971296c02a2cabbe8719088b1438c765b3fa78a998f174"
+      }
+    },
+    "multi_positive_query_count": 106,
+    "maximum_positive_count": 3,
+    "bank_width": 512,
+    "banks_sha256": "3c3c978efa56e6d7ed392264428f7623f5ef01c2bb95e288a8e44bd2e9c016fa",
+    "fit_dev_holdout_supervised_overlap": {
+      "fit:dev": 0,
+      "fit:holdout": 0,
+      "dev:holdout": 0
+    }
+  },
+  "runs": [
+    {
+      "arm": "in_batch",
+      "seed": 17,
+      "best_epoch": 2,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14924181963288108,
+            "recall@50": 0.3056664006384677
+          },
+          "shirt": {
+            "recall@10": 0.215625,
+            "recall@50": 0.3765625
+          },
+          "toptee": {
+            "recall@10": 0.20324508966695132,
+            "recall@50": 0.38001707941929974
+          }
+        },
+        "category_mean_recall@10": 0.18937063643327745,
+        "category_mean_recall@50": 0.3540819933525891
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\in_batch-seed17.pt",
+      "checkpoint_sha256": "b62e95f5f974c2ad38c9e05be79a77a6ffcea28982e8a496b1e65842f5dfa9ac",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283835
+      }
+    },
+    {
+      "arm": "in_batch",
+      "seed": 29,
+      "best_epoch": 4,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13966480446927373,
+            "recall@50": 0.3128491620111732
+          },
+          "shirt": {
+            "recall@10": 0.2,
+            "recall@50": 0.37578125
+          },
+          "toptee": {
+            "recall@10": 0.2058070025619129,
+            "recall@50": 0.38684884713919726
+          }
+        },
+        "category_mean_recall@10": 0.1818239356770622,
+        "category_mean_recall@50": 0.35849308638345684
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\in_batch-seed29.pt",
+      "checkpoint_sha256": "fce53d40f344f23edcbb93c8e69a773ec7f5b73c900223cbf93b8f79e1d8fc14",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283736
+      }
+    },
+    {
+      "arm": "in_batch",
+      "seed": 43,
+      "best_epoch": 6,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1524341580207502,
+            "recall@50": 0.33679169992019153
+          },
+          "shirt": {
+            "recall@10": 0.20625,
+            "recall@50": 0.3828125
+          },
+          "toptee": {
+            "recall@10": 0.20666097352690008,
+            "recall@50": 0.3936806148590948
+          }
+        },
+        "category_mean_recall@10": 0.18844837718255006,
+        "category_mean_recall@50": 0.37109493825976214
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\in_batch-seed43.pt",
+      "checkpoint_sha256": "835106c75ced6bd3fabec02c06ca47156ed8a0b44cbbc9987060657ccf3bbf45",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 0,
+        "extra_cosine_sum": 0.0,
+        "valid_candidate_sum": 32283671
+      }
+    },
+    {
+      "arm": "random_16",
+      "seed": 17,
+      "best_epoch": 2,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14604948124501196,
+            "recall@50": 0.3088587390263368
+          },
+          "shirt": {
+            "recall@10": 0.215625,
+            "recall@50": 0.37109375
+          },
+          "toptee": {
+            "recall@10": 0.19982920580700256,
+            "recall@50": 0.37574722459436377
+          }
+        },
+        "category_mean_recall@10": 0.18716789568400485,
+        "category_mean_recall@50": 0.35189990454023357
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\random_16-seed17.pt",
+      "checkpoint_sha256": "058d2e083e5b60cc44d2d7a1617789523eb939cb6ec8a291f3d4ba67086fc0b7",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 2047872,
+        "extra_cosine_sum": 948535.0872802734,
+        "valid_candidate_sum": 34331707
+      }
+    },
+    {
+      "arm": "random_16",
+      "seed": 29,
+      "best_epoch": 2,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13567438148443736,
+            "recall@50": 0.29768555466879487
+          },
+          "shirt": {
+            "recall@10": 0.2046875,
+            "recall@50": 0.38203125
+          },
+          "toptee": {
+            "recall@10": 0.1964133219470538,
+            "recall@50": 0.3637916310845431
+          }
+        },
+        "category_mean_recall@10": 0.17892506781049708,
+        "category_mean_recall@50": 0.34783614525111267
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\random_16-seed29.pt",
+      "checkpoint_sha256": "7b53483915efc7f8c4ccc0148cb4681babd6b4b23146197e312ecb4bc97e6516",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 2047872,
+        "extra_cosine_sum": 948518.7537841797,
+        "valid_candidate_sum": 34331608
+      }
+    },
+    {
+      "arm": "random_16",
+      "seed": 43,
+      "best_epoch": 4,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15003990422984836,
+            "recall@50": 0.3224261771747805
+          },
+          "shirt": {
+            "recall@10": 0.209375,
+            "recall@50": 0.384375
+          },
+          "toptee": {
+            "recall@10": 0.2049530315969257,
+            "recall@50": 0.39538855678906915
+          }
+        },
+        "category_mean_recall@10": 0.18812264527559133,
+        "category_mean_recall@50": 0.36739657798794995
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\random_16-seed43.pt",
+      "checkpoint_sha256": "0ed27d744bec529145623787de056614a548ffa933ff836256d4830e8009e54c",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 2047872,
+        "extra_cosine_sum": 948540.2302856445,
+        "valid_candidate_sum": 34331543
+      }
+    },
+    {
+      "arm": "hard_16",
+      "seed": 17,
+      "best_epoch": 2,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13168395849960096,
+            "recall@50": 0.3048683160415004
+          },
+          "shirt": {
+            "recall@10": 0.21171875,
+            "recall@50": 0.36875
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.38684884713919726
+          }
+        },
+        "category_mean_recall@10": 0.18050799079220972,
+        "category_mean_recall@50": 0.35348905439356587
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\hard_16-seed17.pt",
+      "checkpoint_sha256": "da8ef1bc406bdcbbe577481a6041d94901d2de7fb29ea3d6e7aaf4bf82874e25",
+      "batch_order_sha256_by_epoch": [
+        "aeb6f2eed501bd39a0b363fef3964e16a28509cf7f53015fb2de87a8675dde54",
+        "0ee9661cc68ca6f58f797e3ae50a51755475088e7360b1972b9495e08a4528a2",
+        "c2b5d9f9cee3b8608edce1c5907aefc622ad6a6c2e4ab5602db0c12426540951",
+        "3ae8ab62b21bf175342d52cfa8535c02f270ac6b69b2ec1de0d6fe978df5870c",
+        "2d812dc36db1b91fd5e4f8d4147673d52df875853e74c61eca7707a0db12f041",
+        "5979413b6c0a842c08d674c383ca6b0bc0a374a61652dd73830382f8fe6e5bd6",
+        "4651bd02e749f9ddd8421ca9e242dc54fc4f0c5f3e56df98cdaf3054b356c235",
+        "4d6481b6e624c75250e84afb88f8a012bca9b1d4114ca7f09a537b45edd6e997",
+        "7897905fa0d1faa979fae2b6af387ed91a7da708a73ce8fac3a7bbb0eb535923",
+        "9923ebef0b23ee2c9f9382e528e500df3206b408c784baa5a1f90ac511781474",
+        "6d789a62681d03c646806df02baee1b8162339a830b5fcd35570759ca17bf2c1",
+        "beaef5aed0a83404c2ee4a273d818489c1d5d5aea4d8e0934d84c857a6b38e65"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 2047872,
+        "extra_cosine_sum": 1118152.9037475586,
+        "valid_candidate_sum": 34331707
+      }
+    },
+    {
+      "arm": "hard_16",
+      "seed": 29,
+      "best_epoch": 0,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\hard_16-seed29.pt",
+      "checkpoint_sha256": "a07116aa9c00ec12b689dac2dc7b19002861e1fc7dc053c1e8c24463c952040b",
+      "batch_order_sha256_by_epoch": [
+        "b6861daaf6a62d28c9e5b07fc1d4a92e2180a3c4c9f935d9cd72d97603d69d56",
+        "2342205bbd08b45ad3683294ac36ec8d747a41864570ad5539b55cff8ee218d5",
+        "53f7575efc8a45cabb3bbd45191ff54f5a74558effef9376a1908e91c6118ad5",
+        "20dab1fd06e7a7aeb58f6f6d1292cfa17f6efec59751ee143a6ba271853c8646",
+        "2fc011ea89476a7bd93691a4c409f1c28a30cf7d0b939230ac7bce2acb68c73e",
+        "e1fea98651b602454cb5179b3e693a2e75f9d7b55d5c01162e5ab7c353246c58",
+        "fe67326648feb53f15b429446d660e47c1030c4c9e40ebfbd472bf868f2a5a1e",
+        "78048c03fc2eccdec4c29e58a7b66203a356aecad74956516d37877feedc9fce",
+        "1f4d05106052f7f558631bbd36fa17d75c62106c4fe34f52c1a30047d6a4d2ff",
+        "1aacd0ce6df549fd60496e559658f0e20731518822bcb1f1b8afedfe701609ef",
+        "92559f0f7617a452f8487d3a176a34789e9bb0de5b292d95345f302d3436a98b",
+        "31aa9c90d9b3cbeb35a50ee5471df4ed3e268f71125a7524bb02ace6e428736f"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 2047872,
+        "extra_cosine_sum": 1118157.48828125,
+        "valid_candidate_sum": 34331608
+      }
+    },
+    {
+      "arm": "hard_16",
+      "seed": 43,
+      "best_epoch": 4,
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14285714285714285,
+            "recall@50": 0.3120510774142059
+          },
+          "shirt": {
+            "recall@10": 0.2109375,
+            "recall@50": 0.38203125
+          },
+          "toptee": {
+            "recall@10": 0.2040990606319385,
+            "recall@50": 0.37574722459436377
+          }
+        },
+        "category_mean_recall@10": 0.1859645678296938,
+        "category_mean_recall@50": 0.3566098506695232
+      },
+      "checkpoint": "C:\\Users\\25062\\Desktop\\大创\\clip-interactive-retrieval\\artifacts\\fusion-runs\\fashioniq-hard-negatives-dev-v1\\hard_16-seed43.pt",
+      "checkpoint_sha256": "bee958af0e17a8a2f008af52103d6cee993c81cc05d9259e9d06c60e16345959",
+      "batch_order_sha256_by_epoch": [
+        "7fb8d8146c58c3288061b92b60682f0cb0446b49ebf71c0ea87013ce0d3337ce",
+        "cf0101622cce004343cf9424ddf8ab4a9fc5280fbfcdbeb27dce6f1b76cde4e4",
+        "a45fe85edec40c4a4042a8e3a19d823697d49941945d102c2cf0716ca03af375",
+        "880f72b63d352e5f38c8fbc77487335cbdac699fed32569a9eeb70049cbc4ee3",
+        "ea311e7d7e595676b2e170b7d7ee15e0aaaa1c942394794a150cb6c400219eed",
+        "fd195fa5e5c0caca9755a46661c046c64ca12c019841aa1c809e0705eb0f357d",
+        "db28b4389d29776ea99892481e2e3b3b609e43744cb626278fdcc989c7220feb",
+        "52c96862c89e8e8b34852b560ad0136c3c40141dccfcf9a99068ab756f6692a2",
+        "c60794aff75d8b90f3b7e3b9be370dec31f27a07de0a086ed14bf2bd70e2d91a",
+        "71a146d970c616908d21a5f3d252563dced76317f3097ebfda4de90adde3d9de",
+        "e1c47f14d010ef2b9c5566f7b0e40d0f7422cf8bb38313c4c69df7d16812d767",
+        "bb63ef777696a6ef4dd2088f4670a92e77839c11b46c2972f1bdc957996025ef"
+      ],
+      "negative_audit": {
+        "samples": 127992,
+        "extra_count": 2047872,
+        "extra_cosine_sum": 1118154.7276000977,
+        "valid_candidate_sum": 34331543
+      }
+    }
+  ],
+  "dev_three_seed_summary": {
+    "in_batch": {
+      "mean_R10": 0.18654764976429658,
+      "sd_R10": 0.004116764095116499,
+      "mean_R50": 0.361223339331936,
+      "sd_R50": 0.008828974146277455
+    },
+    "random_16": {
+      "mean_R10": 0.18473853625669776,
+      "sd_R10": 0.0050571927219443405,
+      "mean_R50": 0.3557108759264321,
+      "sd_R50": 0.01032207631210415
+    },
+    "hard_16": {
+      "mean_R10": 0.18091927965017937,
+      "sd_R10": 0.0048527333045983445,
+      "mean_R50": 0.34198880841403345,
+      "sd_R50": 0.022675451850885767
+    }
+  },
+  "A2_fit_only_baseline": {
+    "fit": {
+      "query_count": 10666,
+      "by_category": {
+        "dress": {
+          "recall@10": 0.1553133514986376,
+          "recall@50": 0.29727520435967303
+        },
+        "shirt": {
+          "recall@10": 0.2235089751013318,
+          "recall@50": 0.35495078170237404
+        },
+        "toptee": {
+          "recall@10": 0.20609824957651043,
+          "recall@50": 0.3455674760022586
+        }
+      },
+      "category_mean_recall@10": 0.19497352539215995,
+      "category_mean_recall@50": 0.3325978206881019
+    },
+    "dev": {
+      "query_count": 3704,
+      "by_category": {
+        "dress": {
+          "recall@10": 0.1556264964086193,
+          "recall@50": 0.2928970470869912
+        },
+        "shirt": {
+          "recall@10": 0.20390625,
+          "recall@50": 0.33828125
+        },
+        "toptee": {
+          "recall@10": 0.19214346712211786,
+          "recall@50": 0.33561058923996584
+        }
+      },
+      "category_mean_recall@10": 0.1838920711769124,
+      "category_mean_recall@50": 0.3222629621089857
+    }
+  },
+  "decision": "retain_deployed_A2_pending_independent_confirmation",
+  "deployed_model_changed": false,
+  "timestamp_utc": "2026-11-05T06:09:33.572084+00:00",
+  "elapsed_seconds_this_invocation": 251.668
+}

@@ -1,0 +1,2666 @@
+{
+  "in_batch-seed17": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 3.654659920285974,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.17247956403269754,
+            "recall@50": 0.3577656675749319
+          },
+          "shirt": {
+            "recall@10": 0.2649102489866821,
+            "recall@50": 0.4536768963520556
+          },
+          "toptee": {
+            "recall@10": 0.25014116318464147,
+            "recall@50": 0.4370412196499153
+          }
+        },
+        "category_mean_recall@10": 0.22917699206800704,
+        "category_mean_recall@50": 0.41616126119230096
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14924181963288108,
+            "recall@50": 0.3056664006384677
+          },
+          "shirt": {
+            "recall@10": 0.215625,
+            "recall@50": 0.3765625
+          },
+          "toptee": {
+            "recall@10": 0.20324508966695132,
+            "recall@50": 0.38001707941929974
+          }
+        },
+        "category_mean_recall@10": 0.18937063643327745,
+        "category_mean_recall@50": 0.3540819933525891
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.4478204675492394,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.19400544959128066,
+            "recall@50": 0.3885558583106267
+          },
+          "shirt": {
+            "recall@10": 0.30602200347423275,
+            "recall@50": 0.4973943254198031
+          },
+          "toptee": {
+            "recall@10": 0.2854319593450028,
+            "recall@50": 0.4850367024280068
+          }
+        },
+        "category_mean_recall@10": 0.26181980413683875,
+        "category_mean_recall@50": 0.4569956287194789
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13088587390263368,
+            "recall@50": 0.3056664006384677
+          },
+          "shirt": {
+            "recall@10": 0.20390625,
+            "recall@50": 0.36484375
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.3808710503842869
+          }
+        },
+        "category_mean_recall@10": 0.17763779592655396,
+        "category_mean_recall@50": 0.3504604003409182
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.314426640464601,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.24059945504087193,
+            "recall@50": 0.45694822888283376
+          },
+          "shirt": {
+            "recall@10": 0.3705848291835553,
+            "recall@50": 0.5761436016213086
+          },
+          "toptee": {
+            "recall@10": 0.3351214003387916,
+            "recall@50": 0.549124788255223
+          }
+        },
+        "category_mean_recall@10": 0.31543522818773967,
+        "category_mean_recall@50": 0.5274055395864551
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1420590582601756,
+            "recall@50": 0.3304070231444533
+          },
+          "shirt": {
+            "recall@10": 0.19921875,
+            "recall@50": 0.36640625
+          },
+          "toptee": {
+            "recall@10": 0.19470538001707943,
+            "recall@50": 0.36976942783945344
+          }
+        },
+        "category_mean_recall@10": 0.178661062759085,
+        "category_mean_recall@50": 0.3555275669946356
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.2216069974171475,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2471389645776567,
+            "recall@50": 0.4656675749318801
+          },
+          "shirt": {
+            "recall@10": 0.40995946728430804,
+            "recall@50": 0.6192819918934569
+          },
+          "toptee": {
+            "recall@10": 0.3675889328063241,
+            "recall@50": 0.5745341614906833
+          }
+        },
+        "category_mean_recall@10": 0.3415624548894296,
+        "category_mean_recall@50": 0.5531612427720067
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1452513966480447,
+            "recall@50": 0.3120510774142059
+          },
+          "shirt": {
+            "recall@10": 0.1875,
+            "recall@50": 0.3609375
+          },
+          "toptee": {
+            "recall@10": 0.18958155422715628,
+            "recall@50": 0.3569598633646456
+          }
+        },
+        "category_mean_recall@10": 0.17411098362506702,
+        "category_mean_recall@50": 0.3433161469262838
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.1328502293266096,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.26920980926430516,
+            "recall@50": 0.5057220708446867
+          },
+          "shirt": {
+            "recall@10": 0.45744064852345107,
+            "recall@50": 0.6647365373480023
+          },
+          "toptee": {
+            "recall@10": 0.40372670807453415,
+            "recall@50": 0.6230942970073405
+          }
+        },
+        "category_mean_recall@10": 0.3767923886207634,
+        "category_mean_recall@50": 0.5978509684000098
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13248204309656825,
+            "recall@50": 0.3040702314445331
+          },
+          "shirt": {
+            "recall@10": 0.18046875,
+            "recall@50": 0.353125
+          },
+          "toptee": {
+            "recall@10": 0.1870196413321947,
+            "recall@50": 0.3484201537147737
+          }
+        },
+        "category_mean_recall@10": 0.16665681147625433,
+        "category_mean_recall@50": 0.3352051283864356
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.060961191054694,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.29237057220708446,
+            "recall@50": 0.5389645776566757
+          },
+          "shirt": {
+            "recall@10": 0.47944412275622467,
+            "recall@50": 0.6861609727851766
+          },
+          "toptee": {
+            "recall@10": 0.44042913608131,
+            "recall@50": 0.6589497459062676
+          }
+        },
+        "category_mean_recall@10": 0.404081277014873,
+        "category_mean_recall@50": 0.6280250987827066
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12450119712689545,
+            "recall@50": 0.30007980845969673
+          },
+          "shirt": {
+            "recall@10": 0.16796875,
+            "recall@50": 0.3328125
+          },
+          "toptee": {
+            "recall@10": 0.17335610589239966,
+            "recall@50": 0.3415883859948762
+          }
+        },
+        "category_mean_recall@10": 0.15527535100643172,
+        "category_mean_recall@50": 0.32482689815152427
+      }
+    }
+  ],
+  "in_batch-seed29": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 3.693864810093469,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.16348773841961853,
+            "recall@50": 0.3425068119891008
+          },
+          "shirt": {
+            "recall@10": 0.2515923566878981,
+            "recall@50": 0.431673422119282
+          },
+          "toptee": {
+            "recall@10": 0.23348390739695088,
+            "recall@50": 0.4215132693393563
+          }
+        },
+        "category_mean_recall@10": 0.2161880008348225,
+        "category_mean_recall@50": 0.3985645011492463
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13966480446927373,
+            "recall@50": 0.3016759776536313
+          },
+          "shirt": {
+            "recall@10": 0.2,
+            "recall@50": 0.37734375
+          },
+          "toptee": {
+            "recall@10": 0.19897523484201537,
+            "recall@50": 0.3731853116994022
+          }
+        },
+        "category_mean_recall@10": 0.1795466797704297,
+        "category_mean_recall@50": 0.35073501311767785
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.467900141975836,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.19618528610354224,
+            "recall@50": 0.39645776566757496
+          },
+          "shirt": {
+            "recall@10": 0.3005211349160394,
+            "recall@50": 0.5063694267515924
+          },
+          "toptee": {
+            "recall@10": 0.28430265386787124,
+            "recall@50": 0.4813664596273292
+          }
+        },
+        "category_mean_recall@10": 0.26033635829581764,
+        "category_mean_recall@50": 0.46139788401549886
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13966480446927373,
+            "recall@50": 0.3128491620111732
+          },
+          "shirt": {
+            "recall@10": 0.2,
+            "recall@50": 0.37578125
+          },
+          "toptee": {
+            "recall@10": 0.2058070025619129,
+            "recall@50": 0.38684884713919726
+          }
+        },
+        "category_mean_recall@10": 0.1818239356770622,
+        "category_mean_recall@50": 0.35849308638345684
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.3430827348871124,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.21580381471389645,
+            "recall@50": 0.4247956403269755
+          },
+          "shirt": {
+            "recall@10": 0.3468442385639838,
+            "recall@50": 0.5573248407643312
+          },
+          "toptee": {
+            "recall@10": 0.32608695652173914,
+            "recall@50": 0.5333145115753811
+          }
+        },
+        "category_mean_recall@10": 0.2962450032665398,
+        "category_mean_recall@50": 0.5051449975555626
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13966480446927373,
+            "recall@50": 0.30965682362330404
+          },
+          "shirt": {
+            "recall@10": 0.1859375,
+            "recall@50": 0.37265625
+          },
+          "toptee": {
+            "recall@10": 0.2058070025619129,
+            "recall@50": 0.3748932536293766
+          }
+        },
+        "category_mean_recall@10": 0.1771364356770622,
+        "category_mean_recall@50": 0.35240210908422687
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.240156397237443,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.23923705722070845,
+            "recall@50": 0.4711171662125341
+          },
+          "shirt": {
+            "recall@10": 0.3870874348581355,
+            "recall@50": 0.5995946728430804
+          },
+          "toptee": {
+            "recall@10": 0.3554488989271598,
+            "recall@50": 0.5714285714285714
+          }
+        },
+        "category_mean_recall@10": 0.32725779700200125,
+        "category_mean_recall@50": 0.547380136828062
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12769353551476456,
+            "recall@50": 0.30646448523543496
+          },
+          "shirt": {
+            "recall@10": 0.1859375,
+            "recall@50": 0.35625
+          },
+          "toptee": {
+            "recall@10": 0.1964133219470538,
+            "recall@50": 0.3654995730145175
+          }
+        },
+        "category_mean_recall@10": 0.1700147858206061,
+        "category_mean_recall@50": 0.3427380194166509
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.175592419668856,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.267574931880109,
+            "recall@50": 0.49536784741144413
+          },
+          "shirt": {
+            "recall@10": 0.3992472495657209,
+            "recall@50": 0.6323103647944412
+          },
+          "toptee": {
+            "recall@10": 0.3599661208356861,
+            "recall@50": 0.5937323546019199
+          }
+        },
+        "category_mean_recall@10": 0.34226276742717204,
+        "category_mean_recall@50": 0.5738035222692685
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1372705506783719,
+            "recall@50": 0.3024740622505986
+          },
+          "shirt": {
+            "recall@10": 0.178125,
+            "recall@50": 0.34921875
+          },
+          "toptee": {
+            "recall@10": 0.19214346712211786,
+            "recall@50": 0.36208368915456873
+          }
+        },
+        "category_mean_recall@10": 0.16917967260016323,
+        "category_mean_recall@50": 0.33792550046838915
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.1019691882248828,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2904632152588556,
+            "recall@50": 0.5343324250681198
+          },
+          "shirt": {
+            "recall@10": 0.43543717429067746,
+            "recall@50": 0.6601042269832079
+          },
+          "toptee": {
+            "recall@10": 0.41106719367588934,
+            "recall@50": 0.6332580463015246
+          }
+        },
+        "category_mean_recall@10": 0.3789891944084742,
+        "category_mean_recall@50": 0.6092315661176174
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12529928172386273,
+            "recall@50": 0.29529130087789307
+          },
+          "shirt": {
+            "recall@10": 0.1734375,
+            "recall@50": 0.32890625
+          },
+          "toptee": {
+            "recall@10": 0.1776259607173356,
+            "recall@50": 0.35098206660973524
+          }
+        },
+        "category_mean_recall@10": 0.1587875808137328,
+        "category_mean_recall@50": 0.32505987249587615
+      }
+    }
+  ],
+  "in_batch-seed43": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 3.691468532819049,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1561307901907357,
+            "recall@50": 0.33215258855585833
+          },
+          "shirt": {
+            "recall@10": 0.2669368847712797,
+            "recall@50": 0.4571511291256514
+          },
+          "toptee": {
+            "recall@10": 0.23348390739695088,
+            "recall@50": 0.41699604743083
+          }
+        },
+        "category_mean_recall@10": 0.21885052745298875,
+        "category_mean_recall@50": 0.40209992170411324
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12689545091779728,
+            "recall@50": 0.2944932162809258
+          },
+          "shirt": {
+            "recall@10": 0.21484375,
+            "recall@50": 0.3890625
+          },
+          "toptee": {
+            "recall@10": 0.19555935098206662,
+            "recall@50": 0.3629376601195559
+          }
+        },
+        "category_mean_recall@10": 0.17909951729995463,
+        "category_mean_recall@50": 0.34883112546682726
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.4789409341495614,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2013623978201635,
+            "recall@50": 0.39509536784741145
+          },
+          "shirt": {
+            "recall@10": 0.30833815865663,
+            "recall@50": 0.5089751013317892
+          },
+          "toptee": {
+            "recall@10": 0.2837380011293055,
+            "recall@50": 0.481931112365895
+          }
+        },
+        "category_mean_recall@10": 0.264479519202033,
+        "category_mean_recall@50": 0.46200052718169854
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15083798882681565,
+            "recall@50": 0.3216280925778133
+          },
+          "shirt": {
+            "recall@10": 0.2078125,
+            "recall@50": 0.3875
+          },
+          "toptee": {
+            "recall@10": 0.2058070025619129,
+            "recall@50": 0.3936806148590948
+          }
+        },
+        "category_mean_recall@10": 0.18815249712957618,
+        "category_mean_recall@50": 0.3676029024789694
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.349871104102901,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.22915531335149864,
+            "recall@50": 0.44087193460490465
+          },
+          "shirt": {
+            "recall@10": 0.35437174290677476,
+            "recall@50": 0.5622466705269253
+          },
+          "toptee": {
+            "recall@10": 0.33032185206098247,
+            "recall@50": 0.5279503105590062
+          }
+        },
+        "category_mean_recall@10": 0.30461630277308527,
+        "category_mean_recall@50": 0.5103563052302788
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1524341580207502,
+            "recall@50": 0.33679169992019153
+          },
+          "shirt": {
+            "recall@10": 0.20625,
+            "recall@50": 0.3828125
+          },
+          "toptee": {
+            "recall@10": 0.20666097352690008,
+            "recall@50": 0.3936806148590948
+          }
+        },
+        "category_mean_recall@10": 0.18844837718255006,
+        "category_mean_recall@50": 0.37109493825976214
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.259195344613056,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2356948228882834,
+            "recall@50": 0.4678474114441417
+          },
+          "shirt": {
+            "recall@10": 0.3844817602779386,
+            "recall@50": 0.6071221771858715
+          },
+          "toptee": {
+            "recall@10": 0.3565782044042914,
+            "recall@50": 0.5643704121964992
+          }
+        },
+        "category_mean_recall@10": 0.3255849291901711,
+        "category_mean_recall@50": 0.5464466669421708
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14445331205107742,
+            "recall@50": 0.3192338387869114
+          },
+          "shirt": {
+            "recall@10": 0.2,
+            "recall@50": 0.36875
+          },
+          "toptee": {
+            "recall@10": 0.19299743808710504,
+            "recall@50": 0.38343296327924853
+          }
+        },
+        "category_mean_recall@10": 0.1791502500460608,
+        "category_mean_recall@50": 0.3571389340220534
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.170046811163727,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.25858310626702996,
+            "recall@50": 0.49645776566757494
+          },
+          "shirt": {
+            "recall@10": 0.42038216560509556,
+            "recall@50": 0.6386797915460336
+          },
+          "toptee": {
+            "recall@10": 0.39186900056465274,
+            "recall@50": 0.5965556182947487
+          }
+        },
+        "category_mean_recall@10": 0.3569447574789261,
+        "category_mean_recall@50": 0.5772310585027857
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13647246608140462,
+            "recall@50": 0.300877893056664
+          },
+          "shirt": {
+            "recall@10": 0.196875,
+            "recall@50": 0.35625
+          },
+          "toptee": {
+            "recall@10": 0.18616567036720752,
+            "recall@50": 0.3637916310845431
+          }
+        },
+        "category_mean_recall@10": 0.17317104548287074,
+        "category_mean_recall@50": 0.340306508047069
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.127693848339004,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.26948228882833786,
+            "recall@50": 0.5103542234332425
+          },
+          "shirt": {
+            "recall@10": 0.46670526925303996,
+            "recall@50": 0.6728430804863926
+          },
+          "toptee": {
+            "recall@10": 0.4105025409373235,
+            "recall@50": 0.6259175607001694
+          }
+        },
+        "category_mean_recall@10": 0.38223003300623376,
+        "category_mean_recall@50": 0.6030382882066014
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12529928172386273,
+            "recall@50": 0.29928172386272944
+          },
+          "shirt": {
+            "recall@10": 0.18515625,
+            "recall@50": 0.34296875
+          },
+          "toptee": {
+            "recall@10": 0.18360375747224594,
+            "recall@50": 0.35354397950469685
+          }
+        },
+        "category_mean_recall@10": 0.16468642973203623,
+        "category_mean_recall@50": 0.3319314844558088
+      }
+    }
+  ],
+  "random_16-seed17": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 3.7148232675953294,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.17520435967302453,
+            "recall@50": 0.3577656675749319
+          },
+          "shirt": {
+            "recall@10": 0.267515923566879,
+            "recall@50": 0.4493341053850608
+          },
+          "toptee": {
+            "recall@10": 0.24985883681535856,
+            "recall@50": 0.4418407679277245
+          }
+        },
+        "category_mean_recall@10": 0.23085970668508737,
+        "category_mean_recall@50": 0.4163135136292391
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14604948124501196,
+            "recall@50": 0.3088587390263368
+          },
+          "shirt": {
+            "recall@10": 0.215625,
+            "recall@50": 0.37109375
+          },
+          "toptee": {
+            "recall@10": 0.19982920580700256,
+            "recall@50": 0.37574722459436377
+          }
+        },
+        "category_mean_recall@10": 0.18716789568400485,
+        "category_mean_recall@50": 0.35189990454023357
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.4994439014278877,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.19291553133514985,
+            "recall@50": 0.3989100817438692
+          },
+          "shirt": {
+            "recall@10": 0.3115228720324262,
+            "recall@50": 0.5104226983207875
+          },
+          "toptee": {
+            "recall@10": 0.2899491812535291,
+            "recall@50": 0.48842461885940147
+          }
+        },
+        "category_mean_recall@10": 0.2647958615403684,
+        "category_mean_recall@50": 0.46591913297468607
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13088587390263368,
+            "recall@50": 0.31843575418994413
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.371875
+          },
+          "toptee": {
+            "recall@10": 0.20666097352690008,
+            "recall@50": 0.3783091374893254
+          }
+        },
+        "category_mean_recall@10": 0.1765781158098446,
+        "category_mean_recall@50": 0.3562066305597565
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.3655305126024953,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.24087193460490464,
+            "recall@50": 0.45776566757493187
+          },
+          "shirt": {
+            "recall@10": 0.37029530978575564,
+            "recall@50": 0.5828025477707006
+          },
+          "toptee": {
+            "recall@10": 0.34105025409373235,
+            "recall@50": 0.5522303783173348
+          }
+        },
+        "category_mean_recall@10": 0.3174058328281309,
+        "category_mean_recall@50": 0.5309328645543224
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1452513966480447,
+            "recall@50": 0.3320031923383879
+          },
+          "shirt": {
+            "recall@10": 0.19375,
+            "recall@50": 0.3703125
+          },
+          "toptee": {
+            "recall@10": 0.20239111870196413,
+            "recall@50": 0.3731853116994022
+          }
+        },
+        "category_mean_recall@10": 0.1804641717833363,
+        "category_mean_recall@50": 0.3585003346792634
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.2718177427835142,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.25286103542234334,
+            "recall@50": 0.46811989100817436
+          },
+          "shirt": {
+            "recall@10": 0.41053850607990733,
+            "recall@50": 0.6204400694846555
+          },
+          "toptee": {
+            "recall@10": 0.370412196499153,
+            "recall@50": 0.5767927724449463
+          }
+        },
+        "category_mean_recall@10": 0.3446039126671345,
+        "category_mean_recall@50": 0.5551175776459254
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14046288906624102,
+            "recall@50": 0.3128491620111732
+          },
+          "shirt": {
+            "recall@10": 0.18046875,
+            "recall@50": 0.35234375
+          },
+          "toptee": {
+            "recall@10": 0.18958155422715628,
+            "recall@50": 0.35354397950469685
+          }
+        },
+        "category_mean_recall@10": 0.17017106443113242,
+        "category_mean_recall@50": 0.33957896383862335
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.182384216380839,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2667574931880109,
+            "recall@50": 0.5051771117166213
+          },
+          "shirt": {
+            "recall@10": 0.4603358425014476,
+            "recall@50": 0.6754487550665894
+          },
+          "toptee": {
+            "recall@10": 0.41360813099943533,
+            "recall@50": 0.6256352343308865
+          }
+        },
+        "category_mean_recall@10": 0.38023382222963126,
+        "category_mean_recall@50": 0.6020870337046991
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13647246608140462,
+            "recall@50": 0.3040702314445331
+          },
+          "shirt": {
+            "recall@10": 0.17890625,
+            "recall@50": 0.33828125
+          },
+          "toptee": {
+            "recall@10": 0.17250213492741248,
+            "recall@50": 0.35012809564474806
+          }
+        },
+        "category_mean_recall@10": 0.16262695033627236,
+        "category_mean_recall@50": 0.33082652569642707
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.109920544001123,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.29836512261580383,
+            "recall@50": 0.5367847411444142
+          },
+          "shirt": {
+            "recall@10": 0.485813549507817,
+            "recall@50": 0.6997683844817603
+          },
+          "toptee": {
+            "recall@10": 0.43365330321852064,
+            "recall@50": 0.6496329757199323
+          }
+        },
+        "category_mean_recall@10": 0.4059439917807138,
+        "category_mean_recall@50": 0.6287287004487023
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1332801276935355,
+            "recall@50": 0.2968874700718276
+          },
+          "shirt": {
+            "recall@10": 0.17265625,
+            "recall@50": 0.33359375
+          },
+          "toptee": {
+            "recall@10": 0.1784799316823228,
+            "recall@50": 0.3339026473099915
+          }
+        },
+        "category_mean_recall@10": 0.16147210312528612,
+        "category_mean_recall@50": 0.321461289127273
+      }
+    }
+  ],
+  "random_16-seed29": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 3.747314221144125,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.16294277929155312,
+            "recall@50": 0.3427792915531335
+          },
+          "shirt": {
+            "recall@10": 0.26056745801968734,
+            "recall@50": 0.44296467863346844
+          },
+          "toptee": {
+            "recall@10": 0.2354601919819311,
+            "recall@50": 0.41953698475437606
+          }
+        },
+        "category_mean_recall@10": 0.21965680976439053,
+        "category_mean_recall@50": 0.4017603183136593
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13567438148443736,
+            "recall@50": 0.29768555466879487
+          },
+          "shirt": {
+            "recall@10": 0.2046875,
+            "recall@50": 0.38203125
+          },
+          "toptee": {
+            "recall@10": 0.1964133219470538,
+            "recall@50": 0.3637916310845431
+          }
+        },
+        "category_mean_recall@10": 0.17892506781049708,
+        "category_mean_recall@50": 0.34783614525111267
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.531208705079504,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.19509536784741144,
+            "recall@50": 0.39373297002724794
+          },
+          "shirt": {
+            "recall@10": 0.300810654313839,
+            "recall@50": 0.506658946149392
+          },
+          "toptee": {
+            "recall@10": 0.28176171654432525,
+            "recall@50": 0.4785431959345003
+          }
+        },
+        "category_mean_recall@10": 0.25922257956852524,
+        "category_mean_recall@50": 0.45964503737038004
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1332801276935355,
+            "recall@50": 0.30726256983240224
+          },
+          "shirt": {
+            "recall@10": 0.203125,
+            "recall@50": 0.3703125
+          },
+          "toptee": {
+            "recall@10": 0.19982920580700256,
+            "recall@50": 0.37574722459436377
+          }
+        },
+        "category_mean_recall@10": 0.1787447778335127,
+        "category_mean_recall@50": 0.35110743147558865
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.4003400420820693,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.22343324250681199,
+            "recall@50": 0.4305177111716621
+          },
+          "shirt": {
+            "recall@10": 0.34076433121019106,
+            "recall@50": 0.5535610885929357
+          },
+          "toptee": {
+            "recall@10": 0.3241106719367589,
+            "recall@50": 0.5330321852060983
+          }
+        },
+        "category_mean_recall@10": 0.296102748551254,
+        "category_mean_recall@50": 0.5057036616568987
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14365522745411013,
+            "recall@50": 0.3136472466081405
+          },
+          "shirt": {
+            "recall@10": 0.19453125,
+            "recall@50": 0.3640625
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.3629376601195559
+          }
+        },
+        "category_mean_recall@10": 0.17876924711037945,
+        "category_mean_recall@50": 0.3468824689092322
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.3001447705687847,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.24741144414168936,
+            "recall@50": 0.46811989100817436
+          },
+          "shirt": {
+            "recall@10": 0.39403590040532716,
+            "recall@50": 0.6088592935726693
+          },
+          "toptee": {
+            "recall@10": 0.35403726708074534,
+            "recall@50": 0.5787690570299266
+          }
+        },
+        "category_mean_recall@10": 0.33182820387592066,
+        "category_mean_recall@50": 0.5519160805369234
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1340782122905028,
+            "recall@50": 0.3016759776536313
+          },
+          "shirt": {
+            "recall@10": 0.1828125,
+            "recall@50": 0.36015625
+          },
+          "toptee": {
+            "recall@10": 0.19982920580700256,
+            "recall@50": 0.3774551665243382
+          }
+        },
+        "category_mean_recall@10": 0.17223997269916846,
+        "category_mean_recall@50": 0.34642913139265646
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.2348348771611546,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.262125340599455,
+            "recall@50": 0.49809264305177114
+          },
+          "shirt": {
+            "recall@10": 0.4047481181239143,
+            "recall@50": 0.6372321945570353
+          },
+          "toptee": {
+            "recall@10": 0.36335403726708076,
+            "recall@50": 0.5807453416149069
+          }
+        },
+        "category_mean_recall@10": 0.34340916533015003,
+        "category_mean_recall@50": 0.5720233930745712
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1340782122905028,
+            "recall@50": 0.2944932162809258
+          },
+          "shirt": {
+            "recall@10": 0.17890625,
+            "recall@50": 0.3359375
+          },
+          "toptee": {
+            "recall@10": 0.18445772843723313,
+            "recall@50": 0.3561058923996584
+          }
+        },
+        "category_mean_recall@10": 0.16581406357591197,
+        "category_mean_recall@50": 0.32884553622686136
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.1539537680880025,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.29863760217983654,
+            "recall@50": 0.5378746594005449
+          },
+          "shirt": {
+            "recall@10": 0.45309785755645626,
+            "recall@50": 0.6702374059061957
+          },
+          "toptee": {
+            "recall@10": 0.41219649915302087,
+            "recall@50": 0.6318464144551101
+          }
+        },
+        "category_mean_recall@10": 0.3879773196297713,
+        "category_mean_recall@50": 0.6133194932539503
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13088587390263368,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.17109375,
+            "recall@50": 0.32890625
+          },
+          "toptee": {
+            "recall@10": 0.1707941929974381,
+            "recall@50": 0.3578138343296328
+          }
+        },
+        "category_mean_recall@10": 0.15759127230002393,
+        "category_mean_recall@50": 0.32653904380554133
+      }
+    }
+  ],
+  "random_16-seed43": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 3.7506009155425795,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15504087193460492,
+            "recall@50": 0.32833787465940056
+          },
+          "shirt": {
+            "recall@10": 0.26809496236247826,
+            "recall@50": 0.4536768963520556
+          },
+          "toptee": {
+            "recall@10": 0.23461321287408243,
+            "recall@50": 0.4254658385093168
+          }
+        },
+        "category_mean_recall@10": 0.21924968239038853,
+        "category_mean_recall@50": 0.4024935365069244
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12849162011173185,
+            "recall@50": 0.2905027932960894
+          },
+          "shirt": {
+            "recall@10": 0.2125,
+            "recall@50": 0.3875
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.37233134073441504
+          }
+        },
+        "category_mean_recall@10": 0.17970429466292,
+        "category_mean_recall@50": 0.3501113780101682
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.5350819781643352,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.20681198910081744,
+            "recall@50": 0.40054495912806537
+          },
+          "shirt": {
+            "recall@10": 0.30833815865663,
+            "recall@50": 0.5086855819339896
+          },
+          "toptee": {
+            "recall@10": 0.2854319593450028,
+            "recall@50": 0.48644833427442125
+          }
+        },
+        "category_mean_recall@10": 0.2668607023674834,
+        "category_mean_recall@50": 0.4652262917788254
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15003990422984836,
+            "recall@50": 0.3224261771747805
+          },
+          "shirt": {
+            "recall@10": 0.209375,
+            "recall@50": 0.384375
+          },
+          "toptee": {
+            "recall@10": 0.2049530315969257,
+            "recall@50": 0.39538855678906915
+          }
+        },
+        "category_mean_recall@10": 0.18812264527559133,
+        "category_mean_recall@50": 0.36739657798794995
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.409718315931728,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.23079019073569482,
+            "recall@50": 0.4427792915531335
+          },
+          "shirt": {
+            "recall@10": 0.349160393746381,
+            "recall@50": 0.5657209033005212
+          },
+          "toptee": {
+            "recall@10": 0.3294748729531338,
+            "recall@50": 0.5335968379446641
+          }
+        },
+        "category_mean_recall@10": 0.3031418191450699,
+        "category_mean_recall@50": 0.5140323442661062
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15083798882681565,
+            "recall@50": 0.3320031923383879
+          },
+          "shirt": {
+            "recall@10": 0.21015625,
+            "recall@50": 0.38046875
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.38343296327924853
+          }
+        },
+        "category_mean_recall@10": 0.1863718342346146,
+        "category_mean_recall@50": 0.3653016352058788
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.3197617934967503,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.23732970027247957,
+            "recall@50": 0.4643051771117166
+          },
+          "shirt": {
+            "recall@10": 0.3870874348581355,
+            "recall@50": 0.6053850607990735
+          },
+          "toptee": {
+            "recall@10": 0.36053077357425184,
+            "recall@50": 0.564652738565782
+          }
+        },
+        "category_mean_recall@10": 0.32831596956828896,
+        "category_mean_recall@50": 0.5447809921588574
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14285714285714285,
+            "recall@50": 0.31524341580207504
+          },
+          "shirt": {
+            "recall@10": 0.2,
+            "recall@50": 0.365625
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.3783091374893254
+          }
+        },
+        "category_mean_recall@10": 0.18032613557805702,
+        "category_mean_recall@50": 0.35305918443046674
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.231165667624539,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.25967302452316077,
+            "recall@50": 0.4948228882833787
+          },
+          "shirt": {
+            "recall@10": 0.4238563983786914,
+            "recall@50": 0.6346265199768385
+          },
+          "toptee": {
+            "recall@10": 0.39469226425748166,
+            "recall@50": 0.6007905138339921
+          }
+        },
+        "category_mean_recall@10": 0.35940722905311123,
+        "category_mean_recall@50": 0.5767466406980698
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1380686352753392,
+            "recall@50": 0.29928172386272944
+          },
+          "shirt": {
+            "recall@10": 0.19375,
+            "recall@50": 0.35859375
+          },
+          "toptee": {
+            "recall@10": 0.18531169940222034,
+            "recall@50": 0.3595217762596072
+          }
+        },
+        "category_mean_recall@10": 0.17237677822585318,
+        "category_mean_recall@50": 0.3391324167074456
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.1870271211356265,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2722070844686649,
+            "recall@50": 0.5152588555858311
+          },
+          "shirt": {
+            "recall@10": 0.4635205558772438,
+            "recall@50": 0.6722640416907932
+          },
+          "toptee": {
+            "recall@10": 0.41078486730660646,
+            "recall@50": 0.6281761716544325
+          }
+        },
+        "category_mean_recall@10": 0.3821708358841717,
+        "category_mean_recall@50": 0.605233022977019
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12450119712689545,
+            "recall@50": 0.28890662410215484
+          },
+          "shirt": {
+            "recall@10": 0.190625,
+            "recall@50": 0.34765625
+          },
+          "toptee": {
+            "recall@10": 0.17335610589239966,
+            "recall@50": 0.3518360375747225
+          }
+        },
+        "category_mean_recall@10": 0.16282743433976501,
+        "category_mean_recall@50": 0.3294663038922924
+      }
+    }
+  ],
+  "hard_16-seed17": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 4.070052142306874,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.17438692098092642,
+            "recall@50": 0.3634877384196185
+          },
+          "shirt": {
+            "recall@10": 0.2727272727272727,
+            "recall@50": 0.44962362478286044
+          },
+          "toptee": {
+            "recall@10": 0.25607001693958215,
+            "recall@50": 0.45398080180688877
+          }
+        },
+        "category_mean_recall@10": 0.23439473688259374,
+        "category_mean_recall@50": 0.4223640550031225
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13168395849960096,
+            "recall@50": 0.3048683160415004
+          },
+          "shirt": {
+            "recall@10": 0.21171875,
+            "recall@50": 0.36875
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.38684884713919726
+          }
+        },
+        "category_mean_recall@10": 0.18050799079220972,
+        "category_mean_recall@50": 0.35348905439356587
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.846807438102735,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.20735694822888284,
+            "recall@50": 0.4098092643051771
+          },
+          "shirt": {
+            "recall@10": 0.328314997104806,
+            "recall@50": 0.5332947307469601
+          },
+          "toptee": {
+            "recall@10": 0.2992659514398645,
+            "recall@50": 0.5095990965556183
+          }
+        },
+        "category_mean_recall@10": 0.27831263225785113,
+        "category_mean_recall@50": 0.48423436386925184
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12290502793296089,
+            "recall@50": 0.3120510774142059
+          },
+          "shirt": {
+            "recall@10": 0.19609375,
+            "recall@50": 0.3546875
+          },
+          "toptee": {
+            "recall@10": 0.1981212638770282,
+            "recall@50": 0.37233134073441504
+          }
+        },
+        "category_mean_recall@10": 0.17237334726999634,
+        "category_mean_recall@50": 0.34635663938287364
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.6851102376820197,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2574931880108992,
+            "recall@50": 0.476566757493188
+          },
+          "shirt": {
+            "recall@10": 0.3911407064273306,
+            "recall@50": 0.5940938042848871
+          },
+          "toptee": {
+            "recall@10": 0.3481084133258046,
+            "recall@50": 0.5652173913043478
+          }
+        },
+        "category_mean_recall@10": 0.3322474359213448,
+        "category_mean_recall@50": 0.5452926510274744
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12928970470869913,
+            "recall@50": 0.29928172386272944
+          },
+          "shirt": {
+            "recall@10": 0.18359375,
+            "recall@50": 0.33203125
+          },
+          "toptee": {
+            "recall@10": 0.17677198975234842,
+            "recall@50": 0.34500426985482496
+          }
+        },
+        "category_mean_recall@10": 0.16321848148701587,
+        "category_mean_recall@50": 0.3254390812391848
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.5674608470842357,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2787465940054496,
+            "recall@50": 0.5040871934604905
+          },
+          "shirt": {
+            "recall@10": 0.4620729588882455,
+            "recall@50": 0.6699478865083961
+          },
+          "toptee": {
+            "recall@10": 0.39751552795031053,
+            "recall@50": 0.6134952004517222
+          }
+        },
+        "category_mean_recall@10": 0.3794450269480019,
+        "category_mean_recall@50": 0.5958434268068696
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13248204309656825,
+            "recall@50": 0.3120510774142059
+          },
+          "shirt": {
+            "recall@10": 0.16796875,
+            "recall@50": 0.32890625
+          },
+          "toptee": {
+            "recall@10": 0.17506404782237403,
+            "recall@50": 0.34244235695986336
+          }
+        },
+        "category_mean_recall@10": 0.15850494697298076,
+        "category_mean_recall@50": 0.32779989479135646
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.465213460366095,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.3111716621253406,
+            "recall@50": 0.5455040871934604
+          },
+          "shirt": {
+            "recall@10": 0.4973943254198031,
+            "recall@50": 0.7090330052113492
+          },
+          "toptee": {
+            "recall@10": 0.4618859401468097,
+            "recall@50": 0.6863354037267081
+          }
+        },
+        "category_mean_recall@10": 0.42348397589731784,
+        "category_mean_recall@50": 0.6469574987105059
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12370311252992817,
+            "recall@50": 0.28810853950518756
+          },
+          "shirt": {
+            "recall@10": 0.1640625,
+            "recall@50": 0.309375
+          },
+          "toptee": {
+            "recall@10": 0.1682322801024765,
+            "recall@50": 0.3373185311699402
+          }
+        },
+        "category_mean_recall@10": 0.15199929754413488,
+        "category_mean_recall@50": 0.3116006902250426
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.37849320016121,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.3239782016348774,
+            "recall@50": 0.5686648501362398
+          },
+          "shirt": {
+            "recall@10": 0.5454545454545454,
+            "recall@50": 0.7359583092067169
+          },
+          "toptee": {
+            "recall@10": 0.48870694522868435,
+            "recall@50": 0.7010163749294184
+          }
+        },
+        "category_mean_recall@10": 0.45271323077270237,
+        "category_mean_recall@50": 0.668546511424125
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.11652035115722266,
+            "recall@50": 0.27055067837190744
+          },
+          "shirt": {
+            "recall@10": 0.15390625,
+            "recall@50": 0.2984375
+          },
+          "toptee": {
+            "recall@10": 0.15798462852263023,
+            "recall@50": 0.31767719897523483
+          }
+        },
+        "category_mean_recall@10": 0.14280374322661762,
+        "category_mean_recall@50": 0.2955551257823808
+      }
+    }
+  ],
+  "hard_16-seed29": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 4.092975511931801,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.15912806539509536,
+            "recall@50": 0.3419618528610354
+          },
+          "shirt": {
+            "recall@10": 0.26896352055587724,
+            "recall@50": 0.44412275622466707
+          },
+          "toptee": {
+            "recall@10": 0.22473178994918125,
+            "recall@50": 0.4127611518915867
+          }
+        },
+        "category_mean_recall@10": 0.21760779196671795,
+        "category_mean_recall@50": 0.3996152536590964
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12450119712689545,
+            "recall@50": 0.2944932162809258
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.3703125
+          },
+          "toptee": {
+            "recall@10": 0.19299743808710504,
+            "recall@50": 0.3390264730999146
+          }
+        },
+        "category_mean_recall@10": 0.16989537840466684,
+        "category_mean_recall@50": 0.33461072979361345
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.8636502824400996,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.19618528610354224,
+            "recall@50": 0.4002724795640327
+          },
+          "shirt": {
+            "recall@10": 0.32628836132020844,
+            "recall@50": 0.521713954834974
+          },
+          "toptee": {
+            "recall@10": 0.29051383399209485,
+            "recall@50": 0.4980237154150198
+          }
+        },
+        "category_mean_recall@10": 0.2709958271386152,
+        "category_mean_recall@50": 0.4733367166046755
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.11971268954509177,
+            "recall@50": 0.2785315243415802
+          },
+          "shirt": {
+            "recall@10": 0.19140625,
+            "recall@50": 0.36171875
+          },
+          "toptee": {
+            "recall@10": 0.19726729291204098,
+            "recall@50": 0.3706233988044407
+          }
+        },
+        "category_mean_recall@10": 0.16946207748571093,
+        "category_mean_recall@50": 0.33695789104867363
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.7208371482064435,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.22534059945504087,
+            "recall@50": 0.43487738419618527
+          },
+          "shirt": {
+            "recall@10": 0.3639258830341633,
+            "recall@50": 0.5775911986103069
+          },
+          "toptee": {
+            "recall@10": 0.33681535855448896,
+            "recall@50": 0.5403726708074534
+          }
+        },
+        "category_mean_recall@10": 0.3086939470145644,
+        "category_mean_recall@50": 0.5176137512046485
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.11731843575418995,
+            "recall@50": 0.2713487629688747
+          },
+          "shirt": {
+            "recall@10": 0.1796875,
+            "recall@50": 0.340625
+          },
+          "toptee": {
+            "recall@10": 0.1887275832621691,
+            "recall@50": 0.3569598633646456
+          }
+        },
+        "category_mean_recall@10": 0.16191117300545302,
+        "category_mean_recall@50": 0.3229778754445068
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.6150102274247544,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2561307901907357,
+            "recall@50": 0.4760217983651226
+          },
+          "shirt": {
+            "recall@10": 0.4284887087434858,
+            "recall@50": 0.6456282570932252
+          },
+          "toptee": {
+            "recall@10": 0.38537549407114624,
+            "recall@50": 0.6081309994353472
+          }
+        },
+        "category_mean_recall@10": 0.35666499766845594,
+        "category_mean_recall@50": 0.5765936849645651
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.11731843575418995,
+            "recall@50": 0.2817238627294493
+          },
+          "shirt": {
+            "recall@10": 0.1765625,
+            "recall@50": 0.33984375
+          },
+          "toptee": {
+            "recall@10": 0.18018787361229718,
+            "recall@50": 0.35012809564474806
+          }
+        },
+        "category_mean_recall@10": 0.1580229364554957,
+        "category_mean_recall@50": 0.32389856945806583
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.529955666306183,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.28746594005449594,
+            "recall@50": 0.5171662125340599
+          },
+          "shirt": {
+            "recall@10": 0.4620729588882455,
+            "recall@50": 0.6742906774753908
+          },
+          "toptee": {
+            "recall@10": 0.4138904573687182,
+            "recall@50": 0.6332580463015246
+          }
+        },
+        "category_mean_recall@10": 0.3878097854371532,
+        "category_mean_recall@50": 0.6082383121036584
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12051077414205906,
+            "recall@50": 0.2553870710295291
+          },
+          "shirt": {
+            "recall@10": 0.15546875,
+            "recall@50": 0.3109375
+          },
+          "toptee": {
+            "recall@10": 0.1776259607173356,
+            "recall@50": 0.3373185311699402
+          }
+        },
+        "category_mean_recall@10": 0.1512018282864649,
+        "category_mean_recall@50": 0.3012143673998231
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.447278136230646,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.3016348773841962,
+            "recall@50": 0.5316076294277929
+          },
+          "shirt": {
+            "recall@10": 0.48176027793862186,
+            "recall@50": 0.6994788650839606
+          },
+          "toptee": {
+            "recall@10": 0.45200451722190854,
+            "recall@50": 0.6767363071710898
+          }
+        },
+        "category_mean_recall@10": 0.41179989084824214,
+        "category_mean_recall@50": 0.6359409338942812
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.09976057462090981,
+            "recall@50": 0.24022346368715083
+          },
+          "shirt": {
+            "recall@10": 0.153125,
+            "recall@50": 0.3015625
+          },
+          "toptee": {
+            "recall@10": 0.16310845431255339,
+            "recall@50": 0.3330486763450043
+          }
+        },
+        "category_mean_recall@10": 0.1386646763111544,
+        "category_mean_recall@50": 0.29161154667738504
+      }
+    }
+  ],
+  "hard_16-seed43": [
+    {
+      "epoch": 0,
+      "loss": null,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1553133514986376,
+            "recall@50": 0.29727520435967303
+          },
+          "shirt": {
+            "recall@10": 0.20353213665315575,
+            "recall@50": 0.3468442385639838
+          },
+          "toptee": {
+            "recall@10": 0.20327498588368154,
+            "recall@50": 0.3351214003387916
+          }
+        },
+        "category_mean_recall@10": 0.18737349134515827,
+        "category_mean_recall@50": 0.3264136144208161
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1556264964086193,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.1921875,
+            "recall@50": 0.32421875
+          },
+          "toptee": {
+            "recall@10": 0.18104184457728437,
+            "recall@50": 0.3304867634500427
+          }
+        },
+        "category_mean_recall@10": 0.17628528032863455,
+        "category_mean_recall@50": 0.31586752017901126
+      }
+    },
+    {
+      "epoch": 2,
+      "loss": 4.097691346663328,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.1566757493188011,
+            "recall@50": 0.34332425068119893
+          },
+          "shirt": {
+            "recall@10": 0.2802547770700637,
+            "recall@50": 0.45801968731905035
+          },
+          "toptee": {
+            "recall@10": 0.23517786561264822,
+            "recall@50": 0.4215132693393563
+          }
+        },
+        "category_mean_recall@10": 0.22403613066717099,
+        "category_mean_recall@50": 0.40761906911320184
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.13088587390263368,
+            "recall@50": 0.2905027932960894
+          },
+          "shirt": {
+            "recall@10": 0.20390625,
+            "recall@50": 0.37890625
+          },
+          "toptee": {
+            "recall@10": 0.19214346712211786,
+            "recall@50": 0.3637916310845431
+          }
+        },
+        "category_mean_recall@10": 0.17564519700825051,
+        "category_mean_recall@50": 0.3444002247935442
+      }
+    },
+    {
+      "epoch": 4,
+      "loss": 3.8720059612108937,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.20871934604904632,
+            "recall@50": 0.4149863760217984
+          },
+          "shirt": {
+            "recall@10": 0.3364215402431963,
+            "recall@50": 0.548349739432542
+          },
+          "toptee": {
+            "recall@10": 0.3026538678712592,
+            "recall@50": 0.5110107284020328
+          }
+        },
+        "category_mean_recall@10": 0.28259825138783395,
+        "category_mean_recall@50": 0.4914489479521243
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14285714285714285,
+            "recall@50": 0.3120510774142059
+          },
+          "shirt": {
+            "recall@10": 0.2109375,
+            "recall@50": 0.38203125
+          },
+          "toptee": {
+            "recall@10": 0.2040990606319385,
+            "recall@50": 0.37574722459436377
+          }
+        },
+        "category_mean_recall@10": 0.1859645678296938,
+        "category_mean_recall@50": 0.3566098506695232
+      }
+    },
+    {
+      "epoch": 6,
+      "loss": 3.730238962236051,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.24795640326975477,
+            "recall@50": 0.470299727520436
+          },
+          "shirt": {
+            "recall@10": 0.3980891719745223,
+            "recall@50": 0.6065431383902722
+          },
+          "toptee": {
+            "recall@10": 0.3390739695087521,
+            "recall@50": 0.564935064935065
+          }
+        },
+        "category_mean_recall@10": 0.3283731815843431,
+        "category_mean_recall@50": 0.5472593102819244
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.14046288906624102,
+            "recall@50": 0.31763766959297685
+          },
+          "shirt": {
+            "recall@10": 0.20390625,
+            "recall@50": 0.36328125
+          },
+          "toptee": {
+            "recall@10": 0.19043552519214346,
+            "recall@50": 0.3774551665243382
+          }
+        },
+        "category_mean_recall@10": 0.1782682214194615,
+        "category_mean_recall@50": 0.352791362039105
+      }
+    },
+    {
+      "epoch": 8,
+      "loss": 3.625450777019499,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2673024523160763,
+            "recall@50": 0.4899182561307902
+          },
+          "shirt": {
+            "recall@10": 0.4438332368268674,
+            "recall@50": 0.6569195136074117
+          },
+          "toptee": {
+            "recall@10": 0.3867871259175607,
+            "recall@50": 0.6050254093732355
+          }
+        },
+        "category_mean_recall@10": 0.36597427168683483,
+        "category_mean_recall@50": 0.5839543930371458
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12849162011173185,
+            "recall@50": 0.30007980845969673
+          },
+          "shirt": {
+            "recall@10": 0.18359375,
+            "recall@50": 0.346875
+          },
+          "toptee": {
+            "recall@10": 0.20153714773697695,
+            "recall@50": 0.35439795046968403
+          }
+        },
+        "category_mean_recall@10": 0.1712075059495696,
+        "category_mean_recall@50": 0.3337842529764603
+      }
+    },
+    {
+      "epoch": 10,
+      "loss": 3.5297847066836714,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.2847411444141689,
+            "recall@50": 0.5302452316076294
+          },
+          "shirt": {
+            "recall@10": 0.47336421540243195,
+            "recall@50": 0.69166184134337
+          },
+          "toptee": {
+            "recall@10": 0.427442123094297,
+            "recall@50": 0.6453980801806889
+          }
+        },
+        "category_mean_recall@10": 0.3951824943036326,
+        "category_mean_recall@50": 0.6224350510438961
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.12370311252992817,
+            "recall@50": 0.2928970470869912
+          },
+          "shirt": {
+            "recall@10": 0.184375,
+            "recall@50": 0.33125
+          },
+          "toptee": {
+            "recall@10": 0.16737830913748933,
+            "recall@50": 0.3475661827497865
+          }
+        },
+        "category_mean_recall@10": 0.15848547388913917,
+        "category_mean_recall@50": 0.32390440994559255
+      }
+    },
+    {
+      "epoch": 12,
+      "loss": 3.473398776298479,
+      "fit": {
+        "query_count": 10666,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.30408719346049046,
+            "recall@50": 0.5419618528610354
+          },
+          "shirt": {
+            "recall@10": 0.513317892298784,
+            "recall@50": 0.7177185871453388
+          },
+          "toptee": {
+            "recall@10": 0.45454545454545453,
+            "recall@50": 0.6693958215697347
+          }
+        },
+        "category_mean_recall@10": 0.4239835134349097,
+        "category_mean_recall@50": 0.6430254205253696
+      },
+      "dev": {
+        "query_count": 3704,
+        "by_category": {
+          "dress": {
+            "recall@10": 0.10853950518754989,
+            "recall@50": 0.2817238627294493
+          },
+          "shirt": {
+            "recall@10": 0.16953125,
+            "recall@50": 0.3171875
+          },
+          "toptee": {
+            "recall@10": 0.15542271562766866,
+            "recall@50": 0.32621690862510677
+          }
+        },
+        "category_mean_recall@10": 0.14449782360507282,
+        "category_mean_recall@50": 0.3083760904515187
+      }
+    }
+  ]
+}
