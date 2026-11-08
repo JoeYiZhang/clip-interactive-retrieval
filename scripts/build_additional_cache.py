@@ -28,10 +28,13 @@ def main():
     args = parser.parse_args()
     import torch
     torch.set_num_threads(4)
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
     version = f"open_clip:ViT-B-32:local-sha256:{digest_file(args.checkpoint)[:16]}|quick_gelu=1"
     plan = make_dataset_plan(args.storage_root, args.dataset, args.split, args.mode, version, args.sample_count)
     plan["encoder_runtime"] = {name: package_version(name) for name in ("torch", "open_clip_torch", "pillow")}
     plan["encoder_adapter_sha256"] = digest_file(ROOT / "src/cir_baseline/encoders.py")
+    plan["encoder_precision"] = {"cuda_matmul_tf32": False, "cudnn_tf32": False}
     state = build_cache(plan, args.cache_dir, lambda: OpenCLIPEncoder(checkpoint_path=args.checkpoint, device=args.device, force_quick_gelu=True, weights_only=False),
                         args.batch_size, args.shard_size, args.stop_after_shards)
     print(json.dumps({"status": state["status"], "mode": plan["mode"], "dataset": plan["dataset"], "split": plan["split"],

@@ -1,0 +1,268 @@
+{
+  "status": "pass",
+  "checked_at": "2026-11-08T15:33:21.341268+08:00",
+  "scope": "8 training queries and 1 new text; engineering only, NOT held-out model accuracy",
+  "gallery_count": 14,
+  "cached_query_cases": 8,
+  "free_text_cases": 1,
+  "precision": {
+    "cuda_matmul_tf32": false,
+    "cudnn_tf32": false
+  },
+  "max_query_abs_error": 1.6391277313232422e-07,
+  "provenance": {
+    "cache_sha256": "c0f8a68e584a3061966f3d17d63884dbd1d7658ece73631367732978ee3c6d03",
+    "checkpoint_sha256": "cf9fcc21b668cc6561a52365dff9d7d5a62d7bf59f0b2c2d04cf57ab95480b8c",
+    "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+    "seed": 17,
+    "epoch": 3,
+    "cache_encoder_precision": "legacy unspecified; validate raw/cache parity before use",
+    "inference_precision": {
+      "cuda_matmul_tf32": false,
+      "cudnn_tf32": false
+    },
+    "gallery_split": "train",
+    "gallery_mode": "engineering",
+    "checkpoint_mode": "engineering"
+  },
+  "checks": [
+    {
+      "query_id": "lasco:train:0",
+      "query_max_abs_error": 8.940696716308594e-08,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:1",
+      "query_max_abs_error": 8.940696716308594e-08,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:2",
+      "query_max_abs_error": 1.6391277313232422e-07,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:3",
+      "query_max_abs_error": 8.940696716308594e-08,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:4",
+      "query_max_abs_error": 1.1175870895385742e-07,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:5",
+      "query_max_abs_error": 8.940696716308594e-08,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:6",
+      "query_max_abs_error": 9.499490261077881e-08,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    },
+    {
+      "query_id": "lasco:train:7",
+      "query_max_abs_error": 1.341104507446289e-07,
+      "exact_top10_equal": true,
+      "reference_excluded": true,
+      "score_check": "pass"
+    }
+  ],
+  "examples": [
+    {
+      "scope": "engineering inference only; NOT benchmark performance",
+      "reference_id": "158307",
+      "reference_image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000158307.jpg",
+      "text": "Six people on the hill",
+      "gallery_count": 14,
+      "requested_top_k": 10,
+      "returned_count": 10,
+      "query_norm": 1.0,
+      "provenance": {
+        "cache_sha256": "c0f8a68e584a3061966f3d17d63884dbd1d7658ece73631367732978ee3c6d03",
+        "checkpoint_sha256": "cf9fcc21b668cc6561a52365dff9d7d5a62d7bf59f0b2c2d04cf57ab95480b8c",
+        "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+        "seed": 17,
+        "epoch": 3,
+        "cache_encoder_precision": "legacy unspecified; validate raw/cache parity before use",
+        "inference_precision": {
+          "cuda_matmul_tf32": false,
+          "cudnn_tf32": false
+        },
+        "gallery_split": "train",
+        "gallery_mode": "engineering",
+        "checkpoint_mode": "engineering"
+      },
+      "results": [
+        {
+          "rank": 1,
+          "image_id": "89462",
+          "score": 0.5301464796066284,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000089462.jpg"
+        },
+        {
+          "rank": 2,
+          "image_id": "155268",
+          "score": 0.36944636702537537,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000155268.jpg"
+        },
+        {
+          "rank": 3,
+          "image_id": "32059",
+          "score": 0.3564527928829193,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000032059.jpg"
+        },
+        {
+          "rank": 4,
+          "image_id": "520590",
+          "score": 0.34845954179763794,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000520590.jpg"
+        },
+        {
+          "rank": 5,
+          "image_id": "185082",
+          "score": 0.3347943425178528,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000185082.jpg"
+        },
+        {
+          "rank": 6,
+          "image_id": "472405",
+          "score": 0.3316865861415863,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000472405.jpg"
+        },
+        {
+          "rank": 7,
+          "image_id": "61526",
+          "score": 0.329274445772171,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000061526.jpg"
+        },
+        {
+          "rank": 8,
+          "image_id": "79224",
+          "score": 0.3189949095249176,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000079224.jpg"
+        },
+        {
+          "rank": 9,
+          "image_id": "486630",
+          "score": 0.3162965476512909,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000486630.jpg"
+        },
+        {
+          "rank": 10,
+          "image_id": "442099",
+          "score": 0.309423565864563,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000442099.jpg"
+        }
+      ]
+    },
+    {
+      "scope": "engineering inference only; NOT benchmark performance",
+      "reference_id": "158307",
+      "reference_image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000158307.jpg",
+      "text": "A group of people standing outside on a grassy hill",
+      "gallery_count": 14,
+      "requested_top_k": 10,
+      "returned_count": 10,
+      "query_norm": 0.9999999403953552,
+      "provenance": {
+        "cache_sha256": "c0f8a68e584a3061966f3d17d63884dbd1d7658ece73631367732978ee3c6d03",
+        "checkpoint_sha256": "cf9fcc21b668cc6561a52365dff9d7d5a62d7bf59f0b2c2d04cf57ab95480b8c",
+        "encoder_version": "open_clip:ViT-B-32:local-sha256:40d365715913c9da|quick_gelu=1",
+        "seed": 17,
+        "epoch": 3,
+        "cache_encoder_precision": "legacy unspecified; validate raw/cache parity before use",
+        "inference_precision": {
+          "cuda_matmul_tf32": false,
+          "cudnn_tf32": false
+        },
+        "gallery_split": "train",
+        "gallery_mode": "engineering",
+        "checkpoint_mode": "engineering"
+      },
+      "results": [
+        {
+          "rank": 1,
+          "image_id": "89462",
+          "score": 0.5128000378608704,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000089462.jpg"
+        },
+        {
+          "rank": 2,
+          "image_id": "155268",
+          "score": 0.34247276186943054,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000155268.jpg"
+        },
+        {
+          "rank": 3,
+          "image_id": "32059",
+          "score": 0.3322771191596985,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000032059.jpg"
+        },
+        {
+          "rank": 4,
+          "image_id": "520590",
+          "score": 0.3282109498977661,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000520590.jpg"
+        },
+        {
+          "rank": 5,
+          "image_id": "185082",
+          "score": 0.31765300035476685,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000185082.jpg"
+        },
+        {
+          "rank": 6,
+          "image_id": "472405",
+          "score": 0.31725481152534485,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000472405.jpg"
+        },
+        {
+          "rank": 7,
+          "image_id": "61526",
+          "score": 0.3154115676879883,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000061526.jpg"
+        },
+        {
+          "rank": 8,
+          "image_id": "79224",
+          "score": 0.3150690197944641,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000079224.jpg"
+        },
+        {
+          "rank": 9,
+          "image_id": "486630",
+          "score": 0.2931520342826843,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000486630.jpg"
+        },
+        {
+          "rank": 10,
+          "image_id": "76899",
+          "score": 0.28399255871772766,
+          "image_path": "D:\\image_data\\datasets\\coco\\train2014\\COCO_train2014_000000076899.jpg"
+        }
+      ]
+    }
+  ],
+  "implementation_sha256": {
+    "src/cir_baseline/lasco_inference.py": "aae2313a7fc18b3fccc1c5733e1d90bcf4e5b89e3ded096ee5cfdffc1dcf7e88",
+    "scripts/retrieve_lasco_fusion.py": "38d689ccfba24c7f1cf0011b7a76f140fc9030d3b25dc587e6adf3b60196f866",
+    "scripts/verify_lasco_inference.py": "155152f355e8f70194d5c67c5ba0429b35b28416db193e88a2fc56fa0f430294",
+    "scripts/build_additional_cache.py": "ab106bbe85d17236cb25514fc079343568cde29e96123df419e9e5915e2504ed"
+  }
+}
